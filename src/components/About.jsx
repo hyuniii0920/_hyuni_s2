@@ -4,7 +4,6 @@ import styles from './About.module.css';
 const infoRows = [
   { label: 'Name', value: '조서현 / Cho Seo Hyun' },
   { label: 'Birth', value: '2003 . 09 . 20' },
-  { label: 'Contact', value: '010 - 3212 - 4202' },
   { label: 'Email', value: 'hyuniii0920@gmail.com' },
 ];
 

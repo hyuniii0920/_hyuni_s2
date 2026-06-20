@@ -14,7 +14,6 @@ export default function Footer() {
         <a href="mailto:hyuniii0920@gmail.com" className={styles.contact}>
           hyuniii0920@gmail.com
         </a>
-        <span className={styles.contact}>010 - 3212 - 4202</span>
         <span className={styles.copy}>© 2026 Cho Seo Hyun. All rights reserved.</span>
       </div>
     </footer>
