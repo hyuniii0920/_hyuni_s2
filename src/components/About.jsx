@@ -2,7 +2,7 @@ import { useScrollFade } from '../hooks/useScrollFade';
 import styles from './About.module.css';
 
 const infoRows = [
-  { label: 'Name', value: '조서현 / Cho Seo Hyun' },
+  { label: 'Name', value: '조서현 / Seo Hyun Cho' },
   { label: 'Birth', value: '2003 . 09 . 20' },
   { label: 'Email', value: 'hyuniii0920@gmail.com' },
 ];
@@ -49,7 +49,7 @@ export default function About() {
         {/* 좌측: 소개 + 링크 */}
         <div className={styles.left}>
           <div className={`${styles.tagline} fade-up delay-1`}>
-            <p>시스템의 안정성과 팀원의 업무 효율을 책임지는 신입 개발자 조서현입니다.</p>
+            <p>상상을 현실적인 사용자 가치로 전환하는 신입 개발자, 조서현입니다.</p>
           </div>
 
           <div className={`${styles.infoBlock} fade-up delay-2`}>
