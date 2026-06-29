@@ -34,7 +34,7 @@ const education = [
 
 const activities = [
   { year: '2026', text: '★ 경성대학교 글로컬 아이디어 공모전 대상(총장상) 수상 ★' },
-  { year: '2026', text: 'DIVE 2026 - DX Challenge 해커톤 예선 합격 (진행중)' },
+  { year: '현재', text: 'DIVE 2026 - DX Challenge 해커톤 예선 합격 (진행중)' },
   { year: '2026', text: '피싱스캠 예방을 위한 서비스 개발 경진대회 96등 / 전체 644팀' },
   { year: '2025', text: '2025 LG Aimers AI 전문가 과정 수료' },
   { year: '2025', text: '2025 LG Aimers 온라인 해커톤' },
