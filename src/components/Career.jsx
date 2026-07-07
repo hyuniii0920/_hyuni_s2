@@ -32,15 +32,18 @@ const education = [
   },
 ];
 
+const awards = [
+  { date: '2026.06', title: '경성대학교 글로컬 아이디어 공모전', sub: '★ 대상 (총장상) ★' },
+  { date: '2026.07 — 현재', title: 'DIVE 2026 - DX Challenge 해커톤', sub: '본선 진출 (진행 중)' },
+  { date: '2023', title: 'IT 연합동아리 PROJECT 100일 프로젝트', sub: '디자인 & 아이디어 부문 수상' },
+];
+
 const activities = [
-  { year: '2026', text: '★ 경성대학교 글로컬 아이디어 공모전 대상(총장상) 수상 ★' },
-  { year: '현재', text: 'DIVE 2026 - DX Challenge 해커톤 예선 합격 (진행중)' },
   { year: '2026', text: '피싱스캠 예방을 위한 서비스 개발 경진대회 96등 / 전체 644팀' },
   { year: '2025', text: '2025 LG Aimers AI 전문가 과정 수료' },
   { year: '2025', text: '2025 LG Aimers 온라인 해커톤' },
   { year: '2025', text: 'Busan Digital Asset Nexus (Bdan) 서포터즈 2기 활동' },
   { year: '2024 — 현재', text: 'IT 연합동아리 PROJECT 운영진' },
-  { year: '2023', text: 'IT 연합동아리 PROJECT 100일 프로젝트 디자인 & 아이디어 부문 수상' },
 ];
 
 function TimelineItem({ date, title, sub, delay }) {
@@ -85,6 +88,16 @@ export default function Career() {
               <TimelineItem key={e.title} {...e} delay={i + 2} />
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Awards & Honors */}
+      <div className={styles.awardsWrap}>
+        <h3 className={`${styles.colTitle} fade-up`}>Awards &amp; Honors</h3>
+        <div className={styles.timeline}>
+          {awards.map((a, i) => (
+            <TimelineItem key={a.title} {...a} delay={i + 1} />
+          ))}
         </div>
       </div>
 

@@ -89,6 +89,13 @@
   line-height: 1.6;
 }
 
+/* Awards & Honors */
+.awardsWrap {
+  border-top: 1px solid var(--border);
+  padding-top: 64px;
+  margin-bottom: 64px;
+}
+
 /* Activity */
 .activityWrap {
   border-top: 1px solid var(--border);

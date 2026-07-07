@@ -1,0 +1,315 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 20px 80px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-primary);
+}
+
+.back {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.back:hover {
+  color: var(--text-primary);
+}
+
+.hero {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  background: var(--border);
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.heroPlaceholder {
+  width: 100%;
+  height: 360px;
+  background: var(--border);
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 80px 120px;
+}
+
+.category {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-top: 12px;
+  line-height: 1.2;
+  -webkit-hyphens: none;
+  hyphens: none;
+  word-break: keep-all;
+}
+
+.desc {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 48px 0;
+}
+
+.body {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  white-space: pre-wrap;
+  min-height: 200px;
+}
+
+/* ── Structured Detail ── */
+
+.structured {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* 메타 정보 */
+.metaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 32px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.metaItem {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.metaLabel {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.metaValue {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.githubLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metaLink {
+  font-size: 15px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.metaLink:hover {
+  color: var(--text-primary);
+}
+
+/* 한 줄 요약 */
+.summary {
+  margin: 0;
+  padding: 24px 28px;
+  border-left: 2px solid var(--text-muted);
+  font-size: 17px;
+  color: var(--text-primary);
+  line-height: 1.8;
+  font-style: normal;
+}
+
+/* 공통 섹션 */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionTitle {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* 기술 스택 */
+.stackGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stackGroup {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.stackCategory {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-top: 6px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 13px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* 핵심 기능 */
+.highlightGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.highlightCard {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s;
+}
+
+.highlightCard:hover {
+  border-color: rgba(255,255,255,0.2);
+}
+
+.highlightNum {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.highlightTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.highlightDesc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* 기술적 의사결정 */
+.decisionList {
+  display: flex;
+  flex-direction: column;
+}
+
+.decisionItem {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+
+.decisionItem:last-child {
+  border-bottom: none;
+}
+
+.decisionLabel {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.decisionDetail {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .header { padding: 20px 40px; }
+  .content { padding: 48px 40px 80px; }
+  .highlightGrid { grid-template-columns: 1fr; }
+  .decisionItem { grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (max-width: 768px) {
+  .header { padding: 16px 24px; }
+  .content { padding: 36px 24px 64px; }
+  .heroPlaceholder { height: 220px; }
+  .metaItem { grid-template-columns: 60px 1fr; }
+  .stackGroup { grid-template-columns: 80px 1fr; }
+}
