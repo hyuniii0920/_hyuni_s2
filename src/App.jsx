@@ -19,7 +19,7 @@ export default function App() {
       <Nav />
       <Hero />
       <About />
-      <Career />
+      <Career onSelectProject={setSelectedProject} />
       <Projects onSelectProject={setSelectedProject} />
       <Footer />
     </>

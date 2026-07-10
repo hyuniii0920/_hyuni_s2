@@ -1,7 +1,7 @@
 import { useScrollFade } from '../hooks/useScrollFade';
 import styles from './Projects.module.css';
 
-const featured = [
+export const featured = [
   {
     id: 1,
     category: 'AI · Web',
@@ -17,6 +17,33 @@ const featured = [
         { label: 'clair-frontend', url: 'https://github.com/KS-LEXA/clair-frontend' },
       ],
       summary: 'OCR · LLM · RAG 파이프라인을 결합하여 법률 지식 없이도 계약서의 위험 조항을 자동으로 탐지하고, 안전도 점수와 근거 조항을 함께 제공하는 한국어 계약서 분석 플랫폼',
+      motivation: '프리랜서·소상공인 등 법률 비전문가는 계약서의 위험 조항을 스스로 판별하기 어렵고, 매번 변호사 자문을 받기엔 비용과 시간 부담이 크다는 문제의식에서 출발. OCR로 계약서를 텍스트화하고 LLM·RAG로 위험 조항을 자동 탐지·설명해, 비전문가도 계약서 리스크를 직접 확인할 수 있는 서비스를 목표로 기획.',
+      problemSolving: [
+        {
+          title: 'Safety Score — AI 채점의 비일관성 문제',
+          problem: 'LLM에게 위험도 점수를 직접 매기게 하면 동일한 조항에도 매번 다른 점수가 나오는 비일관성 문제가 있었고, 채점 근거를 재현할 수 없어 서비스 신뢰도에 영향을 줄 수 있었음.',
+          process: '채점 로직을 AI가 아닌 백엔드로 이관하기로 결정하고, LLM은 severity_score·confidence 값만 Enum 제한 JSON으로 반환하도록 프롬프트를 재설계. 백엔드에서 severity × confidence × 카테고리 가중치로 감점하고, 고위험 조항 3개 이상 시 추가 패널티를 적용하는 100점 기준 알고리즘을 구현.',
+          result: '동일 계약서를 다시 분석해도 항상 동일한 점수가 나오는 재현 가능한 채점 체계를 확보했고, 감점 기준을 조정할 때도 모델 재학습 없이 백엔드 상수만 수정하면 되어 정책 대응 속도가 빨라짐.',
+        },
+        {
+          title: 'RAG 답변의 근거 조항을 추적할 수 없던 문제',
+          problem: '계약서 조항이 JSON 통짜 컬럼으로 저장돼 있어, RAG로 생성한 Q&A 답변이 실제로 어느 조항을 근거로 했는지 역추적할 수 없었고 프론트에서 근거 조항 하이라이트도 불가능했음.',
+          process: 'DB 스키마를 조항 단위 행으로 정규화(contract_clauses 테이블 분리)하고, RAG 응답에 evidence_clause_ids 필드를 추가해 JOIN으로 근거 조항 원문을 조회할 수 있도록 재구성.',
+          result: 'Q&A 답변마다 근거가 된 실제 조항 원문을 프론트에서 실시간 하이라이트로 제공할 수 있게 되어, AI 답변을 사용자가 직접 검증할 수 있는 근거 기반 UX를 완성.',
+        },
+        {
+          title: '장기 분석 중 DB 세션 만료 문제',
+          problem: 'FastAPI BackgroundTask에서 Request 스코프 DB 세션을 그대로 사용했더니, Request가 끝나면 세션도 만료되어 오래 걸리는 분석 작업 도중 DB 접근 오류가 발생.',
+          process: '세션 라이프사이클이 Request와 BackgroundTask 간에 어긋난다는 점을 원인으로 파악하고, BackgroundTask 내부에서 SessionLocal()을 독립적으로 생성해 try/finally로 명시 관리하도록 리팩토링.',
+          result: '수 분 이상 걸리는 분석 작업에서도 DB 오류 없이 안정적으로 완료되도록 개선했고, 5단계 상태머신과 결합해 사용자에게 정확한 진행 상태를 보여줄 수 있게 됨.',
+        },
+        {
+          title: 'Gemini 장애 시 파이프라인 전체 중단 문제',
+          problem: '8단계 AI 파이프라인이 외부 LLM API(Gemini)에 전적으로 의존하고 있어, Gemini 장애나 타임아웃이 발생하면 파이프라인 전체가 멈추는 단일 장애점(SPOF)이 존재했음.',
+          process: '장애 발생 시나리오를 정의하고, Gemini 호출부에 9대 위험 유형 키워드 매칭 기반 폴백 로직을 추가해 API 실패 시 자동으로 전환되도록 구현.',
+          result: 'Gemini 장애 상황에서도 파이프라인이 중단 없이 끝까지 실행되어 서비스 가용성을 확보.',
+        },
+      ],
       stack: {
         Frontend: ['React 18', 'TypeScript', 'Vite', 'Tailwind CSS 4', 'Radix UI'],
         Backend: ['FastAPI', 'SQLAlchemy 2.x', 'MySQL 8', 'JWT + OAuth2', 'BCrypt'],
@@ -67,6 +94,33 @@ const featured = [
       role: '프론트엔드 — 멀티테넌트 SaaS 아키텍처 설계, 6계층 RBAC 라우팅, JWT 갱신 큐 패턴, B2B/B2C UX 분리 구현',
       github: 'https://github.com/hyuniii0920/mzc-lp-frontend',
       summary: '단일 SaaS 플랫폼 위에서 복수 기업 테넌트가 독립된 학습 환경을 운영하고, 기업 교육(B2B)과 개인 학습(B2C)을 단일 코드베이스로 통합 제공하는 엔터프라이즈급 LMS 프론트엔드',
+      motivation: '기업마다 별도의 LMS를 도입하면 구축·유지보수 비용이 크고, 기존 LMS 대부분이 기업교육(B2B)이나 개인학습(B2C) 한쪽에만 최적화돼 있어 두 시장을 동시에 대응하기 어렵다는 문제의식에서 출발. 단일 코드베이스에서 호스트네임만으로 테넌트를 구분하고 B2B/B2C UX를 모두 지원하는 멀티테넌트 SaaS LMS를 목표로 설계.',
+      problemSolving: [
+        {
+          title: '테넌트가 늘어날수록 커지는 UI 분기 문제',
+          problem: '복수 기업 테넌트가 단일 코드베이스를 공유하는데, 테넌트마다 로고·컬러·활성화 기능(장바구니, 커뮤니티, 유료 모드 등)이 달라야 해서 이를 하드코딩하면 테넌트가 추가될 때마다 조건 분기가 기하급수적으로 늘어나는 문제.',
+          process: 'hostname 기반 서브도메인을 추출해 axios 인터셉터에서 X-Subdomain 헤더를 자동 주입하도록 구현하고, TenantBrandingContext로 로고·컬러·파비콘을 CSS 변수에 런타임 주입. cartEnabled·communityEnabled·paidModeEnabled 등 기능 플래그로 테넌트별 UI를 동적 제어하도록 재설계.',
+          result: '신규 테넌트를 온보딩할 때 코드 수정 없이 설정값만 추가하면 되는 구조를 확보했고, 브랜딩·기능 변경도 재배포 없이 런타임에서 즉시 반영 가능해짐.',
+        },
+        {
+          title: '토큰 만료 시 동시 요청이 인증을 깨뜨리는 문제',
+          problem: '액세스 토큰 만료 시점에 여러 API 요청이 동시에 나가면 각 요청이 개별적으로 refresh를 시도해 refresh 요청이 중복 발생하고, 서버에서 토큰 상태가 꼬여 인증이 깨지는 문제가 있었음.',
+          process: 'axios 인터셉터를 isRefreshing 플래그로 재설계해 이미 refresh가 진행 중이면 새 요청은 failedQueue에 적재만 하고 대기하도록 하고, refresh가 완료되면 큐에 쌓인 요청을 일괄 재실행하는 큐 패턴을 구현.',
+          result: '동시다발적 요청 상황에서도 refresh 요청이 단 한 번만 발생하도록 개선되어 인증 안정성을 확보하고, 사용자가 토큰 만료를 체감하지 못하는 끊김 없는 세션을 유지하게 됨.',
+        },
+        {
+          title: 'B2B/B2C·6개 역할이 뒤섞인 라우팅 복잡도 문제',
+          problem: '기업교육(B2B, 배정 과정 중심)과 개인학습(B2C, 마켓플레이스 중심)은 화면 흐름 자체가 다른데, 여기에 SA·TA·CO·DESIGNER·INSTRUCTOR·USER 6개 역할별 접근 권한까지 겹치면서 단일 라우팅 구조에서는 조건 분기가 과도해져 유지보수가 어려워지는 문제.',
+          process: 'B2B/B2C 라우팅을 tu.b2b.routes.tsx / tu.b2c.routes.tsx 파일 수준으로 완전 분리하고, 역할별로 독립된 라우팅·레이아웃을 구성해 조건부 렌더링 대신 진입 시점에 라우트 트리 자체를 분기하도록 재구성.',
+          result: '신규 역할이나 플로우를 추가할 때 기존 라우트를 건드리지 않고 파일만 추가하면 되는 구조로 정리돼, 라우팅 관련 버그가 발생할 여지를 크게 줄임.',
+        },
+        {
+          title: 'React Query 캐시 무효화 범위 오류 문제',
+          problem: '대규모 컴포넌트 트리에서 각자 임의로 쿼리 키를 만들어 쓰다 보니 캐시 키가 충돌하거나 invalidate 범위를 잘못 잡아, 관련 없는 데이터까지 리페치되거나 갱신돼야 할 데이터가 갱신되지 않는 문제가 반복됐음.',
+          process: '도메인 단위로 쿼리 키를 구조화하는 Key Factory 패턴을 도입해 캐시 키 생성 규칙을 통일하고, invalidate 범위를 계층적으로 제어할 수 있도록 데이터 패칭 로직을 재설계.',
+          result: 'invalidate 범위를 정밀하게 통제할 수 있게 되어 불필요한 리페치가 줄었고, 캐시 관련 버그가 재발하지 않는 일관된 데이터 패칭 구조를 확보.',
+        },
+      ],
       stack: {
         Frontend: ['React 19', 'TypeScript 5.6', 'Vite 6', 'TailwindCSS + CVA', 'Radix UI', 'Zustand', 'React Query', 'react-router-dom v7'],
         Backend: ['Spring Boot', 'JWT', 'MySQL / PostgreSQL', 'REST API'],
@@ -116,6 +170,33 @@ const featured = [
       role: 'Android 전체 — 앱 초기 구조 설계, Glow Blue 다크 디자인 시스템, Room DB + MVVM 아키텍처 도입 (kapt → KSP 전환), 4개국어 런타임 전환 파이프라인',
       github: 'https://github.com/ghktnqns321/ArtBusan',
       summary: 'QR 코드 스캔과 AR 카메라를 결합하여 부산 미술관·박물관 작품 정보를 실시간 제공하고, 4개국어 지원과 Offline-First 설계로 인터넷이 불안정한 전시 현장에서도 끊김 없는 관람 경험을 제공하는 Android 전시 안내 플랫폼',
+      motivation: '전시장에서 배포되는 종이 안내 책자나 오디오 가이드는 다국어 지원이 제한적이고, Wi-Fi가 불안정한 실내 전시 공간에서는 앱 기반 안내 서비스도 끊기기 쉽다는 문제의식에서 출발. 부산 관광데이터를 활용해 QR·AR 기반으로 작품 정보를 제공하면서도 오프라인에서 완전히 동작하는 다국어 전시 안내 앱을 목표로 기획.',
+      problemSolving: [
+        {
+          title: 'QR 스캔 중복 인식 문제',
+          problem: 'ML Kit 바코드 스캐너가 카메라 프리뷰의 매초 프레임 스트림을 분석하다 보니, 사용자가 QR 코드에 카메라를 잠깐만 대고 있어도 짧은 시간에 같은 QR을 수십 번 인식해 작품 상세 화면이 중복으로 열리는 문제가 있었음.',
+          process: '@Volatile 변수로 scanningEnabled(UI 전역 통제)와 processingScan(추론 레이어 통제) 두 개의 플래그를 두어 스캔 요청과 실제 추론 처리를 이중으로 차단하도록 설계하고, 인식 로직을 백그라운드 전용 ExecutorService로 분리해 메인 UI 스레드가 블록되지 않도록 구현.',
+          result: '동일 QR 코드를 짧게 여러 프레임 인식해도 중복 화면 전환이 발생하지 않게 됐고, 스캔 처리가 백그라운드에서 이뤄져 카메라 프리뷰가 끊기지 않는 부드러운 스캔 UX를 확보.',
+        },
+        {
+          title: '전시장 네트워크 불안정 문제',
+          problem: '미술관·박물관 내부는 벽·전시 구조물로 인해 Wi-Fi/LTE 신호가 불안정한 경우가 많아, 서버 API 호출에만 의존하면 작품 정보 조회가 끊기거나 실패하는 문제.',
+          process: '앱 최초 실행 시 번들에 포함된 JSON을 Room DB에 시드하고, 이후 조회는 runCatching { API 호출 }.getOrElse { 로컬 DB 조회 }로 감싸 네트워크 실패 시 자동으로 로컬 데이터로 폴백하도록 구현.',
+          result: '네트워크가 완전히 끊긴 전시장 내부에서도 미술관·작품 정보를 끊김 없이 제공할 수 있게 되어, 공모전 심사에서 요구하는 실사용 안정성 기준을 충족.',
+        },
+        {
+          title: '재설치 없는 다국어 전환 문제',
+          problem: '외국인 관광객을 포함한 4개국어(한·영·일·중) 사용자를 지원해야 했는데, 언어별로 앱을 따로 배포하거나 재설치를 요구하면 현장에서 즉시 언어를 바꿔야 하는 관람객 경험에 맞지 않는 문제.',
+          process: '선택한 언어 코드를 SharedPreferences에 저장하고 attachBaseContext에서 LocaleHelper로 Context를 언어별로 래핑하도록 구현. 언어 전환 시 DB를 deleteAll()한 뒤 해당 언어 JSON을 재시드하고 Activity.recreate()로 전체 UI를 일관되게 갱신.',
+          result: '앱 재설치나 재배포 없이 한·영·일·중 4개 언어를 현장에서 즉시 전환할 수 있게 되어 외국인 관광객 대응력을 확보.',
+        },
+        {
+          title: 'QR 코드 포맷 변경에 취약한 파싱 문제',
+          problem: '현장 마케팅팀이 QR 코드에 인코딩하는 URL 포맷(딥링크, 쿼리 파라미터, 패스 파라미터 등)을 운영 중에 바꾸는 경우가 있어, 단일 포맷만 파싱하도록 하드코딩하면 QR 코드가 재발급될 때마다 앱을 다시 배포해야 하는 문제.',
+          process: '딥링크(artar://work/{id}) → 쿼리 파라미터(?id=) → 패스 파라미터(/work/{id}) → 순수 숫자 순으로 정규식 매칭을 시도하는 4단계 폴백 파싱 체인을 설계.',
+          result: 'QR 코드 포맷이 바뀌어도 앱 재배포 없이 대응 가능해졌고, 현장 마케팅 요구사항 변화에 유연하게 대응할 수 있는 구조를 확보.',
+        },
+      ],
       stack: {
         Android: ['Kotlin + Coroutines', 'KSP', 'Jetpack Navigation', 'Single Activity', 'ListAdapter + DiffUtil', 'Coil 2.6'],
         Data: ['Room 2.7 (SQLite)', 'Retrofit 2.11 + Gson', 'SharedPreferences'],
@@ -165,6 +246,33 @@ const featured = [
       period: '2026 글로컬 Innovation Challenge Day · 대상 (총장상)',
       role: 'AI 웹 툴 개발 — Instance Segmentation 기반 멤버별 마스크 영상 생성 파이프라인, Django REST 백엔드 연동, 영상 저장·서빙 인프라 설계',
       summary: 'K-pop 아이돌 안무 원본 영상에서 AI로 멤버 각각을 픽셀 단위 인식·추적하여 멤버별 마스크 영상을 자동 생성하는 반자동화 파이프라인을 구현하고, 이를 모바일 앱의 연습 콘텐츠로 제공하는 인프라까지 담당',
+      motivation: 'K-pop 안무를 연습하려는 팬들은 여러 멤버가 함께 등장하는 원본 영상에서 특정 한 명의 동선만 따라 익히기 어렵고, 멤버별 영상을 일일이 수작업으로 편집해 제공하기엔 곡 수·멤버 수가 늘어날수록 제작 비용이 감당하기 어렵다는 문제의식에서 출발. AI 기반 영상 세그멘테이션으로 멤버별 마스크 영상을 반자동으로 생성해 안무 연습 콘텐츠로 서비스하는 것을 목표로 기획.',
+      problemSolving: [
+        {
+          title: '다인 안무에서 멤버별 인식이 어려운 문제',
+          problem: '다인 K-pop 안무 영상은 멤버들이 자주 겹치고 대형이 바뀌기 때문에, 프레임마다 완전 자동으로 멤버를 감지·추적하게 하면 겹침 구간에서 멤버가 뒤바뀌거나 인식이 끊기는 오류가 누적되는 문제.',
+          process: '완전 자동 감지 대신, 웹 툴에서 작업자가 첫 프레임에 포인트/박스로 멤버를 한 번만 지정하면 SAM2의 비디오 세그멘테이션 메모리 메커니즘이 이후 프레임을 자동 추적하며 픽셀 단위 마스크를 전파하도록 파이프라인을 설계.',
+          result: '멤버 간 겹침 구간에서도 안정적으로 동일 인물을 추적할 수 있게 됐고, 별도의 다중 객체 트래커 없이 SAM2 하나로 정확도와 제작 생산성을 동시에 확보.',
+        },
+        {
+          title: '멤버별 연습 콘텐츠를 앱에 연결하는 문제',
+          problem: '생성된 멤버별 마스크 영상을 곡·멤버 단위로 관리하고, 유료 콘텐츠라면 멤버 단위로 잠금을 해제하는 결제 로직까지 앱에 연결해야 했는데, 초기에는 이 메타데이터와 접근 권한을 연결할 데이터 모델이 없었음.',
+          process: 'SongIdolMembership 모델로 곡별·멤버별 마스크 영상 메타데이터를 저장하고, PracticeVideo 모델을 통해 모바일 앱에 연습 영상을 제공하도록 Django REST 백엔드를 설계. piyak 토큰 기반 결제 시스템과 연동해 멤버 단위로 접근 권한을 판단하도록 구현.',
+          result: '곡·멤버 단위로 연습 영상과 접근 권한을 단일 조회로 판단할 수 있는 구조를 확보해, 멤버별 콘텐츠 잠금 해제 기능을 별도 로직 없이 백엔드 단일 조회로 처리 가능해짐.',
+        },
+        {
+          title: '대용량 영상의 저장·서빙 문제',
+          problem: '생성된 멤버별 마스크 영상은 용량이 크고 수가 많아, 저장과 스트리밍을 하나의 인프라에 결합하면 트래픽이 몰릴 때 저장소와 스트리밍 서버가 서로 영향을 주는 구조적 위험이 있었음.',
+          process: '영상 저장은 Cloudflare R2(S3 호환)에, 스트리밍은 PeerTube 기반 인프라에 각각 맡기고 Django가 PeerTube API와 통신해 스트리밍 URL을 동적으로 resolve하도록 역할을 분리.',
+          result: '저장과 스트리밍이 서로 독립적으로 확장 가능한 구조를 확보했고, 모바일 앱은 Django를 통해 항상 최신 스트리밍 URL로 안정적으로 영상을 재생.',
+        },
+        {
+          title: '프레임 단위 수작업 편집의 생산성 문제',
+          problem: '멤버별 마스크 영상을 프레임마다 수동으로 편집해 제작하면 곡 하나당 작업 시간이 과도하게 길어져, 서비스에 필요한 만큼의 콘텐츠 양을 감당할 수 없는 문제.',
+          process: '웹 툴 내 멤버 지정 UI → SAM2 프레임 전파 → 마스크 추출 → 마스크 영상 생성까지 이어지는 일관된 반자동화 워크플로우를 설계해, 작업자는 첫 프레임 지정만 하면 되도록 구성.',
+          result: '매 프레임 수동 편집 없이 멤버별 콘텐츠를 제작할 수 있게 되어 대회 시연에 필요한 콘텐츠 제작 생산성을 확보했고, 이 반자동화 파이프라인이 대상 수상의 핵심 근거가 됨.',
+        },
+      ],
       stack: {
         'AI · 영상처리': ['SAM2 (Segment Anything Model 2)', 'Mask Extraction', 'Video Processing'],
         백엔드: ['Python', 'Django REST Framework'],

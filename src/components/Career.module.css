@@ -66,6 +66,26 @@
   border-bottom: none;
 }
 
+.timelineItemClickable {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+.timelineItemClickable:last-child {
+  border-bottom: none;
+}
+
+.timelineItemClickable:hover {
+  opacity: 0.7;
+}
+
 .date {
   font-size: 13px;
   font-weight: 500;

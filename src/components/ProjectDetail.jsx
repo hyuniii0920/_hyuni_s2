@@ -42,6 +42,42 @@ function StructuredDetail({ detail }) {
         <blockquote className={styles.summary}>{detail.summary}</blockquote>
       )}
 
+      {/* 프로젝트 동기 */}
+      {detail.motivation && (
+        <div className={styles.motivationBlock}>
+          <span className={styles.motivationLabel}>Why</span>
+          <p className={styles.motivationText}>{detail.motivation}</p>
+        </div>
+      )}
+
+      {/* 문제 해결 과정 */}
+      {detail.problemSolving && (
+        <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>문제 해결 과정</h3>
+          <div className={styles.caseList}>
+            {detail.problemSolving.map((c, i) => (
+              <div key={i} className={styles.caseCard}>
+                <h4 className={styles.caseTitle}>{c.title}</h4>
+                <div className={styles.caseSteps}>
+                  <div className={styles.caseStep}>
+                    <span className={styles.caseStepLabel}>문제 원인</span>
+                    <p className={styles.caseStepText}>{c.problem}</p>
+                  </div>
+                  <div className={styles.caseStep}>
+                    <span className={styles.caseStepLabel}>해결 과정</span>
+                    <p className={styles.caseStepText}>{c.process}</p>
+                  </div>
+                  <div className={styles.caseStep}>
+                    <span className={styles.caseStepLabel}>결과</span>
+                    <p className={styles.caseStepText}>{c.result}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* 기술 스택 */}
       {detail.stack && (
         <div className={styles.section}>
@@ -64,7 +100,7 @@ function StructuredDetail({ detail }) {
       {/* 핵심 기능 */}
       {detail.highlights && (
         <div className={styles.section}>
-          <h3 className={styles.sectionTitle}>핵심 기능</h3>
+          <h3 className={styles.sectionTitle}>{detail.highlightsTitle || '핵심 기능'}</h3>
           <div className={styles.highlightGrid}>
             {detail.highlights.map((h, i) => (
               <div key={i} className={styles.highlightCard}>

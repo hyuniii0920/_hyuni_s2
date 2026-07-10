@@ -170,6 +170,89 @@
   font-style: normal;
 }
 
+/* 프로젝트 동기 */
+.motivationBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.motivationLabel {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.motivationText {
+  font-size: 15.5px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+}
+
+/* 문제 해결 과정 */
+.caseList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.caseCard {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.caseTitle {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.caseSteps {
+  display: flex;
+  flex-direction: column;
+}
+
+.caseStep {
+  position: relative;
+  padding: 0 0 22px 24px;
+  border-left: 1px solid var(--border);
+}
+
+.caseStep:last-child {
+  padding-bottom: 0;
+}
+
+.caseStep::before {
+  content: '';
+  position: absolute;
+  left: -4.5px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+.caseStepLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.caseStepText {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
 /* 공통 섹션 */
 .section {
   display: flex;
@@ -312,4 +395,5 @@
   .heroPlaceholder { height: 220px; }
   .metaItem { grid-template-columns: 60px 1fr; }
   .stackGroup { grid-template-columns: 80px 1fr; }
+  .caseCard { padding: 24px; }
 }
