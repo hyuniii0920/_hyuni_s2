@@ -9,7 +9,7 @@ export const featured = [
     desc: 'Gemini·LangChain 기반 AI 계약서 분석 서비스',
     image: '/project_photo/clair_main.png',
     detail: {
-      period: '2026.03 ~ 현재 (진행 중)',
+      period: '2026.03 ~ 2026.06',
       role: '백엔드 · AI — FastAPI 서버 설계, AI 분석 파이프라인 설계·구현, Safety Score 알고리즘, DB 스키마 설계',
       github: [
         { label: 'clair-ai', url: 'https://github.com/KS-LEXA/clair-ai' },
