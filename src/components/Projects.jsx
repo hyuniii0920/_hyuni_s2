@@ -312,6 +312,57 @@ export const featured = [
       ],
     },
   },
+  {
+    id: 5,
+    category: 'Security · AI',
+    title: 'Smishing Prevention AI',
+    desc: '스미싱 피해 사례 분석 기반 안드로이드·웹 통합 예방 서비스 — 피싱스캠 예방 서비스 개발 경진대회 상위 15% (전체 644팀)',
+    image: '/project_photo/SPAI_main.png',
+    detail: {
+      period: '2026 · 피싱스캠 예방 서비스 개발 경진대회 (상위 15% / 전체 644팀)',
+      role: '웹 프론트엔드 개발 · 백엔드 연동 — Firebase 기반 인증·데이터 관리 구조 설계, 프론트/백엔드 배포 자동화, Android 앱-웹 플랫폼 간 공통 데이터 흐름 설계',
+      summary: '스미싱 문자 피해 사례를 분석해 탐지 결과를 제공하는 서비스 화면을 담당한 안드로이드·웹 통합형 스미싱 예방 서비스',
+      motivation: '스미싱 문자로 인한 금전 피해 사례가 계속 늘고 있지만, 사용자가 스스로 위험 문자를 판별하기는 어렵다는 문제의식에서 출발. 그 문제를 직접 풀어보고 싶어 피싱스캠 예방 서비스 개발 경진대회에 참가해 스미싱 피해 사례를 분석했고, 644개 참가팀 중 상위 15%에 들었습니다.',
+      problemSolving: [
+        {
+          title: '3개 서비스가 흩어져 협업·배포가 꼬이는 문제',
+          problem: 'Android 앱, React 프론트엔드, Spring Boot 백엔드를 각각 별도로 관리하면 탐지 결과를 화면에 반영하는 과정에서 API 스펙이 어긋나거나 배포 버전이 서로 맞지 않는 문제가 발생하기 쉬웠음.',
+          process: '세 서비스를 하나의 모노레포로 통합 관리하도록 구조를 설계하고, GitHub Actions로 프론트엔드/백엔드 배포 워크플로우를 개별적으로 자동화.',
+          result: '협업 및 배포 구조가 단순화됐고, 시크릿 기반 배포 환경을 정리해 배포 안정성을 확보.',
+        },
+        {
+          title: '앱-웹 간 탐지 결과 불일치 문제',
+          problem: '스미싱 탐지 결과를 모바일과 웹에서 동시에 확인할 수 있어야 했는데, 플랫폼별로 인증·데이터 구조가 분리되어 있으면 사용자가 앱과 웹에서 같은 분석 결과를 일관되게 볼 수 없는 문제.',
+          process: 'Firebase Auth/Firestore/Storage와 Firebase Admin SDK를 기반으로 인증·데이터 관리 구조를 통합 설계하고, Android 앱과 웹 플랫폼이 공유하는 공통 데이터 흐름을 구성.',
+          result: '멀티플랫폼으로 확장 가능한 인증·데이터 구조를 확보해 모바일과 웹 간 연계성을 높였고, 피싱스캠 예방 서비스 개발 경진대회에서 전체 644팀 중 상위 15%를 기록.',
+        },
+      ],
+      stack: {
+        Android: ['Kotlin'],
+        Frontend: ['React', 'Vite'],
+        Backend: ['Spring Boot', 'Java 21'],
+        Infra: ['Firebase Auth', 'Firestore', 'Firebase Storage', 'Firebase Admin SDK', 'GitHub Actions'],
+      },
+      highlights: [
+        {
+          title: '모노레포 기반 통합 관리',
+          desc: 'Android 앱, React 프론트엔드, Spring Boot 백엔드를 하나의 모노레포로 관리해 협업 및 배포 구조 단순화.',
+        },
+        {
+          title: 'Firebase 기반 인증·데이터 파이프라인',
+          desc: 'Firebase Auth/Firestore/Storage와 Firebase Admin SDK를 활용해 인증 및 데이터 처리 파이프라인 구축.',
+        },
+        {
+          title: '보안 분석 결과 시각화 화면',
+          desc: 'React 기반 웹 UI를 통해 스미싱 탐지·보안 분석 정보와 사용자 데이터를 시각적으로 확인할 수 있는 화면 구조 구현.',
+        },
+        {
+          title: '배포 자동화',
+          desc: 'GitHub Actions를 이용해 프론트엔드/백엔드 개별 배포 워크플로우를 자동화하고 시크릿 기반 배포 환경 정리.',
+        },
+      ],
+    },
+  },
 ];
 
 const links = [
