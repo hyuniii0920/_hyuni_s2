@@ -18,6 +18,8 @@ export const featured = [
       ],
       summary: 'OCR · LLM · RAG 파이프라인을 결합하여 법률 지식 없이도 계약서의 위험 조항을 자동으로 탐지하고, 안전도 점수와 근거 조항을 함께 제공하는 한국어 계약서 분석 플랫폼',
       motivation: '프리랜서·소상공인 등 법률 비전문가는 계약서의 위험 조항을 스스로 판별하기 어렵고, 매번 변호사 자문을 받기엔 비용과 시간 부담이 크다는 문제의식에서 출발. OCR로 계약서를 텍스트화하고 LLM·RAG로 위험 조항을 자동 탐지·설명해, 비전문가도 계약서 리스크를 직접 확인할 수 있는 서비스를 목표로 기획.',
+      whyShort: '법률 비전문가가 변호사 자문 없이 계약서 위험을 스스로 확인하기 어렵다는 문제에서 출발했다.',
+      myStack: ['FastAPI', 'MySQL 8', 'Google Gemini', 'ChromaDB'],
       problemSolving: [
         {
           title: '들쭉날쭉하던 AI 채점 결과를 일관되게 만들었다',
@@ -95,6 +97,8 @@ export const featured = [
       github: 'https://github.com/hyuniii0920/mzc-lp-frontend',
       summary: '단일 SaaS 플랫폼 위에서 복수 기업 테넌트가 독립된 학습 환경을 운영하고, 기업 교육(B2B)과 개인 학습(B2C)을 단일 코드베이스로 통합 제공하는 엔터프라이즈급 LMS 프론트엔드',
       motivation: '기업마다 별도의 LMS를 도입하면 구축·유지보수 비용이 크고, 기존 LMS 대부분이 기업교육(B2B)이나 개인학습(B2C) 한쪽에만 최적화돼 있어 두 시장을 동시에 대응하기 어렵다는 문제의식에서 출발. 단일 코드베이스에서 호스트네임만으로 테넌트를 구분하고 B2B/B2C UX를 모두 지원하는 멀티테넌트 SaaS LMS를 목표로 설계.',
+      whyShort: '기업마다 LMS를 따로 도입하는 비용 문제와, B2B·B2C를 동시에 지원하는 LMS가 드물다는 점에서 출발했다.',
+      myStack: ['React 19', 'TypeScript 5.6', 'Zustand', 'Figma AI'],
       problemSolving: [
         {
           title: '테넌트가 늘어나도 코드 수정 없이 대응하게 만들었다',
@@ -176,6 +180,8 @@ export const featured = [
       github: 'https://github.com/ghktnqns321/ArtBusan',
       summary: 'QR 코드 스캔과 AR 카메라를 결합하여 부산 미술관·박물관 작품 정보를 실시간 제공하고, 4개국어 지원과 Offline-First 설계로 인터넷이 불안정한 전시 현장에서도 끊김 없는 관람 경험을 제공하는 Android 전시 안내 플랫폼',
       motivation: '전시장에서 배포되는 종이 안내 책자나 오디오 가이드는 다국어 지원이 제한적이고, Wi-Fi가 불안정한 실내 전시 공간에서는 앱 기반 안내 서비스도 끊기기 쉽다는 문제의식에서 출발. 부산 관광데이터를 활용해 QR·AR 기반으로 작품 정보를 제공하면서도 오프라인에서 완전히 동작하는 다국어 전시 안내 앱을 목표로 기획.',
+      whyShort: '종이 안내책자의 다국어 한계와, 전시장 내부 Wi-Fi 불안정으로 앱 안내 서비스가 끊기는 문제에서 출발했다.',
+      myStack: ['Kotlin + Coroutines', 'Room 2.7 (SQLite)', 'CameraX 1.4', 'ML Kit Barcode Scanning'],
       problemSolving: [
         {
           title: 'QR 중복 인식을 없애 끊김 없는 스캔을 만들었다',
@@ -252,6 +258,8 @@ export const featured = [
       role: 'AI 웹 툴 개발 — Instance Segmentation 기반 멤버별 마스크 영상 생성 파이프라인, Django REST 백엔드 연동, 영상 저장·서빙 인프라 설계',
       summary: 'K-pop 아이돌 안무 원본 영상에서 AI로 멤버 각각을 픽셀 단위 인식·추적하여 멤버별 마스크 영상을 자동 생성하는 반자동화 파이프라인을 구현하고, 이를 모바일 앱의 연습 콘텐츠로 제공하는 인프라까지 담당',
       motivation: 'K-pop 안무를 연습하려는 팬들은 여러 멤버가 함께 등장하는 원본 영상에서 특정 한 명의 동선만 따라 익히기 어렵고, 멤버별 영상을 일일이 수작업으로 편집해 제공하기엔 곡 수·멤버 수가 늘어날수록 제작 비용이 감당하기 어렵다는 문제의식에서 출발. AI 기반 영상 세그멘테이션으로 멤버별 마스크 영상을 반자동으로 생성해 안무 연습 콘텐츠로 서비스하는 것을 목표로 기획.',
+      whyShort: '다인 그룹 영상에서 특정 멤버 동선만 따라 연습하기 어렵고, 수작업 편집은 비용 부담이 크다는 문제에서 출발했다.',
+      myStack: ['SAM2 (Segment Anything Model 2)', 'Django REST Framework', 'Cloudflare R2', 'PeerTube'],
       problemSolving: [
         {
           title: '겹치는 다인 안무에서도 멤버를 정확히 추적하게 했다',
@@ -328,6 +336,8 @@ export const featured = [
       role: '웹 프론트엔드 개발 · 백엔드 연동 — Firebase 기반 인증·데이터 관리 구조 설계, 프론트/백엔드 배포 자동화, Android 앱-웹 플랫폼 간 공통 데이터 흐름 설계',
       summary: '스미싱 문자 피해 사례를 분석해 탐지 결과를 제공하는 서비스 화면을 담당한 안드로이드·웹 통합형 스미싱 예방 서비스',
       motivation: '스미싱 문자로 인한 금전 피해 사례가 계속 늘고 있지만, 사용자가 스스로 위험 문자를 판별하기는 어렵다는 문제의식에서 출발. 그 문제를 직접 풀어보고 싶어 피싱스캠 예방 서비스 개발 경진대회에 참가해 스미싱 피해 사례를 분석했고, 644개 참가팀 중 상위 15%에 들었습니다.',
+      whyShort: '스미싱 피해는 느는데 사용자가 위험 문자를 스스로 판별하기 어렵다는 문제에서 출발했다.',
+      myStack: ['React', 'Spring Boot', 'Firebase Auth', 'GitHub Actions'],
       problemSolving: [
         {
           title: '3개 서비스를 하나로 통합해 배포 구조를 단순화했다',
@@ -415,12 +425,15 @@ export default function Projects({ onSelectProject }) {
               <span className={styles.featuredCategory}>{p.category}</span>
               <h3 className={styles.featuredTitle}>{p.title}</h3>
               <p className={styles.featuredDesc}>{p.desc}</p>
-              {p.detail?.stack && (
+              {p.detail?.whyShort && (
+                <p className={styles.featuredWhy}>{p.detail.whyShort}</p>
+              )}
+              {p.detail?.myStack && (
                 <div className={styles.featuredTechRow}>
                   {p.detail.period && (
                     <span className={styles.featuredYear}>{p.detail.period.split(' ')[0]}</span>
                   )}
-                  {Object.values(p.detail.stack).flat().slice(0, 4).map(tag => (
+                  {p.detail.myStack.map(tag => (
                     <span key={tag} className={styles.featuredTechTag}>{tag}</span>
                   ))}
                 </div>

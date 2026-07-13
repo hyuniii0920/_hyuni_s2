@@ -35,7 +35,7 @@
 /* Featured project cards */
 .featuredGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-bottom: 80px;
 }
@@ -103,6 +103,13 @@
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.7;
+}
+
+.featuredWhy {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-style: italic;
 }
 
 .featuredTechRow {
@@ -303,6 +310,12 @@
     padding: 80px 40px;
   }
 
+  .featuredGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
   .featuredGrid {
     grid-template-columns: 1fr;
   }
