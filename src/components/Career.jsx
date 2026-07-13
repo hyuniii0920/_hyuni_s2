@@ -2,7 +2,7 @@ import { useScrollFade } from '../hooks/useScrollFade';
 import { featured } from './Projects';
 import styles from './Career.module.css';
 
-const mzcProject = featured.find(p => p.title === 'MZC Learn Platform');
+const mzcProject = featured.find(p => p.id === 2);
 
 const careers = [
   {
@@ -17,20 +17,30 @@ const careers = [
     sub: '2개월',
     detail: {
       category: 'Internship · Frontend/UX',
-      title: '제로웹 프론트엔드 개발 & UX/UI 디자인 인턴',
-      desc: '운영 서비스 프론트엔드 유지보수와 위치 기반 노약자 케어 서비스 기획·퍼블리싱을 담당한 IT 스타트업 인턴',
+      title: '제로웹',
+      desc: '프론트엔드 개발/기획 & UX/UI 디자인 인턴',
+      image: '/project_photo/zeroweb.png',
       detail: {
-        period: '2024.07 ~ 2024.08 (2개월)',
-        role: '프론트엔드 개발 · UX 기획 및 퍼블리싱 — 운영 서비스 유지보수·기능 개발, 위치 기반 케어 서비스 기획·Figma 디자인·퍼블리싱 End-to-End 단독 주도',
-        summary: '운영 중인 기업 홈페이지의 프론트엔드 유지보수를 담당하는 한편, 위치 기반 노약자 케어 서비스를 기획부터 퍼블리싱까지 단독으로 주도한 IT 스타트업 인턴 경험',
-        highlightsTitle: '주요 업무',
+        careerDetail: true,
+        period: '2024.07 ~ 2024.08',
+        role: {
+          title: '프론트엔드 개발 · UX/UI 디자인',
+          items: [
+            '운영 서비스 유지보수 및 기능 개발',
+            'Care Bell UX/UI 디자인 · 퍼블리싱',
+            'Figma 기반 UI 디자인 및 퍼블리싱',
+            'Design-to-Code 협업',
+          ],
+        },
+        summary: 'Care Bell 위치 기반 노약자 케어 서비스의 UX/UI 디자인 · 퍼블리싱과 운영 서비스 프론트엔드 유지보수를 담당',
+        highlightsTitle: 'Key Responsibilities',
         highlights: [
           {
             title: '운영 서비스 유지보수 및 기능 개발',
             desc: 'UI 오류 수정, 브라우저 호환성 개선을 담당하고 사용자 피드백 기반으로 UI 불편 요소를 지속 발굴·개선. 신규 기능 개발에도 참여해 요구사항 파악 → 설계 → 구현 → 검증 전 과정을 경험.',
           },
           {
-            title: '위치 기반 노약자 케어 서비스 기획·퍼블리싱 (End-to-End 단독 주도)',
+            title: 'Care Bell 위치 기반 노약자 케어 서비스 기획 · 퍼블리싱 (End-to-End 단독 주도)',
             desc: '노약자의 안전·일상 활동 지원을 위한 위치 기반 케어 서비스를 기획부터 Figma 디자인, HTML/CSS/JS 퍼블리싱까지 전 과정 단독 주도.',
           },
           {
@@ -41,8 +51,8 @@ const careers = [
         problemSolving: [
           {
             title: '노약자도 쉽게 쓸 수 있는 접근성 높은 UX를 설계했다',
-            problem: '위치 기반 케어 서비스의 주 사용자층이 노약자였는데, 시력이 약하거나 디지털 기기 사용에 익숙하지 않은 사용자가 많아 일반적인 UI 밀도·인터랙션 방식으로 설계하면 핵심 기능에 접근하는 것 자체가 진입장벽이 되는 문제.',
-            process: '사용자 행동 패턴을 분석해 정보 구조를 단순화하고, 시인성이 높은 컬러·타이포 가이드를 수립. 위치 확인·케어 요청 등 핵심 기능에 최소 인터랙션으로 도달할 수 있도록 화면 흐름을 재설계.',
+            problem: '위치 기반 케어 서비스의 주 사용자층이 노약자였는데, 시력이 약하거나 디지털 기기 사용에 익숙하지 않은 사용자가 많아 일반적인 UI 밀도 · 인터랙션 방식으로 설계하면 핵심 기능에 접근하는 것 자체가 진입장벽이 되는 문제.',
+            process: '사용자 행동 패턴을 분석해 정보 구조를 단순화하고, 시인성이 높은 컬러 · 타이포 가이드를 수립. 위치 확인 · 케어 요청 등 핵심 기능에 최소 인터랙션으로 도달할 수 있도록 화면 흐름을 재설계.',
             result: '기획 → Figma 디자인 → HTML/CSS/JS 퍼블리싱까지 전 과정을 End-to-End로 단독 주도해 완성했고, 접근성을 고려한 서비스 설계 경험을 확보.',
           },
           {
@@ -68,9 +78,9 @@ const careers = [
 
 const education = [
   {
-    date: '2022 — 2026.08',
+    date: '2022 — 2026',
     title: '경성대학교 컴퓨터공학과',
-    sub: '졸업예정',
+    sub: '26.08 졸업예정',
   },
   {
     date: '2019 — 2021',
@@ -86,7 +96,7 @@ const awards = [
 ];
 
 const activities = [
-  { year: '2026', text: '피싱스캠 예방을 위한 서비스 개발 경진대회 96등 / 전체 644팀' },
+  { year: '2026', text: '피싱스캠 예방을 위한 서비스 개발 경진대회 상위 15% / 전체 644팀' },
   { year: '2025', text: '2025 LG Aimers AI 전문가 과정 수료' },
   { year: '2025', text: '2025 LG Aimers 온라인 해커톤' },
   { year: '2025', text: 'Busan Digital Asset Nexus (Bdan) 서포터즈 2기 활동' },
@@ -98,7 +108,7 @@ function TimelineItem({ date, title, sub, delay, detail, onSelect }) {
     <>
       <span className={styles.date}>{date}</span>
       <div>
-        <p className={styles.itemTitle}>{title}</p>
+        <div className={styles.itemTitleRow}><p className={styles.itemTitle}>{title}</p>{detail && <span className={styles.detailLink}>Details <b>→</b></span>}</div>
         <p className={styles.itemSub}>{sub}</p>
       </div>
     </>

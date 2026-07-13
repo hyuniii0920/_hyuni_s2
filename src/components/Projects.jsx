@@ -5,19 +5,27 @@ export const featured = [
   {
     id: 1,
     category: 'AI · Web',
-    title: 'CLAIR-AI',
-    desc: 'Gemini·LangChain 기반 AI 계약서 분석 서비스',
+    title: 'CLAIR',
+    desc: 'LangChain · Gemini 기반 AI 계약서 분석 서비스',
     image: '/project_photo/clair_main.png',
     detail: {
       period: '2026.03 ~ 2026.06',
-      role: '백엔드 · AI — FastAPI 서버 설계, AI 분석 파이프라인 설계·구현, 위험도 자동 채점 알고리즘, DB 스키마 설계',
+      role: {
+        title: '백엔드 · AI',
+        items: [
+          'FastAPI 서버 설계',
+          'AI 분석 파이프라인 설계 · 구현',
+          '위험도 자동 채점 알고리즘',
+          'DB 스키마 설계',
+        ],
+      },
       github: [
         { label: 'clair-ai', url: 'https://github.com/KS-LEXA/clair-ai' },
         { label: 'clair-backend', url: 'https://github.com/KS-LEXA/clair-backend' },
         { label: 'clair-frontend', url: 'https://github.com/KS-LEXA/clair-frontend' },
       ],
       summary: 'OCR · LLM · RAG 파이프라인을 결합하여 법률 지식 없이도 계약서의 위험 조항을 자동으로 탐지하고, 안전도 점수와 근거 조항을 함께 제공하는 한국어 계약서 분석 플랫폼',
-      motivation: '프리랜서·소상공인 등 법률 비전문가는 계약서의 위험 조항을 스스로 판별하기 어렵고, 매번 변호사 자문을 받기엔 비용과 시간 부담이 크다는 문제의식에서 출발. OCR로 계약서를 텍스트화하고 LLM·RAG로 위험 조항을 자동 탐지·설명해, 비전문가도 계약서 리스크를 직접 확인할 수 있는 서비스를 목표로 기획.',
+      motivation: '프리랜서 · 소상공인 등 법률 비전문가는 계약서의 위험 조항을 스스로 판별하기 어렵고, 매번 변호사 자문을 받기엔 비용과 시간 부담이 크다는 문제의식에서 출발. OCR로 계약서를 텍스트화하고 LLM · RAG로 위험 조항을 자동 탐지 · 설명해, 비전문가도 계약서 리스크를 직접 확인할 수 있는 서비스를 목표로 기획.',
       whyShort: '법률 비전문가도 변호사 자문 없이 계약서 위험을 스스로 확인할 수 있게 만들었다.',
       myStack: ['FastAPI', 'MySQL 8', 'Google Gemini', 'ChromaDB'],
       card: {
@@ -26,31 +34,31 @@ export const featured = [
         desc: '계약서의 위험 조항을 자동 분석하고\n관련 법률 근거를 함께 제공하는 AI 서비스',
         checklist: [
           'OCR 처리 속도 8배 개선',
-          'RAG 기반 법률 정보 검색',
-          'LLM 기반 계약서 분석',
+          '일관된 Safety Score 산출',
+          'Gemini 장애 자동 폴백',
         ],
       },
       problemSolving: [
         {
-          title: '들쭉날쭉하던 AI 채점 결과를 일관되게 만들었다',
+          title: 'LLM 기반 위험도 채점의 일관성 확보',
           problem: 'LLM에게 위험도 점수를 직접 매기게 하면 동일한 조항에도 매번 다른 점수가 나오는 비일관성 문제가 있었고, 채점 근거를 재현할 수 없어 서비스 신뢰도에 영향을 줄 수 있었음.',
-          process: '채점 로직을 AI가 아닌 백엔드로 이관하기로 결정하고, LLM은 severity_score·confidence 값만 Enum 제한 JSON으로 반환하도록 프롬프트를 재설계. 백엔드에서 severity × confidence × 카테고리 가중치로 감점하고, 고위험 조항 3개 이상 시 추가 패널티를 적용하는 100점 기준 알고리즘을 구현.',
+          process: '채점 로직을 AI가 아닌 백엔드로 이관하기로 결정하고, LLM은 severity_score · confidence 값만 Enum 제한 JSON으로 반환하도록 프롬프트를 재설계. 백엔드에서 severity × confidence × 카테고리 가중치로 감점하고, 고위험 조항 3개 이상 시 추가 패널티를 적용하는 100점 기준 알고리즘을 구현.',
           result: '동일 계약서를 다시 분석해도 항상 동일한 점수가 나오는 재현 가능한 채점 체계를 확보했고, 감점 기준을 조정할 때도 모델 재학습 없이 백엔드 상수만 수정하면 되어 정책 대응 속도가 빨라짐.',
         },
         {
-          title: 'AI 답변의 근거를 조항 단위로 추적 가능하게 했다',
+          title: '근거 조항 기반 RAG 응답 추적성 확보',
           problem: '계약서 조항이 JSON 통짜 컬럼으로 저장돼 있어, RAG로 생성한 Q&A 답변이 실제로 어느 조항을 근거로 했는지 역추적할 수 없었고 프론트에서 근거 조항 하이라이트도 불가능했음.',
           process: 'DB 스키마를 조항 단위 행으로 정규화(contract_clauses 테이블 분리)하고, RAG 응답에 evidence_clause_ids 필드를 추가해 JOIN으로 근거 조항 원문을 조회할 수 있도록 재구성.',
           result: 'Q&A 답변마다 근거가 된 실제 조항 원문을 프론트에서 실시간 하이라이트로 제공할 수 있게 되어, AI 답변을 사용자가 직접 검증할 수 있는 근거 기반 UX를 완성.',
         },
         {
-          title: '장시간 분석에도 끊기지 않는 안정적인 구조를 만들었다',
+          title: '장기 분석 작업의 안정성 확보',
           problem: 'FastAPI BackgroundTask에서 Request 스코프 DB 세션을 그대로 사용했더니, Request가 끝나면 세션도 만료되어 오래 걸리는 분석 작업 도중 DB 접근 오류가 발생.',
           process: '세션 라이프사이클이 Request와 BackgroundTask 간에 어긋난다는 점을 원인으로 파악하고, BackgroundTask 내부에서 SessionLocal()을 독립적으로 생성해 try/finally로 명시 관리하도록 리팩토링.',
           result: '수 분 이상 걸리는 분석 작업에서도 DB 오류 없이 안정적으로 완료되도록 개선했고, 5단계 상태머신과 결합해 사용자에게 정확한 진행 상태를 보여줄 수 있게 됨.',
         },
         {
-          title: '외부 AI 장애에도 서비스가 멈추지 않게 했다',
+          title: 'Gemini 장애 대응을 위한 AI 분석 폴백 구현',
           problem: '8단계 AI 파이프라인이 외부 LLM API(Gemini)에 전적으로 의존하고 있어, Gemini 장애나 타임아웃이 발생하면 파이프라인 전체가 멈추는 단일 장애점(SPOF)이 존재했음.',
           process: '장애 발생 시나리오를 정의하고, Gemini 호출부에 9대 위험 유형 키워드 매칭 기반 폴백 로직을 추가해 API 실패 시 자동으로 전환되도록 구현.',
           result: 'Gemini 장애 상황에서도 파이프라인이 중단 없이 끝까지 실행되어 서비스 가용성을 확보.',
@@ -79,6 +87,24 @@ export const featured = [
           desc: 'Frontend(5173) / Backend(8000) / AI(8001)로 역할 분리. 두 서버가 파일시스템 공유로 대용량 전송 없이 경로만 전달. BackgroundTask + 5단계 상태머신으로 장기 분석을 비동기 처리.',
         },
       ],
+      coreFeatures: [
+        {
+          title: '계약서 위험 조항 분석과 Safety Score',
+          desc: '계약서 조항을 분석해 위험 요소와 안전도 점수를 함께 제공하여, 법률 비전문가도 전체 리스크를 빠르게 파악할 수 있도록 구성.',
+        },
+        {
+          title: '근거 조항 하이라이트',
+          desc: '분석 결과와 연결된 원문 조항을 함께 보여줘 사용자가 AI 판단의 근거를 직접 확인할 수 있는 검증 경험 제공.',
+        },
+        {
+          title: 'RAG 기반 계약서 질의응답',
+          desc: '계약서 내용과 관련 법률 정보를 바탕으로 자연어 질문에 답변하고, 관련 근거 조항까지 함께 안내.',
+        },
+        {
+          title: '분석 진행 상태와 결과 조회',
+          desc: '장시간 분석 과정의 상태를 단계별로 안내하고, 완료 후 위험도와 조항별 분석 결과를 한 화면에서 확인.',
+        },
+      ],
       decisions: [
         {
           label: 'contract_clauses 정규화',
@@ -86,11 +112,11 @@ export const featured = [
         },
         {
           label: 'BackgroundTask 독립 DB 세션',
-          detail: 'Request 세션 만료 후 DB 접근 오류를 차단하기 위해 BackgroundTask 내 SessionLocal()을 명시 생성·관리 (try/finally).',
+          detail: 'Request 세션 만료 후 DB 접근 오류를 차단하기 위해 BackgroundTask 내 SessionLocal()을 명시 생성 및 관리 (try/finally).',
         },
         {
           label: '방어적 프롬프트 엔지니어링',
-          detail: 'AI에 점수를 직접 매기게 하지 않고 severity·confidence 수치만 Enum 제한 JSON으로 반환. 정규식으로 마크다운 블록을 제거한 뒤 파싱하여 안정성 확보.',
+          detail: 'AI에 점수를 직접 매기게 하지 않고 severity · confidence 수치만 Enum 제한 JSON으로 반환. 정규식으로 마크다운 블록을 제거한 뒤 파싱하여 안정성 확보.',
         },
       ],
     },
@@ -98,20 +124,32 @@ export const featured = [
   {
     id: 2,
     category: 'SaaS · Web',
-    title: 'MZC Learn Platform',
-    desc: 'B2B 기업교육에 특화된 엔터프라이즈급 멀티테넌트 SaaS 학습관리시스템(LMS) — 관리자 콘솔부터 B2B/B2C 사용자 화면까지 지원',
+    title: 'MZC (Learn Platform)',
+    desc: 'B2B/B2C 멀티테넌트 SaaS 학습관리시스템(LMS)',
     image: '/project_photo/MZC_LP_main.png',
     detail: {
       period: '2025.11 ~ 2026.01',
-      role: '프론트엔드 — MSA 기반 멀티테넌트 아키텍처 설계, 6개 직급 통합 라우팅, JWT 갱신 큐 패턴, B2B/B2C UX 분리 구현',
-      github: 'https://github.com/hyuniii0920/mzc-lp-frontend',
+      role: {
+        title: '프론트엔드',
+        items: [
+          '멀티테넌트 프론트엔드 아키텍처 설계',
+          '6개 직급 통합 라우팅',
+          'JWT 갱신 큐 패턴 구현',
+          'B2B/B2C UX 분리 구현',
+        ],
+      },
+      github: [
+        { label: 'mzc-lp-frontend', url: 'https://github.com/hyuniii0920/mzc-lp-frontend' },
+        { label: 'mzc-lp-backend', url: 'https://github.com/hyuniii0920/mzc-lp-backend' },
+        { label: 'mzc-lp-docs', url: 'https://github.com/hyuniii0920/mzc-lp-docs' },
+      ],
       summary: '단일 SaaS 플랫폼 위에서 복수 기업 테넌트가 독립된 학습 환경을 운영하고, 기업 교육(B2B)과 개인 학습(B2C)을 단일 코드베이스로 통합 제공하는 엔터프라이즈급 LMS 프론트엔드',
-      motivation: '기업마다 별도의 LMS를 도입하면 구축·유지보수 비용이 크고, 기존 LMS 대부분이 기업교육(B2B)이나 개인학습(B2C) 한쪽에만 최적화돼 있어 두 시장을 동시에 대응하기 어렵다는 문제의식에서 출발. 단일 코드베이스에서 호스트네임만으로 테넌트를 구분하고 B2B/B2C UX를 모두 지원하는 멀티테넌트 SaaS LMS를 목표로 설계.',
+      motivation: '기업마다 별도의 LMS를 도입하면 구축 · 유지보수 비용이 크고, 기존 LMS 대부분이 기업교육(B2B)이나 개인학습(B2C) 한쪽에만 최적화돼 있어 두 시장을 동시에 대응하기 어렵다는 문제의식에서 출발. 단일 코드베이스에서 호스트네임만으로 테넌트를 구분하고 B2B/B2C UX를 모두 지원하는 멀티테넌트 SaaS LMS를 목표로 설계.',
       whyShort: '기업마다 LMS를 따로 도입하는 비용 문제를 하나의 멀티테넌트 플랫폼으로 해결했다.',
       myStack: ['React 19', 'TypeScript 5.6', 'Zustand', 'Figma AI'],
       card: {
         name: 'MZC',
-        tagline: 'B2B 엔터프라이즈 LMS',
+        tagline: 'B2B/B2C 멀티테넌트 LMS',
         desc: '기업 교육과 개인 학습을 함께 지원하는\n멀티테넌트 SaaS 학습관리시스템',
         checklist: [
           '6개 직급을 하나의 프론트엔드로 통합',
@@ -121,25 +159,29 @@ export const featured = [
       },
       problemSolving: [
         {
-          title: '테넌트가 늘어나도 코드 수정 없이 대응하게 만들었다',
-          problem: '복수 기업 테넌트가 단일 코드베이스를 공유하는데, 테넌트마다 로고·컬러·활성화 기능(장바구니, 커뮤니티, 유료 모드 등)이 달라야 해서 이를 하드코딩하면 테넌트가 추가될 때마다 조건 분기가 기하급수적으로 늘어나는 문제.',
-          process: 'hostname 기반 서브도메인을 추출해 axios 인터셉터에서 X-Subdomain 헤더를 자동 주입하도록 구현하고, TenantBrandingContext로 로고·컬러·파비콘을 CSS 변수에 런타임 주입. cartEnabled·communityEnabled·paidModeEnabled 등 기능 플래그로 테넌트별 UI를 동적 제어하도록 재설계.',
-          result: '신규 테넌트를 온보딩할 때 코드 수정 없이 설정값만 추가하면 되는 구조를 확보했고, 브랜딩·기능 변경도 재배포 없이 런타임에서 즉시 반영 가능해짐.',
+          title: '코드 변경 없는 테넌트 온보딩 구조 구축',
+          preview: '테넌트별 설정을 코드에 하드코딩하면 신규 기업이 추가될수록 조건 분기가 늘어나는 문제.',
+          problem: '복수 기업 테넌트가 단일 코드베이스를 공유하는데, 테넌트마다 로고 · 컬러 · 활성화 기능(장바구니, 커뮤니티, 유료 모드 등)이 달라야 해서 이를 하드코딩하면 테넌트가 추가될 때마다 조건 분기가 기하급수적으로 늘어나는 문제.',
+          process: 'hostname 기반 서브도메인을 추출해 axios 인터셉터에서 X-Subdomain 헤더를 자동 주입하도록 구현하고, TenantBrandingContext로 로고 · 컬러 · 파비콘을 CSS 변수에 런타임 주입. cartEnabled · communityEnabled · paidModeEnabled 등 기능 플래그로 테넌트별 UI를 동적 제어하도록 재설계.',
+          result: '신규 테넌트를 온보딩할 때 코드 수정 없이 설정값만 추가하면 되는 구조를 확보했고, 브랜딩 · 기능 변경도 재배포 없이 런타임에서 즉시 반영 가능해짐.',
         },
         {
-          title: '동시 요청에도 끊기지 않는 로그인 상태를 만들었다',
+          title: 'JWT 갱신 큐 기반 인증 상태 일관성 확보',
+          preview: '토큰 만료 시 동시 요청이 중복 refresh를 시도해 로그인 상태가 깨지는 문제.',
           problem: '액세스 토큰 만료 시점에 여러 API 요청이 동시에 나가면 각 요청이 개별적으로 refresh를 시도해 refresh 요청이 중복 발생하고, 서버에서 토큰 상태가 꼬여 인증이 깨지는 문제가 있었음.',
           process: 'axios 인터셉터를 isRefreshing 플래그로 재설계해 이미 refresh가 진행 중이면 새 요청은 failedQueue에 적재만 하고 대기하도록 하고, refresh가 완료되면 큐에 쌓인 요청을 일괄 재실행하는 큐 패턴을 구현.',
           result: '동시다발적 요청 상황에서도 refresh 요청이 단 한 번만 발생하도록 개선되어 인증 안정성을 확보하고, 사용자가 토큰 만료를 체감하지 못하는 끊김 없는 세션을 유지하게 됨.',
         },
         {
-          title: '6개 직급을 하나의 프론트엔드로 통합했다',
-          problem: '기업교육(B2B, 배정 과정 중심)과 개인학습(B2C, 마켓플레이스 중심)은 화면 흐름 자체가 다른데, 여기에 SA·TA·CO·DESIGNER·INSTRUCTOR·USER 6개 직급별 접근 권한까지 겹치면서 단일 구조로는 유지보수가 어려워지는 문제.',
-          process: 'B2B/B2C 라우팅을 tu.b2b.routes.tsx / tu.b2c.routes.tsx 파일 수준으로 분리하되, 6개 직급이 하나의 프론트엔드 코드베이스 위에서 각자의 화면·레이아웃으로 독립 동작하도록 통합 설계. 모듈은 직급별로 나누고 진입점만 분기해, 조건부 렌더링 없이 진입 시점에 흐름이 갈리도록 구성.',
+          title: '6개 직급과 B2B/B2C 라우팅 통합',
+          preview: '서로 다른 B2B/B2C 흐름과 6개 직급 권한을 하나의 프론트엔드에서 유지해야 하는 문제.',
+          problem: '기업교육(B2B, 배정 과정 중심)과 개인학습(B2C, 마켓플레이스 중심)은 화면 흐름 자체가 다른데, 여기에 SA · TA · CO · DESIGNER · INSTRUCTOR · USER 6개 직급별 접근 권한까지 겹치면서 단일 구조로는 유지보수가 어려워지는 문제.',
+          process: 'B2B/B2C 라우팅을 tu.b2b.routes.tsx / tu.b2c.routes.tsx 파일 수준으로 분리하되, 6개 직급이 하나의 프론트엔드 코드베이스 위에서 각자의 화면 · 레이아웃으로 독립 동작하도록 통합 설계. 모듈은 직급별로 나누고 진입점만 분기해, 조건부 렌더링 없이 진입 시점에 흐름이 갈리도록 구성.',
           result: '6개 직급이 각자 다른 화면을 쓰면서도 하나의 프론트엔드로 관리되는 구조를 확보해, 신규 직급이나 플로우를 추가할 때 기존 코드를 건드리지 않고 파일만 추가하면 되도록 정리.',
         },
         {
-          title: '불필요한 재요청을 없애 화면 반응 속도를 높였다',
+          title: 'Query Key Factory 기반 캐시 일관성 확보',
+          preview: '제각각인 쿼리 키로 캐시 충돌과 불필요한 데이터 재요청이 발생하는 문제.',
           problem: '대규모 컴포넌트 트리에서 각자 임의로 쿼리 키를 만들어 쓰다 보니 캐시 키가 충돌하거나 invalidate 범위를 잘못 잡아, 관련 없는 데이터까지 리페치되거나 갱신돼야 할 데이터가 갱신되지 않는 문제가 반복됐음.',
           process: '도메인 단위로 쿼리 키를 구조화하는 Key Factory 패턴을 도입해 캐시 키 생성 규칙을 통일하고, invalidate 범위를 계층적으로 제어할 수 있도록 데이터 패칭 로직을 재설계.',
           result: 'invalidate 범위를 정밀하게 통제할 수 있게 되어 불필요한 리페치가 줄었고, 캐시 관련 버그가 재발하지 않는 일관된 데이터 패칭 구조를 확보.',
@@ -172,6 +214,12 @@ export const featured = [
           desc: '부서·그룹 조건 기반 AutoEnrollmentRule로 MANDATORY 과정 자동 등록. MemberPool 기반 대량 배정 + 예상 대상자 Preview 제공. 등록 완료 시 인앱·이메일 알림 자동 발송.',
         },
       ],
+      coreFeatures: [
+        { title: '테넌트별 맞춤 학습 환경', desc: '기업별 로고, 컬러, 기능 설정을 반영해 하나의 플랫폼에서도 각 기업에 맞는 독립 학습 환경 제공.' },
+        { title: 'B2B와 B2C 학습 경험', desc: '기업의 배정 과정 중심 학습과 개인의 탐색 · 구매 중심 학습을 하나의 서비스에서 지원.' },
+        { title: '직급별 학습 및 운영 화면', desc: '관리자부터 강사, 일반 사용자까지 역할에 맞는 화면과 권한을 분리해 운영 흐름 제공.' },
+        { title: '자동 수강 신청과 알림', desc: '부서 · 그룹 조건에 맞춰 과정을 자동 배정하고, 등록 결과를 인앱과 이메일로 안내.' },
+      ],
       decisions: [
         {
           label: 'React Query Key Factory 패턴',
@@ -192,13 +240,20 @@ export const featured = [
     id: 3,
     category: 'Mobile · ★ 대상 수상 ★',
     title: 'PIYAK(dansynkpop)',
-    desc: 'K-pop 아이돌 안무 연습 모바일 앱 — 2026 글로컬 Innovation Challenge Day 대상 (총장상)',
+    desc: 'K-pop 아이돌 안무 연습 모바일 앱 - ★ 대상 (총장상) ★',
     image: '/project_photo/piyak_main.png',
     detail: {
       period: '2026 글로컬 Innovation Challenge Day · 대상 (총장상)',
-      role: 'AI 웹 툴 개발 — Instance Segmentation 기반 멤버별 마스크 영상 생성 파이프라인, Django REST 백엔드 연동, 영상 저장·서빙 인프라 설계',
-      summary: 'K-pop 아이돌 안무 원본 영상에서 AI로 멤버 각각을 픽셀 단위 인식·추적하여 멤버별 마스크 영상을 자동 생성하는 반자동화 파이프라인을 구현하고, 이를 모바일 앱의 연습 콘텐츠로 제공하는 인프라까지 담당',
-      motivation: 'K-pop 안무를 연습하려는 팬들은 여러 멤버가 함께 등장하는 원본 영상에서 특정 한 명의 동선만 따라 익히기 어렵고, 멤버별 영상을 일일이 수작업으로 편집해 제공하기엔 곡 수·멤버 수가 늘어날수록 제작 비용이 감당하기 어렵다는 문제의식에서 출발. AI 기반 영상 세그멘테이션으로 멤버별 마스크 영상을 반자동으로 생성해 안무 연습 콘텐츠로 서비스하는 것을 목표로 기획.',
+      role: {
+        title: 'AI 웹 툴 개발',
+        items: [
+          'SAM2 기반 멤버별 마스크 영상 생성',
+          'Django REST 백엔드 연동',
+          '영상 저장 및 스트리밍 인프라 설계',
+        ],
+      },
+      summary: 'K-pop 아이돌 안무 원본 영상에서 AI로 멤버 각각을 픽셀 단위 인식 · 추적하여 멤버별 마스크 영상을 자동 생성하는 반자동화 파이프라인을 구현하고, 이를 모바일 앱의 연습 콘텐츠로 제공하는 인프라까지 담당',
+      motivation: 'K-pop 안무를 연습하려는 팬들은 여러 멤버가 함께 등장하는 원본 영상에서 특정 한 명의 동선만 따라 익히기 어렵고, 멤버별 영상을 일일이 수작업으로 편집해 제공하기엔 곡 수 · 멤버 수가 늘어날수록 제작 비용이 감당하기 어렵다는 문제의식에서 출발. AI 기반 영상 세그멘테이션으로 멤버별 마스크 영상을 반자동으로 생성해 안무 연습 콘텐츠로 서비스하는 것을 목표로 기획.',
       whyShort: '다인 그룹 영상에서 멤버별 동선을 따라 연습하기 어려웠던 문제를 자동화로 해결했다.',
       myStack: ['SAM2 (Segment Anything Model 2)', 'Django REST Framework', 'Cloudflare R2', 'PeerTube'],
       card: {
@@ -208,30 +263,34 @@ export const featured = [
         checklist: [
           'SAM2 기반 멤버별 자동 추적',
           '수작업 편집 없는 반자동화 파이프라인',
-          '2026 글로컬 Innovation Challenge Day 대상',
+          'Cloudflare R2 · PeerTube 분리 영상 스트리밍',
         ],
       },
       problemSolving: [
         {
-          title: '겹치는 다인 안무에서도 멤버를 정확히 추적하게 했다',
-          problem: '다인 K-pop 안무 영상은 멤버들이 자주 겹치고 대형이 바뀌기 때문에, 프레임마다 완전 자동으로 멤버를 감지·추적하게 하면 겹침 구간에서 멤버가 뒤바뀌거나 인식이 끊기는 오류가 누적되는 문제.',
+          title: '다인 안무 환경의 멤버 추적 안정성 확보',
+          preview: '멤버 간 겹침과 대형 변화로 자동 추적 오류가 누적되는 문제.',
+          problem: '다인 K-pop 안무 영상은 멤버들이 자주 겹치고 대형이 바뀌기 때문에, 프레임마다 완전 자동으로 멤버를 감지 · 추적하게 하면 겹침 구간에서 멤버가 뒤바뀌거나 인식이 끊기는 오류가 누적되는 문제.',
           process: '완전 자동 감지 대신, 웹 툴에서 작업자가 첫 프레임에 포인트/박스로 멤버를 한 번만 지정하면 SAM2의 비디오 세그멘테이션 메모리 메커니즘이 이후 프레임을 자동 추적하며 픽셀 단위 마스크를 전파하도록 파이프라인을 설계.',
           result: '멤버 간 겹침 구간에서도 안정적으로 동일 인물을 추적할 수 있게 됐고, 별도의 다중 객체 트래커 없이 SAM2 하나로 정확도와 제작 생산성을 동시에 확보.',
         },
         {
-          title: '멤버 단위 접근 권한을 백엔드 단일 조회로 처리했다',
-          problem: '생성된 멤버별 마스크 영상을 곡·멤버 단위로 관리하고, 유료 콘텐츠라면 멤버 단위로 잠금을 해제하는 결제 로직까지 앱에 연결해야 했는데, 초기에는 이 메타데이터와 접근 권한을 연결할 데이터 모델이 없었음.',
+          title: '멤버 단위 콘텐츠 접근 권한 구조 설계',
+          preview: '곡과 멤버 단위 콘텐츠를 관리하고 접근 권한을 연결할 데이터 모델이 없던 문제.',
+          problem: '생성된 멤버별 마스크 영상을 곡 · 멤버 단위로 관리하고, 유료 콘텐츠라면 멤버 단위로 잠금을 해제하는 결제 로직까지 앱에 연결해야 했는데, 초기에는 이 메타데이터와 접근 권한을 연결할 데이터 모델이 없었음.',
           process: 'SongIdolMembership 모델로 곡별·멤버별 마스크 영상 메타데이터를 저장하고, PracticeVideo 모델을 통해 모바일 앱에 연습 영상을 제공하도록 Django REST 백엔드를 설계. piyak 토큰 기반 결제 시스템과 연동해 멤버 단위로 접근 권한을 판단하도록 구현.',
           result: '곡·멤버 단위로 연습 영상과 접근 권한을 단일 조회로 판단할 수 있는 구조를 확보해, 멤버별 콘텐츠 잠금 해제 기능을 별도 로직 없이 백엔드 단일 조회로 처리 가능해짐.',
         },
         {
-          title: '저장과 스트리밍을 분리해 독립적으로 확장 가능하게 했다',
+          title: '영상 저장 · 스트리밍 분리 아키텍처 구축',
+          preview: '대용량 영상의 저장과 스트리밍이 서로 영향을 주지 않도록 분리해야 하는 문제.',
           problem: '생성된 멤버별 마스크 영상은 용량이 크고 수가 많아, 저장과 스트리밍을 하나의 인프라에 결합하면 트래픽이 몰릴 때 저장소와 스트리밍 서버가 서로 영향을 주는 구조적 위험이 있었음.',
           process: '영상 저장은 Cloudflare R2(S3 호환)에, 스트리밍은 PeerTube 기반 인프라에 각각 맡기고 Django가 PeerTube API와 통신해 스트리밍 URL을 동적으로 resolve하도록 역할을 분리.',
           result: '저장과 스트리밍이 서로 독립적으로 확장 가능한 구조를 확보했고, 모바일 앱은 Django를 통해 항상 최신 스트리밍 URL로 안정적으로 영상을 재생.',
         },
         {
-          title: '수작업 편집 없이 멤버별 콘텐츠 제작을 자동화했다',
+          title: '멤버별 마스크 영상 반자동 제작 파이프라인 구축',
+          preview: '프레임별 수작업 편집으로는 필요한 콘텐츠 수를 감당하기 어려운 문제.',
           problem: '멤버별 마스크 영상을 프레임마다 수동으로 편집해 제작하면 곡 하나당 작업 시간이 과도하게 길어져, 서비스에 필요한 만큼의 콘텐츠 양을 감당할 수 없는 문제.',
           process: '웹 툴 내 멤버 지정 UI → SAM2 프레임 전파 → 마스크 추출 → 마스크 영상 생성까지 이어지는 일관된 반자동화 워크플로우를 설계해, 작업자는 첫 프레임 지정만 하면 되도록 구성.',
           result: '매 프레임 수동 편집 없이 멤버별 콘텐츠를 제작할 수 있게 되어 대회 시연에 필요한 콘텐츠 제작 생산성을 확보했고, 이 반자동화 파이프라인이 대상 수상의 핵심 근거가 됨.',
@@ -260,6 +319,12 @@ export const featured = [
           desc: 'SAM2의 비디오 추적 특성을 활용한 반자동화 파이프라인. 웹 툴 내 멤버 지정 UI → SAM2 프레임 전파 → 마스크 추출 → 마스크 영상 생성까지 일관된 흐름으로, 매 프레임 수동 편집 없이 멤버별 콘텐츠 제작 가능.',
         },
       ],
+      coreFeatures: [
+        { title: '멤버별 안무 연습 영상', desc: '원본 안무 영상에서 원하는 멤버만 분리한 마스크 영상을 제공해 동선을 집중적으로 연습할 수 있도록 지원.' },
+        { title: '반자동 콘텐츠 제작 도구', desc: '첫 프레임에서 멤버를 지정하면 이후 영상 구간을 자동 추적해 제작 시간을 줄이는 웹 워크플로우 제공.' },
+        { title: '멤버 단위 콘텐츠 이용', desc: '곡과 멤버 단위로 연습 영상을 관리하고, 잠금 해제한 콘텐츠만 조회할 수 있는 접근 경험 구성.' },
+        { title: '안정적인 영상 재생', desc: '영상 저장과 스트리밍을 분리해 모바일 앱에서 최신 스트리밍 주소로 안정적으로 재생.' },
+      ],
       decisions: [
         {
           label: 'SAM2 선택 — 비디오 네이티브 추적',
@@ -280,20 +345,31 @@ export const featured = [
     id: 4,
     category: 'AR · Android',
     title: 'ArtBusan',
-    desc: 'QR·AR 카메라 기반 부산 미술관·박물관 전시 안내 Android 앱 — 4개국어·Offline-First',
-    image: '/project_photo/ARTAR_main.png',
+    desc: 'QR · AR 기반 부산 전시 안내 Android 앱',
+    image: '/project_photo/ArtBusan_main.png',
     detail: {
       period: '2026.04 ~ 현재 (진행 중) · 2026 관광데이터 활용 공모전 예비심사 합격',
-      role: 'Android 전체 — 앱 초기 구조 설계, Glow Blue 다크 디자인 시스템, Room DB + MVVM 아키텍처 도입 (kapt → KSP 전환), 4개국어 런타임 전환 파이프라인',
-      github: 'https://github.com/ghktnqns321/ArtBusan',
-      summary: 'QR 코드 스캔과 AR 카메라를 결합하여 부산 미술관·박물관 작품 정보를 실시간 제공하고, 4개국어 지원과 Offline-First 설계로 인터넷이 불안정한 전시 현장에서도 끊김 없는 관람 경험을 제공하는 Android 전시 안내 플랫폼',
-      motivation: '전시장에서 배포되는 종이 안내 책자나 오디오 가이드는 다국어 지원이 제한적이고, Wi-Fi가 불안정한 실내 전시 공간에서는 앱 기반 안내 서비스도 끊기기 쉽다는 문제의식에서 출발. 부산 관광데이터를 활용해 QR·AR 기반으로 작품 정보를 제공하면서도 오프라인에서 완전히 동작하는 다국어 전시 안내 앱을 목표로 기획.',
+      role: {
+        title: 'Android 앱 개발',
+        items: [
+          '앱 초기 구조 및 다크 디자인 시스템 설계',
+          'Room DB 기반 Offline-First 아키텍처 구현',
+          '4개국어 런타임 전환 파이프라인 구현',
+          'QR · AR 카메라 기능 개발',
+        ],
+      },
+      github: [
+        { label: 'frontend', url: 'https://github.com/ghktnqns321/ArtBusan' },
+        { label: 'backend', url: 'https://github.com/hyuniii0920/ArtAR-Busan/tree/main' },
+      ],
+      summary: 'QR 코드 스캔과 AR 카메라를 결합하여 부산 미술관 · 박물관 작품 정보를 실시간 제공하고, 4개국어 지원과 Offline-First 설계로 인터넷이 불안정한 전시 현장에서도 끊김 없는 관람 경험을 제공하는 Android 전시 안내 플랫폼',
+      motivation: '전시장에서 배포되는 종이 안내 책자나 오디오 가이드는 다국어 지원이 제한적이고, Wi-Fi가 불안정한 실내 전시 공간에서는 앱 기반 안내 서비스도 끊기기 쉽다는 문제의식에서 출발. 부산 관광데이터를 활용해 QR · AR 기반으로 작품 정보를 제공하면서도 오프라인에서 완전히 동작하는 다국어 전시 안내 앱을 목표로 기획.',
       whyShort: '다국어 지원이 부족하고 전시장 Wi-Fi가 불안정해도 끊기지 않는 안내 서비스를 만들었다.',
       myStack: ['Kotlin + Coroutines', 'Room 2.7 (SQLite)', 'CameraX 1.4', 'ML Kit Barcode Scanning'],
       card: {
         name: 'ArtBusan',
         tagline: 'AR 전시 안내 Android 앱',
-        desc: 'QR·AR로 작품 정보를 제공하고\n오프라인에서도 끊김 없이 동작하는 전시 앱',
+        desc: 'QR · AR로 작품 정보를 제공하고\n오프라인에서도 끊김 없이 동작하는 전시 앱',
         checklist: [
           '4개국어 즉시 전환 (재설치 불필요)',
           'Offline-First로 네트워크 단절 대응',
@@ -302,25 +378,29 @@ export const featured = [
       },
       problemSolving: [
         {
-          title: 'QR 중복 인식을 없애 끊김 없는 스캔을 만들었다',
+          title: '이중 플래그 기반 QR 스캔 중복 방지',
+          preview: '하나의 QR 코드가 여러 프레임에서 반복 인식돼 화면이 중복 전환되는 문제.',
           problem: 'ML Kit 바코드 스캐너가 카메라 프리뷰의 매초 프레임 스트림을 분석하다 보니, 사용자가 QR 코드에 카메라를 잠깐만 대고 있어도 짧은 시간에 같은 QR을 수십 번 인식해 작품 상세 화면이 중복으로 열리는 문제가 있었음.',
           process: '@Volatile 변수로 scanningEnabled(UI 전역 통제)와 processingScan(추론 레이어 통제) 두 개의 플래그를 두어 스캔 요청과 실제 추론 처리를 이중으로 차단하도록 설계하고, 인식 로직을 백그라운드 전용 ExecutorService로 분리해 메인 UI 스레드가 블록되지 않도록 구현.',
           result: '동일 QR 코드를 짧게 여러 프레임 인식해도 중복 화면 전환이 발생하지 않게 됐고, 스캔 처리가 백그라운드에서 이뤄져 카메라 프리뷰가 끊기지 않는 부드러운 스캔 UX를 확보.',
         },
         {
-          title: '네트워크가 끊겨도 멈추지 않는 오프라인 구조를 만들었다',
-          problem: '미술관·박물관 내부는 벽·전시 구조물로 인해 Wi-Fi/LTE 신호가 불안정한 경우가 많아, 서버 API 호출에만 의존하면 작품 정보 조회가 끊기거나 실패하는 문제.',
+          title: 'Offline-First 기반 전시 정보 접근성 확보',
+          preview: '전시장 내 불안정한 네트워크 환경에서 작품 정보 조회가 끊기는 문제.',
+          problem: '미술관 · 박물관 내부는 벽 · 전시 구조물로 인해 Wi-Fi/LTE 신호가 불안정한 경우가 많아, 서버 API 호출에만 의존하면 작품 정보 조회가 끊기거나 실패하는 문제.',
           process: '앱 최초 실행 시 번들에 포함된 JSON을 Room DB에 시드하고, 이후 조회는 runCatching { API 호출 }.getOrElse { 로컬 DB 조회 }로 감싸 네트워크 실패 시 자동으로 로컬 데이터로 폴백하도록 구현.',
-          result: '네트워크가 완전히 끊긴 전시장 내부에서도 미술관·작품 정보를 끊김 없이 제공할 수 있게 되어, 공모전 심사에서 요구하는 실사용 안정성 기준을 충족.',
+          result: '네트워크가 완전히 끊긴 전시장 내부에서도 미술관 · 작품 정보를 끊김 없이 제공할 수 있게 되어, 공모전 심사에서 요구하는 실사용 안정성 기준을 충족.',
         },
         {
-          title: '재설치 없이 4개국어를 즉시 전환하게 만들었다',
-          problem: '외국인 관광객을 포함한 4개국어(한·영·일·중) 사용자를 지원해야 했는데, 언어별로 앱을 따로 배포하거나 재설치를 요구하면 현장에서 즉시 언어를 바꿔야 하는 관람객 경험에 맞지 않는 문제.',
+          title: '4개국어 런타임 전환 구현',
+          preview: '언어 변경을 위해 앱 재설치나 별도 배포를 요구할 수 없는 전시 관람 환경의 문제.',
+          problem: '외국인 관광객을 포함한 4개국어(한 · 영 · 일 · 중) 사용자를 지원해야 했는데, 언어별로 앱을 따로 배포하거나 재설치를 요구하면 현장에서 즉시 언어를 바꿔야 하는 관람객 경험에 맞지 않는 문제.',
           process: '선택한 언어 코드를 SharedPreferences에 저장하고 attachBaseContext에서 LocaleHelper로 Context를 언어별로 래핑하도록 구현. 언어 전환 시 DB를 deleteAll()한 뒤 해당 언어 JSON을 재시드하고 Activity.recreate()로 전체 UI를 일관되게 갱신.',
-          result: '앱 재설치나 재배포 없이 한·영·일·중 4개 언어를 현장에서 즉시 전환할 수 있게 되어 외국인 관광객 대응력을 확보.',
+          result: '앱 재설치나 재배포 없이 한 · 영 · 일 · 중 4개 언어를 현장에서 즉시 전환할 수 있게 되어 외국인 관광객 대응력을 확보.',
         },
         {
-          title: 'QR 포맷이 바뀌어도 재배포 없이 대응하게 했다',
+          title: '다중 포맷 QR URL 파싱 폴백 구축',
+          preview: '운영 중 QR URL 형식이 바뀔 때마다 앱을 재배포해야 하는 문제.',
           problem: '현장 마케팅팀이 QR 코드에 인코딩하는 URL 포맷(딥링크, 쿼리 파라미터, 패스 파라미터 등)을 운영 중에 바꾸는 경우가 있어, 단일 포맷만 파싱하도록 하드코딩하면 QR 코드가 재발급될 때마다 앱을 다시 배포해야 하는 문제.',
           process: '딥링크(artar://work/{id}) → 쿼리 파라미터(?id=) → 패스 파라미터(/work/{id}) → 순수 숫자 순으로 정규식 매칭을 시도하는 4단계 폴백 파싱 체인을 설계.',
           result: 'QR 코드 포맷이 바뀌어도 앱 재배포 없이 대응 가능해졌고, 현장 마케팅 요구사항 변화에 유연하게 대응할 수 있는 구조를 확보.',
@@ -349,6 +429,12 @@ export const featured = [
           desc: '딥링크(artar://work/{id}) → 쿼리 파라미터(?id=) → 패스 파라미터(/work/{id}) → 순수 숫자 순으로 정규식 매칭. 현장 마케팅 요구사항 변화에 유연하게 대응.',
         },
       ],
+      coreFeatures: [
+        { title: 'QR · AR 작품 정보 안내', desc: 'QR 스캔과 AR 카메라를 통해 전시 작품 정보를 빠르게 조회할 수 있는 현장 안내 경험 제공.' },
+        { title: 'Offline-First 전시 관람', desc: '네트워크가 불안정하거나 끊긴 전시장에서도 작품 정보를 계속 확인할 수 있도록 로컬 데이터 제공.' },
+        { title: '4개국어 즉시 전환', desc: '앱 재설치 없이 한국어, 영어, 일본어, 중국어를 현장에서 바로 전환.' },
+        { title: '유연한 QR 코드 인식', desc: '운영 중 QR URL 형식이 달라져도 여러 포맷을 해석해 재배포 없이 작품 정보를 연결.' },
+      ],
       decisions: [
         {
           label: 'kapt → KSP 전환',
@@ -368,37 +454,47 @@ export const featured = [
   {
     id: 5,
     category: 'Security · AI',
-    title: 'Smishing Prevention AI',
-    desc: '스미싱 피해 사례 분석 기반 안드로이드·웹 통합 예방 서비스 — 피싱스캠 예방 서비스 개발 경진대회 상위 15% (전체 644팀)',
+    title: 'SAI (Smishing Prevention AI)',
+    desc: 'Android · Web 기반 스미싱 예방 서비스',
     image: '/project_photo/SPAI_main.png',
     detail: {
       period: '2026 · 피싱스캠 예방 서비스 개발 경진대회 (상위 15% / 전체 644팀)',
-      role: '웹 프론트엔드 개발 · 백엔드 연동 — Firebase 기반 인증·데이터 관리 구조 설계, 프론트/백엔드 배포 자동화, Android 앱-웹 플랫폼 간 공통 데이터 흐름 설계',
-      summary: '스미싱 문자 피해 사례를 분석해 탐지 결과를 제공하는 서비스 화면을 담당한 안드로이드·웹 통합형 스미싱 예방 서비스',
+      role: {
+        title: '웹 프론트엔드 개발 · 백엔드 연동',
+        items: [
+          'Firebase 기반 인증 및 데이터 흐름 설계',
+          '스미싱 분석 결과 웹 화면 구현',
+          '프론트엔드 · 백엔드 배포 자동화',
+          'Android 앱 · 웹 공통 데이터 흐름 설계',
+        ],
+      },
+      summary: '스미싱 문자 피해 사례를 분석하고, 탐지 결과를 Android 앱과 웹에서 함께 제공하는 통합 예방 서비스',
       motivation: '스미싱 문자로 인한 금전 피해 사례가 계속 늘고 있지만, 사용자가 스스로 위험 문자를 판별하기는 어렵다는 문제의식에서 출발. 그 문제를 직접 풀어보고 싶어 피싱스캠 예방 서비스 개발 경진대회에 참가해 스미싱 피해 사례를 분석했고, 644개 참가팀 중 상위 15%에 들었습니다.',
       whyShort: '사용자가 스스로 판별하기 어려운 스미싱 위험 문자를 자동으로 탐지하게 만들었다.',
       card: {
         name: 'SAI',
-        tagline: '스미싱 예방 Android · Web 서비스',
+        tagline: 'Android · Web 스미싱 예방 서비스',
         desc: '스미싱 피해 사례를 분석해 탐지 결과를\n앱과 웹에서 함께 제공하는 통합 예방 서비스',
         checklist: [
-          '피싱스캠 예방 경진대회 상위 15%',
+          'React 기반 스미싱 분석 결과 시각화',
           '3개 서비스 모노레포로 배포 단순화',
-          'Firebase 기반 인증·데이터 통합',
+          'Firebase 기반 인증 · 데이터 통합',
         ],
       },
       myStack: ['React', 'Spring Boot', 'Firebase Auth', 'GitHub Actions'],
       problemSolving: [
         {
-          title: '3개 서비스를 하나로 통합해 배포 구조를 단순화했다',
+          title: '모노레포 기반 통합 배포 구조 구축',
+          preview: '세 서비스를 따로 관리하면서 API 스펙과 배포 버전이 어긋나는 문제.',
           problem: 'Android 앱, React 프론트엔드, Spring Boot 백엔드를 각각 별도로 관리하면 탐지 결과를 화면에 반영하는 과정에서 API 스펙이 어긋나거나 배포 버전이 서로 맞지 않는 문제가 발생하기 쉬웠음.',
-          process: '세 서비스를 하나의 모노레포로 통합 관리하도록 구조를 설계하고, GitHub Actions로 프론트엔드/백엔드 배포 워크플로우를 개별적으로 자동화.',
+          process: '세 서비스를 하나의 모노레포로 통합 관리하도록 구조를 설계하고, GitHub Actions로 프론트엔드 · 백엔드 배포 워크플로우를 개별적으로 자동화.',
           result: '협업 및 배포 구조가 단순화됐고, 시크릿 기반 배포 환경을 정리해 배포 안정성을 확보.',
         },
         {
-          title: '앱과 웹에서 동일한 탐지 결과를 보여주게 했다',
+          title: '멀티플랫폼 분석 결과 일관성 확보',
+          preview: '앱과 웹의 인증 · 데이터 구조가 분리돼 같은 분석 결과를 이어서 볼 수 없는 문제.',
           problem: '스미싱 탐지 결과를 모바일과 웹에서 동시에 확인할 수 있어야 했는데, 플랫폼별로 인증·데이터 구조가 분리되어 있으면 사용자가 앱과 웹에서 같은 분석 결과를 일관되게 볼 수 없는 문제.',
-          process: 'Firebase Auth/Firestore/Storage와 Firebase Admin SDK를 기반으로 인증·데이터 관리 구조를 통합 설계하고, Android 앱과 웹 플랫폼이 공유하는 공통 데이터 흐름을 구성.',
+          process: 'Firebase Auth · Firestore · Storage와 Firebase Admin SDK를 기반으로 인증 · 데이터 관리 구조를 통합 설계하고, Android 앱과 웹 플랫폼이 공유하는 공통 데이터 흐름을 구성.',
           result: '멀티플랫폼으로 확장 가능한 인증·데이터 구조를 확보해 모바일과 웹 간 연계성을 높였고, 피싱스캠 예방 서비스 개발 경진대회에서 전체 644팀 중 상위 15%를 기록.',
         },
       ],
@@ -425,6 +521,12 @@ export const featured = [
           title: '배포 자동화',
           desc: 'GitHub Actions를 이용해 프론트엔드/백엔드 개별 배포 워크플로우를 자동화하고 시크릿 기반 배포 환경 정리.',
         },
+      ],
+      coreFeatures: [
+        { title: '스미싱 분석 결과 대시보드', desc: '웹 화면에서 스미싱 탐지 결과와 보안 분석 정보를 확인할 수 있는 사용자 화면 제공.' },
+        { title: '앱 · 웹 간 분석 결과 연동', desc: '모바일 앱과 웹에서 같은 인증 정보와 탐지 결과를 이어서 확인할 수 있는 경험 구성.' },
+        { title: '통합 인증 및 데이터 관리', desc: 'Firebase 기반의 공통 인증과 데이터 관리 구조로 플랫폼별 정보 불일치를 줄임.' },
+        { title: '안정적인 서비스 배포', desc: '각 서비스의 배포 과정을 자동화해 최신 분석 기능을 일관되게 제공.' },
       ],
     },
   },
