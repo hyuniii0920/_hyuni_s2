@@ -1,7 +1,29 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  animation: overlayFadeIn 0.2s ease;
+}
+
 .page {
-  min-height: 100vh;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
   background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
   animation: fadeIn 0.3s ease;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes fadeIn {
@@ -13,9 +35,10 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 20px 80px;
+  padding: 20px 40px;
   border-bottom: 1px solid var(--border);
   background: var(--bg-primary);
+  border-radius: 16px 16px 0 0;
 }
 
 .back {
@@ -390,7 +413,9 @@
 }
 
 @media (max-width: 768px) {
-  .header { padding: 16px 24px; }
+  .overlay { padding: 0; }
+  .page { max-width: 100%; max-height: 100vh; border-radius: 0; border: none; }
+  .header { padding: 16px 24px; border-radius: 0; }
   .content { padding: 36px 24px 64px; }
   .heroPlaceholder { height: 220px; }
   .metaItem { grid-template-columns: 60px 1fr; }

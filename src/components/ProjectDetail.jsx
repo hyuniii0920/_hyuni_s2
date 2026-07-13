@@ -4,6 +4,19 @@ function StructuredDetail({ detail }) {
   return (
     <div className={styles.structured}>
 
+      {/* 프로젝트 동기 */}
+      {detail.motivation && (
+        <div className={styles.motivationBlock}>
+          <span className={styles.motivationLabel}>Why</span>
+          <p className={styles.motivationText}>{detail.motivation}</p>
+        </div>
+      )}
+
+      {/* 한 줄 요약 */}
+      {detail.summary && (
+        <blockquote className={styles.summary}>{detail.summary}</blockquote>
+      )}
+
       {/* 메타 정보 */}
       <div className={styles.metaRow}>
         {detail.period && (
@@ -36,19 +49,6 @@ function StructuredDetail({ detail }) {
           </div>
         )}
       </div>
-
-      {/* 한 줄 요약 */}
-      {detail.summary && (
-        <blockquote className={styles.summary}>{detail.summary}</blockquote>
-      )}
-
-      {/* 프로젝트 동기 */}
-      {detail.motivation && (
-        <div className={styles.motivationBlock}>
-          <span className={styles.motivationLabel}>Why</span>
-          <p className={styles.motivationText}>{detail.motivation}</p>
-        </div>
-      )}
 
       {/* 문제 해결 과정 */}
       {detail.problemSolving && (
@@ -134,28 +134,30 @@ function StructuredDetail({ detail }) {
 
 export default function ProjectDetail({ project, onClose }) {
   return (
-    <div className={styles.page}>
-      <div className={styles.header}>
-        <button className={styles.back} onClick={onClose}>← Back</button>
-      </div>
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.page} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.header}>
+          <button className={styles.back} onClick={onClose}>← 닫기</button>
+        </div>
 
-      <div className={styles.hero}>
-        {project.image
-          ? <img src={project.image} alt={project.title} className={styles.heroImg} />
-          : <div className={styles.heroPlaceholder} />}
-      </div>
+        <div className={styles.hero}>
+          {project.image
+            ? <img src={project.image} alt={project.title} className={styles.heroImg} />
+            : <div className={styles.heroPlaceholder} />}
+        </div>
 
-      <div className={styles.content}>
-        <span className={styles.category}>{project.category}</span>
-        <h1 className={styles.title}>{project.title}</h1>
-        <p className={styles.desc}>{project.desc}</p>
-        <div className={styles.divider} />
+        <div className={styles.content}>
+          <span className={styles.category}>{project.category}</span>
+          <h1 className={styles.title}>{project.title}</h1>
+          <p className={styles.desc}>{project.desc}</p>
+          <div className={styles.divider} />
 
-        {project.detail && typeof project.detail === 'object'
-          ? <StructuredDetail detail={project.detail} />
-          : project.detail
-            ? <div className={styles.body}>{project.detail}</div>
-            : null}
+          {project.detail && typeof project.detail === 'object'
+            ? <StructuredDetail detail={project.detail} />
+            : project.detail
+              ? <div className={styles.body}>{project.detail}</div>
+              : null}
+        </div>
       </div>
     </div>
   );

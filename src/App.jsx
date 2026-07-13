@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -9,33 +9,25 @@ import ProjectDetail from './components/ProjectDetail';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const scrollPositionRef = useRef(0);
 
   useEffect(() => {
-    if (selectedProject) {
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    } else {
-      window.scrollTo({ top: scrollPositionRef.current, behavior: 'instant' });
-    }
+    document.body.style.overflow = selectedProject ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [selectedProject]);
-
-  const handleSelectProject = (project) => {
-    scrollPositionRef.current = window.scrollY;
-    setSelectedProject(project);
-  };
-
-  if (selectedProject) {
-    return <ProjectDetail project={selectedProject} onClose={() => setSelectedProject(null)} />;
-  }
 
   return (
     <>
       <Nav />
       <Hero />
       <About />
-      <Career onSelectProject={handleSelectProject} />
-      <Projects onSelectProject={handleSelectProject} />
+      <Career onSelectProject={setSelectedProject} />
+      <Projects onSelectProject={setSelectedProject} />
       <Footer />
+      {selectedProject && (
+        <ProjectDetail project={selectedProject} onClose={() => setSelectedProject(null)} />
+      )}
     </>
   );
 }
