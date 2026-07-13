@@ -112,7 +112,7 @@ export const featured = [
       card: {
         name: 'MZC',
         tagline: 'B2B 엔터프라이즈 LMS',
-        desc: '기업 교육과 개인 학습을 하나의 코드베이스로 지원하는\n멀티테넌트 SaaS 학습관리시스템',
+        desc: '기업 교육과 개인 학습을 함께 지원하는\n멀티테넌트 SaaS 학습관리시스템',
         checklist: [
           '6개 직급을 하나의 프론트엔드로 통합',
           '테넌트 추가 시 코드 수정 없이 온보딩',
@@ -205,7 +205,7 @@ export const featured = [
       card: {
         name: 'ArtBusan',
         tagline: 'AR 전시 안내 Android 앱',
-        desc: '부산 미술관·박물관 작품 정보를 QR·AR로 제공하고\n오프라인에서도 끊김 없이 동작하는 전시 안내 앱',
+        desc: 'QR·AR로 작품 정보를 제공하고\n오프라인에서도 끊김 없이 동작하는 전시 앱',
         checklist: [
           '4개국어 즉시 전환 (재설치 불필요)',
           'Offline-First로 네트워크 단절 대응',
@@ -293,7 +293,7 @@ export const featured = [
       card: {
         name: 'PIYAK',
         tagline: 'K-pop 안무 연습 앱 · 대상 수상',
-        desc: 'SAM2 기반 AI로 멤버별 마스크 영상을 자동 생성해\n안무 연습 콘텐츠로 제공하는 모바일 앱',
+        desc: 'AI로 멤버별 마스크 영상을 자동 생성해\n안무 연습 콘텐츠로 제공하는 모바일 앱',
         checklist: [
           'SAM2 기반 멤버별 자동 추적',
           '수작업 편집 없는 반자동화 파이프라인',
