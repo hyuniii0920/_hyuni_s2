@@ -190,7 +190,7 @@ export const featured = [
   },
   {
     id: 3,
-    category: 'Mobile · 대상 수상',
+    category: 'Mobile · ★ 대상 수상 ★',
     title: 'PIYAK(dansynkpop)',
     desc: 'K-pop 아이돌 안무 연습 모바일 앱 — 2026 글로컬 Innovation Challenge Day 대상 (총장상)',
     image: '/project_photo/piyak_main.png',
@@ -203,7 +203,7 @@ export const featured = [
       myStack: ['SAM2 (Segment Anything Model 2)', 'Django REST Framework', 'Cloudflare R2', 'PeerTube'],
       card: {
         name: 'PIYAK',
-        tagline: 'K-pop 안무 연습 앱 · 대상 수상',
+        tagline: 'K-pop 안무 연습 앱 · ★ 대상 수상 ★',
         desc: 'AI로 멤버별 마스크 영상을 자동 생성해\n안무 연습 콘텐츠로 제공하는 모바일 앱',
         checklist: [
           'SAM2 기반 멤버별 자동 추적',
@@ -378,8 +378,8 @@ export const featured = [
       motivation: '스미싱 문자로 인한 금전 피해 사례가 계속 늘고 있지만, 사용자가 스스로 위험 문자를 판별하기는 어렵다는 문제의식에서 출발. 그 문제를 직접 풀어보고 싶어 피싱스캠 예방 서비스 개발 경진대회에 참가해 스미싱 피해 사례를 분석했고, 644개 참가팀 중 상위 15%에 들었습니다.',
       whyShort: '사용자가 스스로 판별하기 어려운 스미싱 위험 문자를 자동으로 탐지하게 만들었다.',
       card: {
-        name: 'SPAI',
-        tagline: '스미싱 예방 안드로이드·웹 서비스',
+        name: 'SAI',
+        tagline: '스미싱 예방 Android · Web 서비스',
         desc: '스미싱 피해 사례를 분석해 탐지 결과를\n앱과 웹에서 함께 제공하는 통합 예방 서비스',
         checklist: [
           '피싱스캠 예방 경진대회 상위 15%',
