@@ -20,6 +20,16 @@ export const featured = [
       motivation: '프리랜서·소상공인 등 법률 비전문가는 계약서의 위험 조항을 스스로 판별하기 어렵고, 매번 변호사 자문을 받기엔 비용과 시간 부담이 크다는 문제의식에서 출발. OCR로 계약서를 텍스트화하고 LLM·RAG로 위험 조항을 자동 탐지·설명해, 비전문가도 계약서 리스크를 직접 확인할 수 있는 서비스를 목표로 기획.',
       whyShort: '법률 비전문가도 변호사 자문 없이 계약서 위험을 스스로 확인할 수 있게 만들었다.',
       myStack: ['FastAPI', 'MySQL 8', 'Google Gemini', 'ChromaDB'],
+      card: {
+        name: 'CLAIR',
+        tagline: 'AI 계약서 분석 서비스',
+        desc: '계약서의 위험 조항을 자동 분석하고\n관련 법률 근거를 함께 제공하는 AI 서비스',
+        checklist: [
+          'OCR 처리 속도 8배 개선',
+          'RAG 기반 법률 정보 검색',
+          'LLM 기반 계약서 분석',
+        ],
+      },
       problemSolving: [
         {
           title: '들쭉날쭉하던 AI 채점 결과를 일관되게 만들었다',
@@ -99,6 +109,16 @@ export const featured = [
       motivation: '기업마다 별도의 LMS를 도입하면 구축·유지보수 비용이 크고, 기존 LMS 대부분이 기업교육(B2B)이나 개인학습(B2C) 한쪽에만 최적화돼 있어 두 시장을 동시에 대응하기 어렵다는 문제의식에서 출발. 단일 코드베이스에서 호스트네임만으로 테넌트를 구분하고 B2B/B2C UX를 모두 지원하는 멀티테넌트 SaaS LMS를 목표로 설계.',
       whyShort: '기업마다 LMS를 따로 도입하는 비용 문제를 하나의 멀티테넌트 플랫폼으로 해결했다.',
       myStack: ['React 19', 'TypeScript 5.6', 'Zustand', 'Figma AI'],
+      card: {
+        name: 'MZC',
+        tagline: 'B2B 엔터프라이즈 LMS',
+        desc: '기업 교육과 개인 학습을 하나의 코드베이스로 지원하는\n멀티테넌트 SaaS 학습관리시스템',
+        checklist: [
+          '6개 직급을 하나의 프론트엔드로 통합',
+          '테넌트 추가 시 코드 수정 없이 온보딩',
+          'JWT 동시 요청 인증 오류 제거',
+        ],
+      },
       problemSolving: [
         {
           title: '테넌트가 늘어나도 코드 수정 없이 대응하게 만들었다',
@@ -182,6 +202,16 @@ export const featured = [
       motivation: '전시장에서 배포되는 종이 안내 책자나 오디오 가이드는 다국어 지원이 제한적이고, Wi-Fi가 불안정한 실내 전시 공간에서는 앱 기반 안내 서비스도 끊기기 쉽다는 문제의식에서 출발. 부산 관광데이터를 활용해 QR·AR 기반으로 작품 정보를 제공하면서도 오프라인에서 완전히 동작하는 다국어 전시 안내 앱을 목표로 기획.',
       whyShort: '다국어 지원이 부족하고 전시장 Wi-Fi가 불안정해도 끊기지 않는 안내 서비스를 만들었다.',
       myStack: ['Kotlin + Coroutines', 'Room 2.7 (SQLite)', 'CameraX 1.4', 'ML Kit Barcode Scanning'],
+      card: {
+        name: 'ArtBusan',
+        tagline: 'AR 전시 안내 Android 앱',
+        desc: '부산 미술관·박물관 작품 정보를 QR·AR로 제공하고\n오프라인에서도 끊김 없이 동작하는 전시 안내 앱',
+        checklist: [
+          '4개국어 즉시 전환 (재설치 불필요)',
+          'Offline-First로 네트워크 단절 대응',
+          'QR 중복 스캔 원천 차단',
+        ],
+      },
       problemSolving: [
         {
           title: 'QR 중복 인식을 없애 끊김 없는 스캔을 만들었다',
@@ -260,6 +290,16 @@ export const featured = [
       motivation: 'K-pop 안무를 연습하려는 팬들은 여러 멤버가 함께 등장하는 원본 영상에서 특정 한 명의 동선만 따라 익히기 어렵고, 멤버별 영상을 일일이 수작업으로 편집해 제공하기엔 곡 수·멤버 수가 늘어날수록 제작 비용이 감당하기 어렵다는 문제의식에서 출발. AI 기반 영상 세그멘테이션으로 멤버별 마스크 영상을 반자동으로 생성해 안무 연습 콘텐츠로 서비스하는 것을 목표로 기획.',
       whyShort: '다인 그룹 영상에서 멤버별 동선을 따라 연습하기 어려웠던 문제를 자동화로 해결했다.',
       myStack: ['SAM2 (Segment Anything Model 2)', 'Django REST Framework', 'Cloudflare R2', 'PeerTube'],
+      card: {
+        name: 'PIYAK',
+        tagline: 'K-pop 안무 연습 앱 · 대상 수상',
+        desc: 'SAM2 기반 AI로 멤버별 마스크 영상을 자동 생성해\n안무 연습 콘텐츠로 제공하는 모바일 앱',
+        checklist: [
+          'SAM2 기반 멤버별 자동 추적',
+          '수작업 편집 없는 반자동화 파이프라인',
+          '2026 글로컬 Innovation Challenge Day 대상',
+        ],
+      },
       problemSolving: [
         {
           title: '겹치는 다인 안무에서도 멤버를 정확히 추적하게 했다',
@@ -337,6 +377,16 @@ export const featured = [
       summary: '스미싱 문자 피해 사례를 분석해 탐지 결과를 제공하는 서비스 화면을 담당한 안드로이드·웹 통합형 스미싱 예방 서비스',
       motivation: '스미싱 문자로 인한 금전 피해 사례가 계속 늘고 있지만, 사용자가 스스로 위험 문자를 판별하기는 어렵다는 문제의식에서 출발. 그 문제를 직접 풀어보고 싶어 피싱스캠 예방 서비스 개발 경진대회에 참가해 스미싱 피해 사례를 분석했고, 644개 참가팀 중 상위 15%에 들었습니다.',
       whyShort: '사용자가 스스로 판별하기 어려운 스미싱 위험 문자를 자동으로 탐지하게 만들었다.',
+      card: {
+        name: 'SPAI',
+        tagline: '스미싱 예방 안드로이드·웹 서비스',
+        desc: '스미싱 피해 사례를 분석해 탐지 결과를\n앱과 웹에서 함께 제공하는 통합 예방 서비스',
+        checklist: [
+          '피싱스캠 예방 경진대회 상위 15%',
+          '3개 서비스 모노레포로 배포 단순화',
+          'Firebase 기반 인증·데이터 통합',
+        ],
+      },
       myStack: ['React', 'Spring Boot', 'Firebase Auth', 'GitHub Actions'],
       problemSolving: [
         {
@@ -422,21 +472,37 @@ export default function Projects({ onSelectProject }) {
                 : <div className={styles.featuredPlaceholder} />}
             </div>
             <div className={styles.featuredInfo}>
-              <span className={styles.featuredCategory}>{p.category}</span>
-              <h3 className={styles.featuredTitle}>{p.title}</h3>
-              <p className={styles.featuredDesc}>{p.desc}</p>
-              {p.detail?.whyShort && (
-                <p className={styles.featuredWhy}>{p.detail.whyShort}</p>
-              )}
-              {p.detail?.myStack && (
-                <div className={styles.featuredTechRow}>
-                  {p.detail.period && (
-                    <span className={styles.featuredYear}>{p.detail.period.split(' ')[0]}</span>
+              {p.detail?.card ? (
+                <>
+                  <h3 className={styles.featuredCardName}>{p.detail.card.name}</h3>
+                  <span className={styles.featuredCardTagline}>{p.detail.card.tagline}</span>
+                  <p className={styles.featuredCardDesc}>{p.detail.card.desc}</p>
+                  <div className={styles.featuredCardDivider} />
+                  <ul className={styles.featuredCardChecklist}>
+                    {p.detail.card.checklist.map(item => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <>
+                  <span className={styles.featuredCategory}>{p.category}</span>
+                  <h3 className={styles.featuredTitle}>{p.title}</h3>
+                  <p className={styles.featuredDesc}>{p.desc}</p>
+                  {p.detail?.whyShort && (
+                    <p className={styles.featuredWhy}>{p.detail.whyShort}</p>
                   )}
-                  {p.detail.myStack.map(tag => (
-                    <span key={tag} className={styles.featuredTechTag}>{tag}</span>
-                  ))}
-                </div>
+                  {p.detail?.myStack && (
+                    <div className={styles.featuredTechRow}>
+                      {p.detail.period && (
+                        <span className={styles.featuredYear}>{p.detail.period.split(' ')[0]}</span>
+                      )}
+                      {p.detail.myStack.slice(0, 3).map(tag => (
+                        <span key={tag} className={styles.featuredTechTag}>{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                </>
               )}
             </div>
           </button>

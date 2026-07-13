@@ -80,7 +80,7 @@
   padding: 24px 28px 28px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .featuredCategory {
@@ -99,25 +99,89 @@
   color: var(--text-primary);
 }
 
-.featuredDesc {
+.featuredCardName {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.featuredCardTagline {
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.featuredCardDesc {
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.7;
+  margin-top: 6px;
+  white-space: pre-line;
+}
+
+.featuredCardDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+.featuredCardChecklist {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.featuredCardChecklist li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-left: 20px;
+  position: relative;
+}
+
+.featuredCardChecklist li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.featuredDesc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .featuredWhy {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.6;
-  font-style: italic;
+  margin-top: 4px;
+  padding-left: 12px;
+  border-left: 2px solid var(--border);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .featuredTechRow {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
   align-items: center;
   gap: 6px;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .featuredYear {
@@ -125,6 +189,7 @@
   font-weight: 600;
   color: var(--text-muted);
   margin-right: 2px;
+  flex-shrink: 0;
 }
 
 .featuredTechTag {
@@ -134,6 +199,7 @@
   border-radius: 10px;
   color: var(--text-secondary);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Modal */
