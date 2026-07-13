@@ -36,7 +36,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 100px;
+  gap: clamp(64px, 7vw, 100px);
   align-items: start;
 }
 
@@ -49,11 +49,13 @@
 
 .tagline {
   font-family: var(--font-serif);
-  font-size: 22px;
+  font-size: clamp(20px, 1.6vw, 22px);
   font-weight: 400;
   font-style: italic;
-  line-height: 1.9;
+  line-height: 1.8;
   color: var(--text-secondary);
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .blockTitle {

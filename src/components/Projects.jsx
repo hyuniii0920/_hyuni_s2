@@ -622,6 +622,7 @@ export default function Projects({ onSelectProject }) {
                   )}
                 </>
               )}
+              <span className={styles.featuredDetailLink}>Details <b>→</b></span>
             </div>
           </button>
         ))}
