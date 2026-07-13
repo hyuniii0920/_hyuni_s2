@@ -28,6 +28,11 @@ export const featured = [
       motivation: '프리랜서 · 소상공인 등 법률 비전문가는 계약서의 위험 조항을 스스로 판별하기 어렵고, 매번 변호사 자문을 받기엔 비용과 시간 부담이 크다는 문제의식에서 출발. OCR로 계약서를 텍스트화하고 LLM · RAG로 위험 조항을 자동 탐지 · 설명해, 비전문가도 계약서 리스크를 직접 확인할 수 있는 서비스를 목표로 기획.',
       whyShort: '법률 비전문가도 변호사 자문 없이 계약서 위험을 스스로 확인할 수 있게 만들었다.',
       myStack: ['FastAPI', 'MySQL 8', 'Google Gemini', 'ChromaDB'],
+      architecture: {
+        title: 'Analysis Architecture',
+        caption: '계약서 분석의 신뢰도를 높이는 AI 파이프라인',
+        steps: ['OCR', 'Clause Parser', 'LLM Analysis', 'RAG Retrieval', 'Safety Score', 'Frontend'],
+      },
       card: {
         name: 'CLAIR',
         tagline: 'AI 계약서 분석 서비스',
@@ -256,6 +261,11 @@ export const featured = [
       motivation: 'K-pop 안무를 연습하려는 팬들은 여러 멤버가 함께 등장하는 원본 영상에서 특정 한 명의 동선만 따라 익히기 어렵고, 멤버별 영상을 일일이 수작업으로 편집해 제공하기엔 곡 수 · 멤버 수가 늘어날수록 제작 비용이 감당하기 어렵다는 문제의식에서 출발. AI 기반 영상 세그멘테이션으로 멤버별 마스크 영상을 반자동으로 생성해 안무 연습 콘텐츠로 서비스하는 것을 목표로 기획.',
       whyShort: '다인 그룹 영상에서 멤버별 동선을 따라 연습하기 어려웠던 문제를 자동화로 해결했다.',
       myStack: ['SAM2 (Segment Anything Model 2)', 'Django REST Framework', 'Cloudflare R2', 'PeerTube'],
+      architecture: {
+        title: 'AI Video Pipeline',
+        caption: '원본 안무 영상을 멤버별 연습 콘텐츠로 전환하는 AI 영상 파이프라인',
+        steps: ['Source Video', 'Member Select', 'SAM2 Tracking', 'Mask Video', 'R2 · PeerTube', 'Mobile App'],
+      },
       card: {
         name: 'PIYAK',
         tagline: 'K-pop 안무 연습 앱 · ★ 대상 수상 ★',
@@ -482,6 +492,11 @@ export const featured = [
         ],
       },
       myStack: ['React', 'Spring Boot', 'Firebase Auth', 'GitHub Actions'],
+      architecture: {
+        title: 'Security Prevention Flow',
+        caption: '의심 순간의 분석 결과를 행동 중단과 재확인으로 연결하는 예방 흐름',
+        steps: ['Keyboard Checkpoint', 'Screen Capture', 'OCR · LLM', 'Security Report', 'Firebase History', 'Community'],
+      },
       problemSolving: [
         {
           title: '모노레포 기반 통합 배포 구조 구축',

@@ -1,14 +1,5 @@
 import styles from './ProjectDetail.module.css';
 
-const architectureSteps = [
-  { title: 'OCR' },
-  { title: 'Clause Parser' },
-  { title: 'LLM Analysis' },
-  { title: 'RAG Retrieval' },
-  { title: 'Safety Score' },
-  { title: 'Frontend' },
-];
-
 function Section({ eyebrow, title, children }) {
   return <section className={styles.section}><div className={styles.sectionHeading}><span className={styles.eyebrow}>{eyebrow}</span><h2 className={styles.sectionTitle}>{title}</h2></div>{children}</section>;
 }
@@ -39,9 +30,9 @@ function StructuredDetail({ detail, project }) {
       <div className={styles.problemIntro}><p>{excerpt(detail.motivation, 210)}</p><details className={styles.expandable}><summary>프로젝트 배경 전체 보기 <span>+</span></summary><p className={styles.expandedText}>{detail.motivation}</p></details></div>
     </Section>}
 
-    {project.title === 'CLAIR' && <Section eyebrow="System" title="Analysis Architecture">
-      <div className={styles.architecture} aria-label="OCR에서 Frontend로 이어지는 계약서 분석 흐름">{architectureSteps.map((step, index) => <div className={styles.architectureItem} key={step.title}><div className={styles.architectureNode} style={{ minHeight: '92px', padding: '8px 4px', border: 'none', borderRadius: 0, background: 'transparent', justifyContent: 'center', gap: '8px' }}><span>{String(index + 1).padStart(2, '0')}</span><strong style={{ color: 'var(--text-secondary)', fontSize: '15px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.25 }}>{step.title}</strong></div>{index < architectureSteps.length - 1 && <span className={styles.architectureArrow} aria-hidden="true">→</span>}</div>)}</div>
-      <p className={styles.architectureCaption}>계약서 분석의 신뢰도를 높이는 AI 파이프라인</p>
+    {detail.architecture && <Section eyebrow="System" title={detail.architecture.title}>
+      <div className={styles.architecture} aria-label={detail.architecture.caption}>{detail.architecture.steps.map((title, index) => <div className={styles.architectureItem} key={title}><div className={styles.architectureNode} style={{ minHeight: '92px', padding: '8px 4px', border: 'none', borderRadius: 0, background: 'transparent', justifyContent: 'center', gap: '8px' }}><span>{String(index + 1).padStart(2, '0')}</span><strong style={{ color: 'var(--text-secondary)', fontSize: '15px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.25 }}>{title}</strong></div>{index < detail.architecture.steps.length - 1 && <span className={styles.architectureArrow} aria-hidden="true">→</span>}</div>)}</div>
+      <p className={styles.architectureCaption}>{detail.architecture.caption}</p>
     </Section>}
 
     {detail.careerDetail && detail.highlights?.length > 0 && <Section eyebrow="Responsibilities" title={detail.highlightsTitle || 'Key Responsibilities'}><div className={styles.highlightGrid}>{detail.highlights.map((item, index) => <article key={item.title} className={styles.highlightCard}><span>{String(index + 1).padStart(2, '0')}</span><h3>{item.title}</h3><p>{item.desc}</p></article>)}</div></Section>}
