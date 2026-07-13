@@ -555,7 +555,7 @@ const links = [
     title: 'Project List',
     desc: '진행한 프로젝트의 기획, 설계, 결과물을 정리한 Notion 포트폴리오입니다.',
     linkLabel: '프로젝트 설명 보기 →',
-    href: 'https://www.notion.so/SEOHYUN-CHO-658f109a9b758248804301d9b82ebddd',
+    href: 'https://app.notion.com/p/hyuniii0920/SEOHYUN-CHO-b9a44afaa0ce832daa3c8174f88d1752?source=copy_link',
   },
   {
     type: 'GitHub',
@@ -631,7 +631,7 @@ export default function Projects({ onSelectProject }) {
 
       {/* Notion / GitHub */}
       <p className={`${styles.subtext} fade-up`}>
-        My Project List ( Github &amp; Notion )
+        Project Archive ( GitHub &amp; Notion )
       </p>
       <div className={styles.grid}>
         {links.map((p, i) => (
