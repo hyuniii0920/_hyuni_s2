@@ -176,7 +176,7 @@
 .activityItem {
   display: grid;
   grid-template-columns: 110px 1fr;
-  gap: 28px;
+  gap: 24px;
   padding: 20px 0;
   border-bottom: 1px solid var(--border);
   align-items: start;
@@ -192,9 +192,9 @@
 }
 
 .activityText {
-  font-size: 15.5px;
-  color: var(--text-secondary);
-  line-height: 1.7;
+  font-size: 16.5px;
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
 @media (max-width: 1024px) {
@@ -245,7 +245,7 @@
   }
 
   .activityText {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
