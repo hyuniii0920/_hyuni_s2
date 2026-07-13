@@ -95,6 +95,11 @@ const awards = [
   { date: '2023', title: 'IT 연합동아리 PROJECT 100일 프로젝트', sub: '디자인 & 아이디어 부문 수상' },
 ];
 
+const certifications = [
+  { date: '2026', title: '정보처리기사', sub: '필기 합격 · 실기 준비 중' },
+  { date: '2022', title: '자동차운전면허 2종 보통', sub: '보유' },
+];
+
 const activities = [
   { year: '2026', text: '피싱스캠 예방을 위한 서비스 개발 경진대회 상위 15% / 전체 644팀' },
   { year: '2025', text: '2025 LG Aimers AI 전문가 과정 수료' },
@@ -104,9 +109,10 @@ const activities = [
 ];
 
 function TimelineItem({ date, title, sub, delay, detail, onSelect }) {
+  const itemClass = `${styles.timelineItem}${date ? '' : ` ${styles.timelineItemNoDate}`}`;
   const content = (
     <>
-      <span className={styles.date}>{date}</span>
+      {date && <span className={styles.date}>{date}</span>}
       <div>
         <div className={styles.itemTitleRow}><p className={styles.itemTitle}>{title}</p>{detail && <span className={styles.detailLink}>Details <b>→</b></span>}</div>
         <p className={styles.itemSub}>{sub}</p>
@@ -117,7 +123,7 @@ function TimelineItem({ date, title, sub, delay, detail, onSelect }) {
   if (detail) {
     return (
       <button
-        className={`${styles.timelineItem} ${styles.timelineItemClickable} fade-up delay-${delay}`}
+        className={`${itemClass} ${styles.timelineItemClickable} fade-up delay-${delay}`}
         onClick={() => onSelect(detail)}
       >
         {content}
@@ -126,7 +132,7 @@ function TimelineItem({ date, title, sub, delay, detail, onSelect }) {
   }
 
   return (
-    <div className={`${styles.timelineItem} fade-up delay-${delay}`}>
+    <div className={`${itemClass} fade-up delay-${delay}`}>
       {content}
     </div>
   );
@@ -171,6 +177,15 @@ export default function Career({ onSelectProject }) {
         <div className={styles.timeline}>
           {awards.map((a, i) => (
             <TimelineItem key={a.title} {...a} delay={i + 1} />
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.certificationsWrap}>
+        <h3 className={`${styles.colTitle} fade-up`}>Certifications</h3>
+        <div className={styles.timeline}>
+          {certifications.map((certification, i) => (
+            <TimelineItem key={certification.title} {...certification} delay={i + 1} />
           ))}
         </div>
       </div>

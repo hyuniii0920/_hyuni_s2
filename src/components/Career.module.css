@@ -62,6 +62,10 @@
   align-items: start;
 }
 
+.timelineItemNoDate {
+  grid-template-columns: 1fr;
+}
+
 .timelineItem:last-child {
   border-bottom: none;
 }
@@ -146,6 +150,12 @@
 
 /* Awards & Honors */
 .awardsWrap {
+  border-top: 1px solid var(--border);
+  padding-top: 64px;
+  margin-bottom: 64px;
+}
+
+.certificationsWrap {
   border-top: 1px solid var(--border);
   padding-top: 64px;
   margin-bottom: 64px;

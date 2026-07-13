@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './ProjectDetail.module.css';
 
 function Section({ eyebrow, title, children }) {
@@ -20,6 +21,41 @@ function ProblemCard({ item, index }) {
     <div className={styles.caseImpact}><span>Impact</span><p>{excerpt(item.result)}</p></div>
     <details className={styles.expandable}><summary>문제 해결 과정 보기 <span>+</span></summary><CaseDetail item={item} /></details>
   </article>;
+}
+
+function youtubeEmbedUrl(url) {
+  const videoId = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^?&/]+)/)?.[1];
+  return videoId ? `https://www.youtube-nocookie.com/embed/${videoId}` : url;
+}
+
+function MediaCarousel({ project, videoUrl }) {
+  const media = [
+    project.image && { type: 'image', source: project.image },
+    videoUrl && { type: 'video', source: youtubeEmbedUrl(videoUrl) },
+  ].filter(Boolean);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  if (!media.length) return <div className={styles.heroInline}><div className={styles.heroPlaceholder} /></div>;
+
+  const activeMedia = media[activeIndex];
+  const move = (direction) => setActiveIndex((index) => (index + direction + media.length) % media.length);
+
+  const controlStyle = {
+    position: 'absolute', top: '50%', zIndex: 1, width: '38px', height: '38px', border: '1px solid rgba(255,255,255,.25)', borderRadius: '50%', background: 'rgba(7,9,26,.72)', color: 'var(--text-primary)', fontSize: '20px', lineHeight: 1, cursor: 'pointer', transform: 'translateY(-50%)',
+  };
+
+  return <div className={styles.heroInline}>
+    <div style={{ position: 'relative' }}>
+      {activeMedia.type === 'image'
+        ? <img src={activeMedia.source} alt={`${project.title} 프로젝트 화면`} className={styles.heroInlineImg} style={{ height: 'auto', maxHeight: 'none', objectFit: 'contain' }} />
+        : <iframe src={activeMedia.source} title={`${project.title} 프로젝트 영상`} style={{ display: 'block', width: '100%', aspectRatio: '16 / 9', border: 0, background: '#000' }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />}
+      {media.length > 1 && <>
+        <button type="button" style={{ ...controlStyle, left: '16px' }} onClick={() => move(-1)} aria-label="이전 미디어">←</button>
+        <button type="button" style={{ ...controlStyle, right: '16px' }} onClick={() => move(1)} aria-label="다음 미디어">→</button>
+        <span style={{ position: 'absolute', right: '16px', bottom: '14px', padding: '5px 8px', borderRadius: '999px', background: 'rgba(7,9,26,.72)', fontSize: '10px', letterSpacing: '.1em', color: 'var(--text-primary)' }}>{activeIndex + 1} / {media.length}</span>
+      </>}
+    </div>
+  </div>;
 }
 
 function StructuredDetail({ detail, project }) {
@@ -60,7 +96,7 @@ export default function ProjectDetail({ project, onClose }) {
         {heroResults.length > 0 && <div className={styles.heroResults}>{heroResults.map((item) => <span key={item}>✦ {item}</span>)}</div>}
         <div className={styles.heroMeta}>{detail?.period && <div><span>Period</span><p>{detail.period}</p></div>}{detail?.role && <div><span>Role</span>{typeof detail.role === 'object' ? <><p style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{detail.role.title}</p><ul style={{ display: 'grid', gap: '5px', margin: '8px 0 0', padding: 0, color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6, listStyle: 'none' }}>{detail.role.items.map((item) => <li key={item} style={{ display: 'flex', alignItems: 'baseline', gap: '9px' }}><i aria-hidden="true" style={{ width: '4px', height: '4px', flex: '0 0 4px', borderRadius: '50%', background: 'var(--text-muted)' }} />{item}</li>)}</ul></> : <p>{detail.role}</p>}</div>}</div>
       </section>
-      <div className={styles.heroInline}>{project.image ? <img src={project.image} alt={`${project.title} 프로젝트 화면`} className={styles.heroInlineImg} style={{ height: 'auto', maxHeight: 'none', objectFit: 'contain' }} /> : <div className={styles.heroPlaceholder} />}</div>
+      <MediaCarousel project={project} videoUrl={detail?.videoUrl} />
       {detail ? <StructuredDetail detail={detail} project={project} /> : project.detail ? <div className={styles.body}>{project.detail}</div> : null}
     </main>
   </div></div>;
