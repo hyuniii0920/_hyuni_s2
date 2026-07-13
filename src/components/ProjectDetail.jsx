@@ -140,16 +140,17 @@ export default function ProjectDetail({ project, onClose }) {
           <button className={styles.back} onClick={onClose}>← 닫기</button>
         </div>
 
-        <div className={styles.hero}>
-          {project.image
-            ? <img src={project.image} alt={project.title} className={styles.heroImg} />
-            : <div className={styles.heroPlaceholder} />}
-        </div>
-
         <div className={styles.content}>
           <span className={styles.category}>{project.category}</span>
           <h1 className={styles.title}>{project.title}</h1>
           <p className={styles.desc}>{project.desc}</p>
+
+          <div className={styles.heroInline}>
+            {project.image
+              ? <img src={project.image} alt={project.title} className={styles.heroInlineImg} />
+              : <div className={styles.heroPlaceholder} />}
+          </div>
+
           <div className={styles.divider} />
 
           {project.detail && typeof project.detail === 'object'
