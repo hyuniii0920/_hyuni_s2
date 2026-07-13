@@ -190,6 +190,94 @@ export const featured = [
   },
   {
     id: 3,
+    category: 'Mobile · 대상 수상',
+    title: 'PIYAK(dansynkpop)',
+    desc: 'K-pop 아이돌 안무 연습 모바일 앱 — 2026 글로컬 Innovation Challenge Day 대상 (총장상)',
+    image: '/project_photo/piyak_main.png',
+    detail: {
+      period: '2026 글로컬 Innovation Challenge Day · 대상 (총장상)',
+      role: 'AI 웹 툴 개발 — Instance Segmentation 기반 멤버별 마스크 영상 생성 파이프라인, Django REST 백엔드 연동, 영상 저장·서빙 인프라 설계',
+      summary: 'K-pop 아이돌 안무 원본 영상에서 AI로 멤버 각각을 픽셀 단위 인식·추적하여 멤버별 마스크 영상을 자동 생성하는 반자동화 파이프라인을 구현하고, 이를 모바일 앱의 연습 콘텐츠로 제공하는 인프라까지 담당',
+      motivation: 'K-pop 안무를 연습하려는 팬들은 여러 멤버가 함께 등장하는 원본 영상에서 특정 한 명의 동선만 따라 익히기 어렵고, 멤버별 영상을 일일이 수작업으로 편집해 제공하기엔 곡 수·멤버 수가 늘어날수록 제작 비용이 감당하기 어렵다는 문제의식에서 출발. AI 기반 영상 세그멘테이션으로 멤버별 마스크 영상을 반자동으로 생성해 안무 연습 콘텐츠로 서비스하는 것을 목표로 기획.',
+      whyShort: '다인 그룹 영상에서 멤버별 동선을 따라 연습하기 어려웠던 문제를 자동화로 해결했다.',
+      myStack: ['SAM2 (Segment Anything Model 2)', 'Django REST Framework', 'Cloudflare R2', 'PeerTube'],
+      card: {
+        name: 'PIYAK',
+        tagline: 'K-pop 안무 연습 앱 · 대상 수상',
+        desc: 'AI로 멤버별 마스크 영상을 자동 생성해\n안무 연습 콘텐츠로 제공하는 모바일 앱',
+        checklist: [
+          'SAM2 기반 멤버별 자동 추적',
+          '수작업 편집 없는 반자동화 파이프라인',
+          '2026 글로컬 Innovation Challenge Day 대상',
+        ],
+      },
+      problemSolving: [
+        {
+          title: '겹치는 다인 안무에서도 멤버를 정확히 추적하게 했다',
+          problem: '다인 K-pop 안무 영상은 멤버들이 자주 겹치고 대형이 바뀌기 때문에, 프레임마다 완전 자동으로 멤버를 감지·추적하게 하면 겹침 구간에서 멤버가 뒤바뀌거나 인식이 끊기는 오류가 누적되는 문제.',
+          process: '완전 자동 감지 대신, 웹 툴에서 작업자가 첫 프레임에 포인트/박스로 멤버를 한 번만 지정하면 SAM2의 비디오 세그멘테이션 메모리 메커니즘이 이후 프레임을 자동 추적하며 픽셀 단위 마스크를 전파하도록 파이프라인을 설계.',
+          result: '멤버 간 겹침 구간에서도 안정적으로 동일 인물을 추적할 수 있게 됐고, 별도의 다중 객체 트래커 없이 SAM2 하나로 정확도와 제작 생산성을 동시에 확보.',
+        },
+        {
+          title: '멤버 단위 접근 권한을 백엔드 단일 조회로 처리했다',
+          problem: '생성된 멤버별 마스크 영상을 곡·멤버 단위로 관리하고, 유료 콘텐츠라면 멤버 단위로 잠금을 해제하는 결제 로직까지 앱에 연결해야 했는데, 초기에는 이 메타데이터와 접근 권한을 연결할 데이터 모델이 없었음.',
+          process: 'SongIdolMembership 모델로 곡별·멤버별 마스크 영상 메타데이터를 저장하고, PracticeVideo 모델을 통해 모바일 앱에 연습 영상을 제공하도록 Django REST 백엔드를 설계. piyak 토큰 기반 결제 시스템과 연동해 멤버 단위로 접근 권한을 판단하도록 구현.',
+          result: '곡·멤버 단위로 연습 영상과 접근 권한을 단일 조회로 판단할 수 있는 구조를 확보해, 멤버별 콘텐츠 잠금 해제 기능을 별도 로직 없이 백엔드 단일 조회로 처리 가능해짐.',
+        },
+        {
+          title: '저장과 스트리밍을 분리해 독립적으로 확장 가능하게 했다',
+          problem: '생성된 멤버별 마스크 영상은 용량이 크고 수가 많아, 저장과 스트리밍을 하나의 인프라에 결합하면 트래픽이 몰릴 때 저장소와 스트리밍 서버가 서로 영향을 주는 구조적 위험이 있었음.',
+          process: '영상 저장은 Cloudflare R2(S3 호환)에, 스트리밍은 PeerTube 기반 인프라에 각각 맡기고 Django가 PeerTube API와 통신해 스트리밍 URL을 동적으로 resolve하도록 역할을 분리.',
+          result: '저장과 스트리밍이 서로 독립적으로 확장 가능한 구조를 확보했고, 모바일 앱은 Django를 통해 항상 최신 스트리밍 URL로 안정적으로 영상을 재생.',
+        },
+        {
+          title: '수작업 편집 없이 멤버별 콘텐츠 제작을 자동화했다',
+          problem: '멤버별 마스크 영상을 프레임마다 수동으로 편집해 제작하면 곡 하나당 작업 시간이 과도하게 길어져, 서비스에 필요한 만큼의 콘텐츠 양을 감당할 수 없는 문제.',
+          process: '웹 툴 내 멤버 지정 UI → SAM2 프레임 전파 → 마스크 추출 → 마스크 영상 생성까지 이어지는 일관된 반자동화 워크플로우를 설계해, 작업자는 첫 프레임 지정만 하면 되도록 구성.',
+          result: '매 프레임 수동 편집 없이 멤버별 콘텐츠를 제작할 수 있게 되어 대회 시연에 필요한 콘텐츠 제작 생산성을 확보했고, 이 반자동화 파이프라인이 대상 수상의 핵심 근거가 됨.',
+        },
+      ],
+      stack: {
+        'AI · 영상처리': ['SAM2 (Segment Anything Model 2)', 'Mask Extraction', 'Video Processing'],
+        백엔드: ['Python', 'Django REST Framework'],
+        인프라: ['Cloudflare R2', 'PeerTube', 'Oracle Cloud (Ubuntu)'],
+      },
+      highlights: [
+        {
+          title: 'SAM2 기반 멤버별 마스크 영상 생성',
+          desc: 'Meta SAM2(Segment Anything Model 2)의 비디오 세그멘테이션으로 멤버별 마스크 영상 생성. 웹 툴에서 작업자가 첫 프레임에 포인트/박스로 멤버를 지정하면, SAM2 내장 메모리 메커니즘이 이후 프레임을 자동 추적하며 픽셀 단위 마스크를 전파. 프레임별 마스크를 연결해 멤버별 마스크 영상으로 완성.',
+        },
+        {
+          title: 'Django REST 백엔드 연동',
+          desc: 'SongIdolMembership 모델과 연동하여 곡별·멤버별 마스크 영상 메타데이터를 DB 저장. PracticeVideo 모델로 모바일 앱에 연습 영상 제공. piyak 토큰 기반 결제 시스템과 연결하여 멤버별 영상 잠금 해제 기능까지 연동.',
+        },
+        {
+          title: '영상 저장 및 스트리밍 인프라',
+          desc: '생성된 마스크 영상을 Cloudflare R2(S3 호환)에 저장. PeerTube 기반 스트리밍 인프라로 모바일 앱에 서빙. Django가 PeerTube API와 통신하여 스트리밍 URL을 동적으로 resolve.',
+        },
+        {
+          title: '반자동화 마스크 제작 워크플로우',
+          desc: 'SAM2의 비디오 추적 특성을 활용한 반자동화 파이프라인. 웹 툴 내 멤버 지정 UI → SAM2 프레임 전파 → 마스크 추출 → 마스크 영상 생성까지 일관된 흐름으로, 매 프레임 수동 편집 없이 멤버별 콘텐츠 제작 가능.',
+        },
+      ],
+      decisions: [
+        {
+          label: 'SAM2 선택 — 비디오 네이티브 추적',
+          detail: '다인 안무에서 멤버 간 겹침으로 완전 자동 감지 오류가 누적되는 문제를 보완하기 위해 SAM2 채택. SAM2는 비디오 세그멘테이션을 네이티브 지원하여 첫 프레임 포인트/박스 지정만으로 이후 프레임 전체에 마스크가 자동 전파됨. 별도 tracker 없이 정확도·생산성 동시 확보.',
+        },
+        {
+          label: 'Cloudflare R2 + PeerTube 분리',
+          detail: '영상 저장(R2)과 스트리밍(PeerTube)을 분리하여 각 역할에 최적화된 인프라 구성. Django가 PeerTube API로 스트리밍 URL을 동적 resolve하는 방식으로 모바일 앱과 느슨하게 결합.',
+        },
+        {
+          label: '콘텐츠 접근 토큰 시스템 연동',
+          detail: '멤버별 마스크 영상을 piyak 토큰 기반 결제와 연결하여 잠금 해제 단위를 멤버 단위로 세분화. DB 설계 단계에서 PracticeVideo 모델에 접근 권한 메타데이터를 포함하여 백엔드 단일 조회로 권한 판단.',
+        },
+      ],
+    },
+  },
+  {
+    id: 4,
     category: 'AR · Android',
     title: 'ArtBusan',
     desc: 'QR·AR 카메라 기반 부산 미술관·박물관 전시 안내 Android 앱 — 4개국어·Offline-First',
@@ -273,94 +361,6 @@ export const featured = [
         {
           label: 'BottomSheet 직접 LayoutParams 제어',
           detail: 'BottomSheetBehavior 대신 ViewGroup.LayoutParams.height 직접 핸들링. 카메라 PreviewView + 반투명 오버레이(알파 0.22 ↔ 1.0) 간 터치 이벤트 충돌 없이 정밀 오케스트레이션.',
-        },
-      ],
-    },
-  },
-  {
-    id: 4,
-    category: 'Mobile · 대상 수상',
-    title: 'PIYAK(dansynkpop)',
-    desc: 'K-pop 아이돌 안무 연습 모바일 앱 — 2026 글로컬 Innovation Challenge Day 대상 (총장상)',
-    image: '/project_photo/piyak_main.png',
-    detail: {
-      period: '2026 글로컬 Innovation Challenge Day · 대상 (총장상)',
-      role: 'AI 웹 툴 개발 — Instance Segmentation 기반 멤버별 마스크 영상 생성 파이프라인, Django REST 백엔드 연동, 영상 저장·서빙 인프라 설계',
-      summary: 'K-pop 아이돌 안무 원본 영상에서 AI로 멤버 각각을 픽셀 단위 인식·추적하여 멤버별 마스크 영상을 자동 생성하는 반자동화 파이프라인을 구현하고, 이를 모바일 앱의 연습 콘텐츠로 제공하는 인프라까지 담당',
-      motivation: 'K-pop 안무를 연습하려는 팬들은 여러 멤버가 함께 등장하는 원본 영상에서 특정 한 명의 동선만 따라 익히기 어렵고, 멤버별 영상을 일일이 수작업으로 편집해 제공하기엔 곡 수·멤버 수가 늘어날수록 제작 비용이 감당하기 어렵다는 문제의식에서 출발. AI 기반 영상 세그멘테이션으로 멤버별 마스크 영상을 반자동으로 생성해 안무 연습 콘텐츠로 서비스하는 것을 목표로 기획.',
-      whyShort: '다인 그룹 영상에서 멤버별 동선을 따라 연습하기 어려웠던 문제를 자동화로 해결했다.',
-      myStack: ['SAM2 (Segment Anything Model 2)', 'Django REST Framework', 'Cloudflare R2', 'PeerTube'],
-      card: {
-        name: 'PIYAK',
-        tagline: 'K-pop 안무 연습 앱 · 대상 수상',
-        desc: 'AI로 멤버별 마스크 영상을 자동 생성해\n안무 연습 콘텐츠로 제공하는 모바일 앱',
-        checklist: [
-          'SAM2 기반 멤버별 자동 추적',
-          '수작업 편집 없는 반자동화 파이프라인',
-          '2026 글로컬 Innovation Challenge Day 대상',
-        ],
-      },
-      problemSolving: [
-        {
-          title: '겹치는 다인 안무에서도 멤버를 정확히 추적하게 했다',
-          problem: '다인 K-pop 안무 영상은 멤버들이 자주 겹치고 대형이 바뀌기 때문에, 프레임마다 완전 자동으로 멤버를 감지·추적하게 하면 겹침 구간에서 멤버가 뒤바뀌거나 인식이 끊기는 오류가 누적되는 문제.',
-          process: '완전 자동 감지 대신, 웹 툴에서 작업자가 첫 프레임에 포인트/박스로 멤버를 한 번만 지정하면 SAM2의 비디오 세그멘테이션 메모리 메커니즘이 이후 프레임을 자동 추적하며 픽셀 단위 마스크를 전파하도록 파이프라인을 설계.',
-          result: '멤버 간 겹침 구간에서도 안정적으로 동일 인물을 추적할 수 있게 됐고, 별도의 다중 객체 트래커 없이 SAM2 하나로 정확도와 제작 생산성을 동시에 확보.',
-        },
-        {
-          title: '멤버 단위 접근 권한을 백엔드 단일 조회로 처리했다',
-          problem: '생성된 멤버별 마스크 영상을 곡·멤버 단위로 관리하고, 유료 콘텐츠라면 멤버 단위로 잠금을 해제하는 결제 로직까지 앱에 연결해야 했는데, 초기에는 이 메타데이터와 접근 권한을 연결할 데이터 모델이 없었음.',
-          process: 'SongIdolMembership 모델로 곡별·멤버별 마스크 영상 메타데이터를 저장하고, PracticeVideo 모델을 통해 모바일 앱에 연습 영상을 제공하도록 Django REST 백엔드를 설계. piyak 토큰 기반 결제 시스템과 연동해 멤버 단위로 접근 권한을 판단하도록 구현.',
-          result: '곡·멤버 단위로 연습 영상과 접근 권한을 단일 조회로 판단할 수 있는 구조를 확보해, 멤버별 콘텐츠 잠금 해제 기능을 별도 로직 없이 백엔드 단일 조회로 처리 가능해짐.',
-        },
-        {
-          title: '저장과 스트리밍을 분리해 독립적으로 확장 가능하게 했다',
-          problem: '생성된 멤버별 마스크 영상은 용량이 크고 수가 많아, 저장과 스트리밍을 하나의 인프라에 결합하면 트래픽이 몰릴 때 저장소와 스트리밍 서버가 서로 영향을 주는 구조적 위험이 있었음.',
-          process: '영상 저장은 Cloudflare R2(S3 호환)에, 스트리밍은 PeerTube 기반 인프라에 각각 맡기고 Django가 PeerTube API와 통신해 스트리밍 URL을 동적으로 resolve하도록 역할을 분리.',
-          result: '저장과 스트리밍이 서로 독립적으로 확장 가능한 구조를 확보했고, 모바일 앱은 Django를 통해 항상 최신 스트리밍 URL로 안정적으로 영상을 재생.',
-        },
-        {
-          title: '수작업 편집 없이 멤버별 콘텐츠 제작을 자동화했다',
-          problem: '멤버별 마스크 영상을 프레임마다 수동으로 편집해 제작하면 곡 하나당 작업 시간이 과도하게 길어져, 서비스에 필요한 만큼의 콘텐츠 양을 감당할 수 없는 문제.',
-          process: '웹 툴 내 멤버 지정 UI → SAM2 프레임 전파 → 마스크 추출 → 마스크 영상 생성까지 이어지는 일관된 반자동화 워크플로우를 설계해, 작업자는 첫 프레임 지정만 하면 되도록 구성.',
-          result: '매 프레임 수동 편집 없이 멤버별 콘텐츠를 제작할 수 있게 되어 대회 시연에 필요한 콘텐츠 제작 생산성을 확보했고, 이 반자동화 파이프라인이 대상 수상의 핵심 근거가 됨.',
-        },
-      ],
-      stack: {
-        'AI · 영상처리': ['SAM2 (Segment Anything Model 2)', 'Mask Extraction', 'Video Processing'],
-        백엔드: ['Python', 'Django REST Framework'],
-        인프라: ['Cloudflare R2', 'PeerTube', 'Oracle Cloud (Ubuntu)'],
-      },
-      highlights: [
-        {
-          title: 'SAM2 기반 멤버별 마스크 영상 생성',
-          desc: 'Meta SAM2(Segment Anything Model 2)의 비디오 세그멘테이션으로 멤버별 마스크 영상 생성. 웹 툴에서 작업자가 첫 프레임에 포인트/박스로 멤버를 지정하면, SAM2 내장 메모리 메커니즘이 이후 프레임을 자동 추적하며 픽셀 단위 마스크를 전파. 프레임별 마스크를 연결해 멤버별 마스크 영상으로 완성.',
-        },
-        {
-          title: 'Django REST 백엔드 연동',
-          desc: 'SongIdolMembership 모델과 연동하여 곡별·멤버별 마스크 영상 메타데이터를 DB 저장. PracticeVideo 모델로 모바일 앱에 연습 영상 제공. piyak 토큰 기반 결제 시스템과 연결하여 멤버별 영상 잠금 해제 기능까지 연동.',
-        },
-        {
-          title: '영상 저장 및 스트리밍 인프라',
-          desc: '생성된 마스크 영상을 Cloudflare R2(S3 호환)에 저장. PeerTube 기반 스트리밍 인프라로 모바일 앱에 서빙. Django가 PeerTube API와 통신하여 스트리밍 URL을 동적으로 resolve.',
-        },
-        {
-          title: '반자동화 마스크 제작 워크플로우',
-          desc: 'SAM2의 비디오 추적 특성을 활용한 반자동화 파이프라인. 웹 툴 내 멤버 지정 UI → SAM2 프레임 전파 → 마스크 추출 → 마스크 영상 생성까지 일관된 흐름으로, 매 프레임 수동 편집 없이 멤버별 콘텐츠 제작 가능.',
-        },
-      ],
-      decisions: [
-        {
-          label: 'SAM2 선택 — 비디오 네이티브 추적',
-          detail: '다인 안무에서 멤버 간 겹침으로 완전 자동 감지 오류가 누적되는 문제를 보완하기 위해 SAM2 채택. SAM2는 비디오 세그멘테이션을 네이티브 지원하여 첫 프레임 포인트/박스 지정만으로 이후 프레임 전체에 마스크가 자동 전파됨. 별도 tracker 없이 정확도·생산성 동시 확보.',
-        },
-        {
-          label: 'Cloudflare R2 + PeerTube 분리',
-          detail: '영상 저장(R2)과 스트리밍(PeerTube)을 분리하여 각 역할에 최적화된 인프라 구성. Django가 PeerTube API로 스트리밍 URL을 동적 resolve하는 방식으로 모바일 앱과 느슨하게 결합.',
-        },
-        {
-          label: '콘텐츠 접근 토큰 시스템 연동',
-          detail: '멤버별 마스크 영상을 piyak 토큰 기반 결제와 연결하여 잠금 해제 단위를 멤버 단위로 세분화. DB 설계 단계에서 PracticeVideo 모델에 접근 권한 메타데이터를 포함하여 백엔드 단일 조회로 권한 판단.',
         },
       ],
     },
