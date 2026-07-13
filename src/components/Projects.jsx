@@ -124,9 +124,9 @@ export const featured = [
   {
     id: 2,
     category: 'SaaS · Web',
-    title: 'MZC (Learn Platform)',
+    title: 'Growbase (LMS)',
     desc: 'B2B/B2C 멀티테넌트 SaaS 학습관리시스템(LMS)',
-    image: '/project_photo/MZC_LP_main.png',
+    image: '/project_photo/MZC_main.png',
     detail: {
       period: '2025.11 ~ 2026.01',
       role: {
@@ -148,7 +148,7 @@ export const featured = [
       whyShort: '기업마다 LMS를 따로 도입하는 비용 문제를 하나의 멀티테넌트 플랫폼으로 해결했다.',
       myStack: ['React 19', 'TypeScript 5.6', 'Zustand', 'Figma AI'],
       card: {
-        name: 'MZC',
+        name: 'Growbase',
         tagline: 'B2B/B2C 멀티테넌트 LMS',
         desc: '기업 교육과 개인 학습을 함께 지원하는\n멀티테넌트 SaaS 학습관리시스템',
         checklist: [
@@ -455,8 +455,8 @@ export const featured = [
     id: 5,
     category: 'Security · AI',
     title: 'SAI (Smishing Prevention AI)',
-    desc: 'Android · Web 기반 스미싱 예방 서비스',
-    image: '/project_photo/SPAI_main.png',
+    desc: '의심 순간 AI 분석 리포트로 판단과 행동 중단을 돕는 스미싱 예방 서비스',
+    image: '/project_photo/SAI_main.png',
     detail: {
       period: '2026 · 피싱스캠 예방 서비스 개발 경진대회 (상위 15% / 전체 644팀)',
       role: {
@@ -468,17 +468,17 @@ export const featured = [
           'Android 앱 · 웹 공통 데이터 흐름 설계',
         ],
       },
-      summary: '스미싱 문자 피해 사례를 분석하고, 탐지 결과를 Android 앱과 웹에서 함께 제공하는 통합 예방 서비스',
-      motivation: '스미싱 문자로 인한 금전 피해 사례가 계속 늘고 있지만, 사용자가 스스로 위험 문자를 판별하기는 어렵다는 문제의식에서 출발. 그 문제를 직접 풀어보고 싶어 피싱스캠 예방 서비스 개발 경진대회에 참가해 스미싱 피해 사례를 분석했고, 644개 참가팀 중 상위 15%에 들었습니다.',
-      whyShort: '사용자가 스스로 판별하기 어려운 스미싱 위험 문자를 자동으로 탐지하게 만들었다.',
+      summary: '의심스러운 문자 · 메신저 화면을 분석해 위험도, 사기 유형, 요구 행동과 대응 가이드를 제공하고 사용자가 스스로 행동을 멈추고 판단하도록 돕는 Android · Web 통합 예방 서비스',
+      motivation: '피싱 · 스캠 피해는 사용자가 이미 이상함을 느끼면서도 확신하지 못한 상태에서 링크 클릭 · 송금 · 앱 설치 같은 결정적 행동을 하며 발생합니다. 키워드 · URL 기반 탐지와 자동 차단만으로는 신종 · 변형 · 서사형 피싱의 맥락을 충분히 설명하기 어렵고, 차단 이후에도 사용자의 판단 과정에 개입하기 어렵다는 문제의식에서 출발했습니다.',
+      whyShort: '의심 순간에 사용자가 스스로 멈추고 판단할 수 있도록 AI 분석 근거를 제공했다.',
       card: {
         name: 'SAI',
-        tagline: 'Android · Web 스미싱 예방 서비스',
-        desc: '스미싱 피해 사례를 분석해 탐지 결과를\n앱과 웹에서 함께 제공하는 통합 예방 서비스',
+        tagline: 'AI 기반 스미싱 예방 서비스',
+        desc: '의심 순간 AI 분석 리포트로\n사용자의 판단과 행동 중단을 돕는 예방 서비스',
         checklist: [
-          'React 기반 스미싱 분석 결과 시각화',
-          '3개 서비스 모노레포로 배포 단순화',
-          'Firebase 기반 인증 · 데이터 통합',
+          '4단계 시각화 보안 리포트',
+          '캡처 기반 AI 맥락 분석',
+          'Firebase 기반 분석 이력 관리',
         ],
       },
       myStack: ['React', 'Spring Boot', 'Firebase Auth', 'GitHub Actions'],
@@ -502,6 +502,7 @@ export const featured = [
         Android: ['Kotlin'],
         Frontend: ['React', 'Vite'],
         Backend: ['Spring Boot', 'Java 21'],
+        AI: ['OCR', 'LLM 맥락 분석'],
         Infra: ['Firebase Auth', 'Firestore', 'Firebase Storage', 'Firebase Admin SDK', 'GitHub Actions'],
       },
       highlights: [
@@ -523,10 +524,10 @@ export const featured = [
         },
       ],
       coreFeatures: [
-        { title: '스미싱 분석 결과 대시보드', desc: '웹 화면에서 스미싱 탐지 결과와 보안 분석 정보를 확인할 수 있는 사용자 화면 제공.' },
-        { title: '앱 · 웹 간 분석 결과 연동', desc: '모바일 앱과 웹에서 같은 인증 정보와 탐지 결과를 이어서 확인할 수 있는 경험 구성.' },
-        { title: '통합 인증 및 데이터 관리', desc: 'Firebase 기반의 공통 인증과 데이터 관리 구조로 플랫폼별 정보 불일치를 줄임.' },
-        { title: '안정적인 서비스 배포', desc: '각 서비스의 배포 과정을 자동화해 최신 분석 기능을 일관되게 제공.' },
+        { title: '4단계 시각화 보안 리포트', desc: '위험도를 명확히 보여주고 사기 유형, 위험 근거, 대응 가이드를 함께 제공해 사용자의 즉각적인 행동 중단을 지원.' },
+        { title: '캡처 기반 AI 맥락 분석', desc: '문자 · 메신저 화면을 캡처하면 OCR과 LLM이 대화 흐름, 요구 행동, 심리적 신호를 분석해 판단 근거 제공.' },
+        { title: '보안 분석 히스토리 관리', desc: 'Firebase Firestore · Storage에 분석 결과와 캡처 이미지를 저장해 사용자가 과거 사례를 다시 확인할 수 있도록 구성.' },
+        { title: '실시간 스미싱 공유 커뮤니티', desc: '분석한 스미싱 사례를 공유해 개인의 신고를 집단 예방 데이터로 확장하고 최신 위험 흐름을 함께 확인.' },
       ],
     },
   },
