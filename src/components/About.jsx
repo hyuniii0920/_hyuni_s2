@@ -10,7 +10,7 @@ const infoRows = [
 const skills = [
   {
     category: 'Language',
-    tags: ['Python', 'Java', 'C', 'C#', 'C++ (기초)', 'SQL'],
+    tags: ['Python', 'Java', 'C', 'C#', 'C++', 'SQL'],
   },
   {
     category: 'Frontend',
