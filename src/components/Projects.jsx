@@ -40,8 +40,8 @@ export const featured = [
         desc: '계약서의 위험 조항을 자동 분석하고\n관련 법률 근거를 함께 제공하는 AI 서비스',
         checklist: [
           '스캔 PDF OCR 4~10배 단축 · 약 8초/페이지',
-          '100점 Safety Score 알고리즘',
-          '9개 위험 유형 Gemini 폴백',
+          '일관된 Safety Score 산출 알고리즘',
+          'Gemini 장애 자동 폴백',
         ],
       },
       problemSolving: [
@@ -165,7 +165,7 @@ export const featured = [
         tagline: 'B2B/B2C 멀티테넌트 LMS',
         desc: '기업 교육과 개인 학습을 함께 지원하는\n멀티테넌트 SaaS 학습관리시스템',
         checklist: [
-          '6개 직급 · B2B/B2C 이중 UX 통합',
+          'MSA 구조 · B2B/B2C 이중 UX 통합',
           '테넌트 추가 시 코드 수정 없이 온보딩',
           'Figma 디자인 문서 기반 AI 바이브 코딩',
         ],
