@@ -9,16 +9,16 @@ const infoRows = [
 
 const skills = [
   {
-    category: 'Language',
+    category: 'Development',
     tags: ['Python', 'Java', 'C', 'C#', 'C++', 'SQL', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React'],
   },
   {
-    category: 'Tool',
+    category: 'Tool · DB',
     tags: ['MySQL', 'IntelliJ', 'VSCode', 'Colab', 'Git', 'GitHub'],
   },
   {
-    category: 'Infra & OS',
-    tags: ['OS 환경 설정', 'IP/DNS 구성', '서버 트러블슈팅', 'Vercel', 'Netlify', 'Git Actions'],
+    category: 'Infra · Deploy',
+    tags: ['IP/DNS 구성', 'Vercel', 'Render', 'GitHub Actions (CI/CD)'],
   },
   {
     category: 'Design',
@@ -26,11 +26,11 @@ const skills = [
   },
   {
     category: 'AI',
-    tags: ['ML', 'Vibecoding', 'Langchain', 'RAG', 'LLM'],
+    tags: ['ML', 'Vibecoding', 'Langchain', 'RAG', 'LLM', 'VectorDB', 'Vision AI'],
   },
   {
-    category: 'Office',
-    tags: ['Word', 'PowerPoint', 'Excel', 'Google Workspace'],
+    category: 'Office · Collaboration',
+    tags: ['Word', 'PowerPoint', 'Excel (기초)', 'Google Workspace', 'Slack', 'Notion'],
   },
 ];
 
