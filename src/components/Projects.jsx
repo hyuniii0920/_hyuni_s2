@@ -38,9 +38,9 @@ export const featured = [
         tagline: 'AI 계약서 분석 서비스',
         desc: '계약서의 위험 조항을 자동 분석하고\n관련 법률 근거를 함께 제공하는 AI 서비스',
         checklist: [
-          'OCR 처리 속도 8배 개선',
-          '일관된 Safety Score 산출',
-          'Gemini 장애 자동 폴백',
+          '스캔 PDF OCR 4~10배 단축 · 약 8초/페이지',
+          '100점 Safety Score 알고리즘',
+          '9개 위험 유형 Gemini 폴백',
         ],
       },
       problemSolving: [
@@ -141,6 +141,7 @@ export const featured = [
           '6개 직급 통합 라우팅',
           'JWT 갱신 큐 패턴 구현',
           'B2B/B2C UX 분리 구현',
+          'Figma 디자인 문서(MD) 설계 · AI 바이브 코딩 적용',
         ],
       },
       github: [
@@ -157,9 +158,9 @@ export const featured = [
         tagline: 'B2B/B2C 멀티테넌트 LMS',
         desc: '기업 교육과 개인 학습을 함께 지원하는\n멀티테넌트 SaaS 학습관리시스템',
         checklist: [
-          '6개 직급을 하나의 프론트엔드로 통합',
+          '6개 직급 · B2B/B2C 이중 UX 통합',
           '테넌트 추가 시 코드 수정 없이 온보딩',
-          'JWT 동시 요청 인증 오류 제거',
+          'Figma 디자인 문서 기반 AI 바이브 코딩',
         ],
       },
       problemSolving: [
@@ -207,8 +208,8 @@ export const featured = [
           desc: '기업 관리자(SA·TA)용 콘솔부터 CO·DESIGNER·INSTRUCTOR·USER까지 6개 직급별 독립 라우팅·레이아웃을 하나의 프론트엔드로 통합 구성. B2B(배정 과정·진도 중심)와 B2C(마켓플레이스·장바구니)는 tu.b2b.routes.tsx / tu.b2c.routes.tsx 파일 수준으로 완전 분리.',
         },
         {
-          title: 'AI 기반 UI 설계 및 테넌트별 개별화',
-          desc: 'Figma AI로 디자인 문서를 생성하고 화면 시뮬레이션을 거쳐 UI 설계 단계부터 AI를 적극 활용. 이렇게 설계한 프론트 레이어를 테넌트별로 로고·컬러·기능을 개별 커스터마이징할 수 있도록 구조화.',
+          title: 'Figma 디자인 문서 기반 AI 바이브 코딩',
+          desc: 'Figma로 화면 흐름과 컴포넌트 규칙을 문서화한 뒤, 디자인 명세를 기준으로 AI 바이브 코딩을 적용해 구현 속도를 높임. 설계한 프론트 레이어는 테넌트별 로고·컬러·기능을 개별 커스터마이징할 수 있도록 구조화.',
         },
         {
           title: 'JWT Refresh Queue Pattern',
@@ -271,9 +272,9 @@ export const featured = [
         tagline: 'K-pop 안무 연습 앱 · ★ 대상 수상 ★',
         desc: 'AI로 멤버별 마스크 영상을 자동 생성해\n안무 연습 콘텐츠로 제공하는 모바일 앱',
         checklist: [
-          'SAM2 기반 멤버별 자동 추적',
-          '수작업 편집 없는 반자동화 파이프라인',
-          'Cloudflare R2 · PeerTube 분리 영상 스트리밍',
+          '테스트 기준 최대 6개 마스크 동기 재생',
+          '약 30 FPS 프레임 동기화',
+          '첫 프레임 1회 지정 후 자동 추적',
         ],
       },
       problemSolving: [
@@ -381,9 +382,9 @@ export const featured = [
         tagline: 'AR 전시 안내 Android 앱',
         desc: 'QR · AR로 작품 정보를 제공하고\n오프라인에서도 끊김 없이 동작하는 전시 앱',
         checklist: [
+          '부산 8개 전시 시설 데이터 탑재',
           '4개국어 즉시 전환 (재설치 불필요)',
-          'Offline-First로 네트워크 단절 대응',
-          'QR 중복 스캔 원천 차단',
+          '4단계 QR URL 폴백',
         ],
       },
       problemSolving: [
@@ -468,10 +469,11 @@ export const featured = [
     desc: '의심 순간 AI 분석 리포트로 판단과 행동 중단을 돕는 스미싱 예방 서비스',
     image: '/project_photo/SAI_main.png',
     detail: {
-      period: '2026 · 피싱스캠 예방 서비스 개발 경진대회 (상위 15% / 전체 644팀)',
+      period: '2026 · 피싱스캠 예방 서비스 개발 경진대회 (전체 644팀 중 상위 15%)',
       role: {
-        title: '웹 프론트엔드 개발 · 백엔드 연동',
+        title: '서비스 기획 · 웹 프론트엔드 개발 · 백엔드 연동',
         items: [
+          '스미싱 예방 서비스 사용자 흐름 및 기능 기획',
           'Firebase 기반 인증 및 데이터 흐름 설계',
           '스미싱 분석 결과 웹 화면 구현',
           '프론트엔드 · 백엔드 배포 자동화',
@@ -487,9 +489,9 @@ export const featured = [
         tagline: 'AI 기반 스미싱 예방 서비스',
         desc: '의심 순간 AI 분석 리포트로\n사용자의 판단과 행동 중단을 돕는 예방 서비스',
         checklist: [
-          '4단계 시각화 보안 리포트',
           '캡처 기반 AI 맥락 분석',
-          'Firebase 기반 분석 이력 관리',
+          '4단계 시각화 보안 리포트',
+          'Android · Web 2개 플랫폼 연동',
         ],
       },
       myStack: ['React', 'Spring Boot', 'Firebase Auth', 'GitHub Actions'],
