@@ -240,12 +240,12 @@
   }
 
   .activityItem {
-    grid-template-columns: 50px 1fr;
-    gap: 20px;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
   }
 
   .activityText {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -257,6 +257,16 @@
   }
 
   .date {
+    padding-top: 0;
+  }
+
+  .activityItem {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 18px 0;
+  }
+
+  .activityYear {
     padding-top: 0;
   }
 }
