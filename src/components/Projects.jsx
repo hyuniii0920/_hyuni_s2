@@ -15,6 +15,7 @@ export const featured = [
         items: [
           'FastAPI 서버 설계',
           'AI 분석 파이프라인 설계 · 구현',
+          'MSA 기반 AI 분석 서비스 설계',
           '위험도 자동 채점 알고리즘',
           'DB 스키마 설계',
         ],
@@ -30,7 +31,7 @@ export const featured = [
       myStack: ['FastAPI', 'MySQL 8', 'Google Gemini', 'ChromaDB'],
       architecture: {
         title: 'Analysis Architecture',
-        caption: '계약서 분석의 신뢰도를 높이는 AI 파이프라인',
+        caption: 'AI 분석 단계를 독립 서비스로 분리해 확장성과 장애 격리를 고려한 MSA 기반 파이프라인',
         steps: ['OCR', 'Clause Parser', 'LLM Analysis', 'RAG Retrieval', 'Safety Score', 'Frontend'],
       },
       card: {
@@ -138,6 +139,7 @@ export const featured = [
         title: '프론트엔드',
         items: [
           '멀티테넌트 프론트엔드 아키텍처 설계',
+          'MSA 기반 멀티테넌트 LMS 서비스 설계',
           '6개 직급 통합 라우팅',
           'JWT 갱신 큐 패턴 구현',
           'B2B/B2C UX 분리 구현',
@@ -153,6 +155,11 @@ export const featured = [
       motivation: '기업마다 별도의 LMS를 도입하면 구축 · 유지보수 비용이 크고, 기존 LMS 대부분이 기업교육(B2B)이나 개인학습(B2C) 한쪽에만 최적화돼 있어 두 시장을 동시에 대응하기 어렵다는 문제의식에서 출발. 단일 코드베이스에서 호스트네임만으로 테넌트를 구분하고 B2B/B2C UX를 모두 지원하는 멀티테넌트 SaaS LMS를 목표로 설계.',
       whyShort: '기업마다 LMS를 따로 도입하는 비용 문제를 하나의 멀티테넌트 플랫폼으로 해결했다.',
       myStack: ['React 19', 'TypeScript 5.6', 'Zustand', 'Figma AI'],
+      architecture: {
+        title: 'LMS Service Architecture',
+        caption: '도메인별 서비스를 분리해 멀티테넌트 환경의 독립 배포와 확장을 고려한 MSA 구조',
+        steps: ['API Gateway', 'Auth', 'Tenant', 'Learning', 'Content', 'Notification'],
+      },
       card: {
         name: 'Growbase',
         tagline: 'B2B/B2C 멀티테넌트 LMS',
@@ -251,7 +258,7 @@ export const featured = [
     detail: {
       period: '2026 글로컬 Innovation Challenge Day · 대상 (총장상)',
       role: {
-        title: 'AI 웹 툴 개발',
+        title: 'AI',
         items: [
           'SAM2 기반 멤버별 마스크 영상 생성',
           'Django REST 백엔드 연동',
@@ -361,12 +368,12 @@ export const featured = [
     detail: {
       period: '2026.04 ~ 현재 (진행 중) · 2026 관광데이터 활용 공모전 예비심사 합격',
       role: {
-        title: 'Android 앱 개발',
+        title: '기획 · Android',
         items: [
           '앱 초기 구조 및 다크 디자인 시스템 설계',
           'Room DB 기반 Offline-First 아키텍처 구현',
           '4개국어 런타임 전환 파이프라인 구현',
-          'QR · AR 카메라 기능 개발',
+          'QR · AR 전시 안내 사용자 흐름 기획 · 기능 개발',
         ],
       },
       github: [
@@ -471,7 +478,7 @@ export const featured = [
     detail: {
       period: '2026 · 피싱스캠 예방 서비스 개발 경진대회 (전체 644팀 중 상위 15%)',
       role: {
-        title: '서비스 기획 · 웹 프론트엔드 개발 · 백엔드 연동',
+        title: '기획 · 프론트엔드 · 백엔드',
         items: [
           '스미싱 예방 서비스 사용자 흐름 및 기능 기획',
           'Firebase 기반 인증 및 데이터 흐름 설계',
