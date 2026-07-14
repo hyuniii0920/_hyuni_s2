@@ -9,12 +9,20 @@ const infoRows = [
 
 const skills = [
   {
-    category: 'Development',
-    tags: ['Python', 'Java', 'C', 'C#', 'C++', 'SQL', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React'],
+    category: 'Language',
+    tags: ['Python', 'Java', 'C', 'C#', 'C++ (기초)', 'SQL'],
+  },
+  {
+    category: 'Frontend',
+    tags: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React'],
+  },
+  {
+    category: 'Backend · API',
+    tags: ['FastAPI', 'SQLAlchemy', 'REST API', 'Google GenAI API'],
   },
   {
     category: 'Tool · DB',
-    tags: ['MySQL', 'IntelliJ', 'VSCode', 'Colab', 'Git', 'GitHub'],
+    tags: ['IntelliJ IDEA', 'VS Code', 'Google Colab', 'Git', 'GitHub', 'Android', 'MySQL'],
   },
   {
     category: 'Infra · Deploy',
@@ -26,7 +34,7 @@ const skills = [
   },
   {
     category: 'AI',
-    tags: ['ML', 'Vibecoding', 'Langchain', 'RAG', 'LLM', 'VectorDB', 'Vision AI'],
+    tags: ['ML', 'LangChain', 'RAG', 'LLM', 'VectorDB', 'Vision AI'],
   },
   {
     category: 'Office · Collaboration',

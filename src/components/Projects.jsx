@@ -11,13 +11,12 @@ export const featured = [
     detail: {
       period: '2026.03 ~ 2026.06',
       role: {
-        title: '백엔드 · AI',
+        title: 'AI 파이프라인 · 백엔드 · PM',
         items: [
-          'FastAPI 서버 설계',
-          'AI 분석 파이프라인 설계 · 구현',
-          'MSA 기반 AI 분석 서비스 설계',
-          '위험도 자동 채점 알고리즘',
-          'DB 스키마 설계',
+          'FastAPI 인증 · 계약서 · 채팅 REST API 구현',
+          'GenAI · LangChain 분석 파이프라인 · MySQL 모델 설계',
+          'LLM 기반 Safety Score 알고리즘 설계',
+          'OCR 처리 분기로 스캔 문서 분석 8배 개선',
         ],
       },
       github: [
