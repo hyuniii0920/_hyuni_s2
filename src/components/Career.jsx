@@ -24,12 +24,12 @@ const careers = [
         careerDetail: true,
         period: '2024.07 ~ 2024.08',
         role: {
-          title: '프론트엔드 개발 · UX/UI 디자인',
+          title: '서비스 기획 · UX/UI 디자인',
           items: [
-            '운영 서비스 유지보수 및 기능 개발',
-            'Care Bell UX/UI 디자인 · 퍼블리싱',
-            'Figma 기반 UI 디자인 및 퍼블리싱',
-            'Design-to-Code 협업',
+            '위치 기반 케어 서비스 기획부터 디자인까지 End-to-End 리드',
+            '노약자 사용자 특성 분석 기반 접근성 UX 설계',
+            '운영 서비스 사용자 피드백 기반 개선 우선순위 판단',
+            '디자인-개발 협업 프로세스(Design-to-Code) 구축',
           ],
         },
         summary: 'Care Bell 위치 기반 노약자 케어 서비스의 UX/UI 디자인 · 퍼블리싱과 운영 서비스 프론트엔드 유지보수를 담당',
