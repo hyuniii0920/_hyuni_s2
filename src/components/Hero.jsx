@@ -30,10 +30,10 @@ export default function Hero() {
             <div className={styles.sidebarCircleInner} />
           </div>
           <div className={styles.sidebarText}>
-            <span className={styles.label}>Developer</span>
+            <span className={styles.label}>Product Manager</span>
             <p className={styles.greeting}>
               안녕하세요.<br />
-              신입 개발자 <strong>조서현</strong>입니다.
+              신입 프로덕트 매니저 <strong>조서현</strong>입니다.
             </p>
           </div>
         </div>

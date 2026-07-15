@@ -57,7 +57,7 @@ export default function About() {
         {/* 좌측: 소개 + 링크 */}
         <div className={styles.left}>
           <div className={`${styles.tagline} fade-up delay-1`}>
-            <p>상상을 현실적인 사용자 가치로 전환하는 신입 개발자, 조서현입니다.</p>
+            <p>사용자 문제를 발견하고 실행 가능한 해결책으로 만드는 신입 프로덕트 매니저, 조서현입니다.</p>
           </div>
 
           <div className={`${styles.infoBlock} fade-up delay-2`}>
