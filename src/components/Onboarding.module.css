@@ -41,10 +41,8 @@
 .leaving { opacity: 0; pointer-events: none; }
 .preload { position: fixed; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .grain { position: absolute; inset: 0; z-index: -1; opacity: .11; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E"); mix-blend-mode: soft-light; }
-.horizon { position: absolute; z-index: -1; top: 50%; left: 0; width: 100%; height: 1px; overflow: visible; background: linear-gradient(90deg, transparent, rgba(118, 190, 255, .14) 24%, rgba(221, 243, 255, .36) 50%, rgba(118, 190, 255, .14) 76%, transparent); opacity: 0; animation: horizonReveal .8s .16s forwards; }
-.horizon::before, .horizon::after { content: ''; position: absolute; left: 0; width: 100%; height: 1px; background: inherit; opacity: .38; }
-.horizon::before { top: -40px; transform: scaleX(.75); }.horizon::after { top: 40px; transform: scaleX(.55); }
-.horizon span { position: absolute; top: -2px; left: -25%; width: 18%; height: 5px; border-radius: 50%; background: #d9efff; box-shadow: 0 0 14px 6px rgba(118, 196, 255, .88), 0 0 65px 18px rgba(82, 146, 255, .36); opacity: 0; animation: lightSweep 1.7s cubic-bezier(.65, 0, .35, 1) .32s forwards; }
+.horizonSweep { position: absolute; z-index: 1; top: 50%; left: 0; width: 100%; height: 10px; overflow: visible; pointer-events: none; transform: translateY(-50%); }
+.horizonSweep span { position: absolute; top: 3px; left: -25%; width: 18%; height: 3px; border-radius: 50%; opacity: 0; background: linear-gradient(90deg, transparent, rgba(210, 239, 255, .86) 34%, #f5fbff 52%, rgba(137, 204, 255, .72) 72%, transparent); box-shadow: 0 0 12px 4px rgba(118, 196, 255, .72), 0 0 52px 14px rgba(82, 146, 255, .28); animation: horizonSweepMove 1.7s cubic-bezier(.65, 0, .35, 1) .32s forwards; }
 .passingWords { position: absolute; inset: 0; z-index: -1; display: grid; align-content: center; overflow: hidden; color: rgba(191, 224, 255, .055); font-family: var(--font-sans); font-size: clamp(78px, 16vw, 268px); font-weight: 300; letter-spacing: -.11em; line-height: .66; pointer-events: none; }
 .passingWords span { justify-self: center; transform: translateX(-115%); white-space: nowrap; animation: passWord 1.25s cubic-bezier(.65, 0, .35, 1) forwards; }
 .passingWords span:nth-child(1) { animation-delay: 1.38s; }.passingWords span:nth-child(2) { animation-delay: 1.62s; margin-left: 24vw; }.passingWords span:nth-child(3) { animation-delay: 1.88s; margin-left: -23vw; }
@@ -64,8 +62,7 @@
 @keyframes reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes pulse { 0%, 80%, 100% { opacity: .22; transform: scale(.7); } 40% { opacity: 1; transform: scale(1); } }
 @keyframes drift { to { transform: translate(13%, 9%) scale(1.12); } }
-@keyframes horizonReveal { to { opacity: 1; } }
-@keyframes lightSweep { 8% { opacity: 1; } 72% { opacity: 1; } to { left: 107%; opacity: 0; } }
+@keyframes horizonSweepMove { 0% { left: -25%; opacity: 0; } 9% { opacity: 1; } 72% { opacity: 1; } 100% { left: 107%; opacity: 0; } }
 @keyframes passWord { 0% { transform: translateX(-115%); opacity: 0; } 18% { opacity: 1; } 76% { opacity: 1; } 100% { transform: translateX(115%); opacity: 0; } }
 @keyframes waterShift { to { background-position: 250% 0; } }
 @media (max-width: 640px) { .onboarding { padding: 22px; }.topline, .bottomline { font-size: 8px; letter-spacing: .13em; }.wordmark { flex-direction: column; align-items: center; gap: 11px; }.wordHyuni { font-size: clamp(82px, 26vw, 140px); }.wordStudio { font-size: clamp(45px, 14vw, 78px); }.kicker { margin-bottom: 25px; } }

@@ -40,7 +40,7 @@ export default function Onboarding({ onComplete, onExitStart }) {
         onError={() => setVideoReady(true)}
       />
       <div className={styles.grain} />
-      <div className={styles.horizon} aria-hidden="true"><span /></div>
+      <div className={styles.horizonSweep} aria-hidden="true"><span /></div>
       <div className={styles.passingWords} aria-hidden="true">
         <span>Innovator</span><span>Builder</span><span>Disruptor</span>
       </div>
