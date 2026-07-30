@@ -9,9 +9,9 @@ function SparkleO({ delay = 0 }) {
   );
 }
 
-export default function Hero() {
+export default function Hero({ isReady = true }) {
   return (
-    <section id="hero" className={styles.hero}>
+    <section id="hero" className={`${styles.hero} ${isReady ? styles.ready : styles.preparing}`}>
       <video
         className={styles.video}
         src="/main_wave.mp4"

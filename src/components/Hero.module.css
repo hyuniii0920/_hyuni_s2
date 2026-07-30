@@ -12,6 +12,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: blur(15px) saturate(0.7);
+  transform: scale(1.08);
+  transition: filter .86s cubic-bezier(0.16, 1, 0.3, 1), transform .86s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .overlay {
@@ -24,7 +27,16 @@
     rgba(7, 9, 26, 0.5) 70%,
     rgba(7, 9, 26, 1) 100%
   );
+  opacity: 0.86;
+  transition: opacity .82s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.ready .video {
+  filter: blur(0) saturate(1);
+  transform: scale(1);
+}
+
+.ready .overlay { opacity: 1; }
 
 .content {
   position: relative;
@@ -103,9 +115,41 @@
   animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
+/* 온보딩이 열리는 동안에는 메인 전용 요소를 숨기고,
+   PORTFOLIO만 화면 중앙에서 원래 자리로 착지시킨다. */
+.preparing .titleWrap {
+  opacity: 0;
+  transform: translateY(-32vh) scale(.92);
+  animation: none;
+}
+
+.ready .titleWrap {
+  animation: settleTitle .9s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.preparing .sidebar,
+.preparing .scrollHint {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ready .sidebar {
+  animation: heroFadeIn .65s cubic-bezier(.16, 1, .3, 1) .32s both;
+}
+
+.ready .scrollHint {
+  animation: heroFadeIn .65s cubic-bezier(.16, 1, .3, 1) .5s both, float 2.5s ease-in-out 1.15s infinite;
+}
+
 @keyframes heroFadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes settleTitle {
+  from { opacity: 0; transform: translateY(-32vh) scale(.92); filter: blur(6px); }
+  38% { opacity: 1; filter: blur(0); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
 .title {
