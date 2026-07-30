@@ -16,14 +16,14 @@
 
 .name {
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size:calc(16px + var(--font-size-increase));
   font-weight: 400;
   letter-spacing: 0.2em;
   color: var(--text-primary);
 }
 
 .role {
-  font-size: 10.5px;
+  font-size:calc(10.5px + var(--font-size-increase));
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -40,7 +40,7 @@
 }
 
 .sparkle {
-  font-size: 22px;
+  font-size:calc(22px + var(--font-size-increase));
   color: var(--text-muted);
   display: inline-block;
   line-height: 1;
@@ -61,7 +61,7 @@
 }
 
 .contact {
-  font-size: 12.5px;
+  font-size:calc(12.5px + var(--font-size-increase));
   color: var(--text-secondary);
   letter-spacing: 0.04em;
   transition: color 0.25s;
@@ -72,7 +72,7 @@ a.contact:hover {
 }
 
 .copy {
-  font-size: 10.5px;
+  font-size:calc(10.5px + var(--font-size-increase));
   color: var(--text-muted);
   letter-spacing: 0.04em;
   margin-top: 6px;

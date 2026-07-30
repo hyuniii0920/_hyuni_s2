@@ -12,7 +12,7 @@
 
 .sectionNum {
   font-family: var(--font-serif);
-  font-size: 13px;
+  font-size:calc(13px + var(--font-size-increase));
   font-weight: 400;
   letter-spacing: 0.2em;
   color: var(--text-muted);
@@ -20,7 +20,7 @@
 
 .sectionTitle {
   font-family: var(--font-serif);
-  font-size: clamp(36px, 5vw, 52px);
+  font-size:calc(clamp(36px, 5vw, 52px) + var(--font-size-increase));
   font-weight: 300;
   letter-spacing: 0.04em;
   color: var(--text-primary);
@@ -84,7 +84,7 @@
 }
 
 .featuredCategory {
-  font-size: 12px;
+  font-size:calc(12px + var(--font-size-increase));
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -93,7 +93,7 @@
 
 .featuredTitle {
   font-family: var(--font-serif);
-  font-size: clamp(18px, 2vw, 24px);
+  font-size:calc(clamp(18px, 2vw, 24px) + var(--font-size-increase));
   font-weight: 400;
   letter-spacing: 0.02em;
   color: var(--text-primary);
@@ -101,20 +101,20 @@
 
 .featuredCardName {
   font-family: var(--font-serif);
-  font-size: clamp(20px, 2.2vw, 26px);
+  font-size:calc(clamp(20px, 2.2vw, 26px) + var(--font-size-increase));
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--text-primary);
 }
 
 .featuredCardTagline {
-  font-size: 13px;
+  font-size:calc(13px + var(--font-size-increase));
   color: var(--text-muted);
   letter-spacing: 0.02em;
 }
 
 .featuredCardDesc {
-  font-size: 14px;
+  font-size:calc(14px + var(--font-size-increase));
   color: var(--text-secondary);
   line-height: 1.7;
   margin-top: 6px;
@@ -137,7 +137,7 @@
 }
 
 .featuredCardChecklist li {
-  font-size: 13px;
+  font-size:calc(13px + var(--font-size-increase));
   color: var(--text-secondary);
   line-height: 1.5;
   padding-left: 20px;
@@ -153,7 +153,7 @@
 }
 
 .featuredDesc {
-  font-size: 14px;
+  font-size:calc(14px + var(--font-size-increase));
   color: var(--text-secondary);
   line-height: 1.6;
   display: -webkit-box;
@@ -163,7 +163,7 @@
 }
 
 .featuredWhy {
-  font-size: 13px;
+  font-size:calc(13px + var(--font-size-increase));
   color: var(--text-muted);
   line-height: 1.6;
   margin-top: 4px;
@@ -185,7 +185,7 @@
 }
 
 .featuredYear {
-  font-size: 11px;
+  font-size:calc(11px + var(--font-size-increase));
   font-weight: 600;
   color: var(--text-muted);
   margin-right: 2px;
@@ -193,7 +193,7 @@
 }
 
 .featuredTechTag {
-  font-size: 11px;
+  font-size:calc(11px + var(--font-size-increase));
   padding: 3px 9px;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -207,7 +207,7 @@
   align-items: center;
   gap: 8px;
   margin-top: 20px;
-  font-size: 11px;
+  font-size:calc(11px + var(--font-size-increase));
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -216,7 +216,7 @@
 }
 
 .featuredDetailLink b {
-  font-size: 16px;
+  font-size:calc(16px + var(--font-size-increase));
   font-weight: 400;
   line-height: 1;
 }
@@ -260,7 +260,7 @@
   width: 36px;
   height: 36px;
   cursor: pointer;
-  font-size: 14px;
+  font-size:calc(14px + var(--font-size-increase));
   color: var(--text-secondary);
   display: flex;
   align-items: center;
@@ -301,7 +301,7 @@
 }
 
 .modalCategory {
-  font-size: 12px;
+  font-size:calc(12px + var(--font-size-increase));
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -310,21 +310,21 @@
 
 .modalTitle {
   font-family: var(--font-serif);
-  font-size: clamp(24px, 3vw, 36px);
+  font-size:calc(clamp(24px, 3vw, 36px) + var(--font-size-increase));
   font-weight: 300;
   letter-spacing: 0.04em;
   color: var(--text-primary);
 }
 
 .modalDesc {
-  font-size: 15.5px;
+  font-size:calc(15.5px + var(--font-size-increase));
   color: var(--text-secondary);
   line-height: 1.8;
 }
 
 .modalDetail {
   margin-top: 16px;
-  font-size: 15px;
+  font-size:calc(15px + var(--font-size-increase));
   color: var(--text-secondary);
   line-height: 1.9;
   white-space: pre-wrap;
@@ -332,7 +332,7 @@
 
 .subtext {
   font-family: var(--font-serif);
-  font-size: 21px;
+  font-size:calc(21px + var(--font-size-increase));
   font-weight: 400;
   color: var(--text-primary);
   margin-bottom: 64px;
@@ -361,7 +361,7 @@
 }
 
 .cardType {
-  font-size: 12px;
+  font-size:calc(12px + var(--font-size-increase));
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -370,21 +370,21 @@
 
 .cardTitle {
   font-family: var(--font-serif);
-  font-size: clamp(28px, 3.5vw, 40px);
+  font-size:calc(clamp(28px, 3.5vw, 40px) + var(--font-size-increase));
   font-weight: 300;
   letter-spacing: 0.04em;
   color: var(--text-primary);
 }
 
 .cardDesc {
-  font-size: 15.5px;
+  font-size:calc(15.5px + var(--font-size-increase));
   color: var(--text-secondary);
   line-height: 1.8;
   flex: 1;
 }
 
 .cardLink {
-  font-size: 14px;
+  font-size:calc(14px + var(--font-size-increase));
   color: var(--text-secondary);
   letter-spacing: 0.06em;
   margin-top: 8px;
@@ -433,7 +433,7 @@
   }
 
   .cardDesc {
-    font-size: 14px;
+    font-size:calc(14px + var(--font-size-increase));
   }
 
   .modalBody {
