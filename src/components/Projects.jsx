@@ -581,7 +581,7 @@ export const featured = [
       whyShort: '지역화폐 사용을 설명하는 대신, 여행자가 실제로 멈추는 순간마다 동백전을 연결했다.',
       card: {
         name: '동백웨이',
-        tagline: '지역화폐 기반 부산 통합 관광 플랫폼',
+        tagline: 'BNK금융지주 동백전 데이터 기반 부산 통합 관광 플랫폼',
         desc: '탐색부터 예약·결제·기록까지\n동백전을 여행 경험 안에 연결한 서비스',
         checklist: [
           'PM · 전체 UX/UI · 발표 총괄',
