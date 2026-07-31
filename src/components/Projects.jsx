@@ -555,6 +555,102 @@ export const featured = [
       ],
     },
   },
+  {
+    id: 6,
+    category: 'PM · Product · Data · Backend',
+    title: '동백웨이 (DongbaekWay)',
+    desc: '지역화폐를 여행 전·중·후의 경험으로 연결한 부산 통합 관광 플랫폼',
+    image: '/project_photo/dongbaekway_main.png',
+    detail: {
+      period: '2026.07 · DIVE2026 Hackathon (BNK금융지주 트랙)',
+      role: {
+        title: 'PM · 기획 총괄 · UX/UI · Data/Backend',
+        items: [
+          '서비스 방향·기능 우선순위·팀 업무 분배·발표까지 프로젝트 전 과정 총괄',
+          '내·외국인 전체 사용자 여정과 앱 UX/UI·Figma 디자인',
+          'Firebase Data Connect 중심의 관계형 DB 구조 전체 재설계',
+          '119,260건 가맹 원천 데이터의 수집·정제·검증·재분류·적재 설계',
+          'FastAPI 기반 사용자·사장님 MCP 구현 및 실제 가맹 데이터 연동',
+        ],
+      },
+      github: [
+        { label: 'KDA-server', url: 'https://github.com/KDA-4/KDA-server' },
+      ],
+      summary: '부산 지역화폐 동백전이 여행자의 실제 소비 여정에 자연스럽게 들어오도록 탐색 → 예약 → 일정 → 현장 소통 → 결제 → 리뷰를 연결한 통합 관광 플랫폼.',
+      motivation: '동백전의 문제는 결제 인프라의 부족이 아니라 여행자가 동백전을 발견하고 사용하는 경험이 끊겨 있다는 점이라고 정의했습니다. 외국인은 동백전의 존재와 발급·충전 방법을 알기 어렵고, 여행 중에는 눈앞의 매장이 가맹점인지 즉시 확인하기 어렵습니다. 음식점 예약에 머물던 초기 아이디어를 여행 전·중·후 전체 여정으로 확장하고, 혜택을 별도로 홍보하는 대신 사용자가 필요한 순간에 자연스럽게 연결하는 플랫폼으로 방향을 재정립했습니다.',
+      whyShort: '지역화폐 사용을 설명하는 대신, 여행자가 실제로 멈추는 순간마다 동백전을 연결했다.',
+      card: {
+        name: '동백웨이',
+        tagline: '지역화폐 기반 부산 통합 관광 플랫폼',
+        desc: '탐색부터 예약·결제·기록까지\n동백전을 여행 경험 안에 연결한 서비스',
+        checklist: [
+          'PM · 전체 UX/UI · 발표 총괄',
+          '119,260건 원천 데이터 가공 설계',
+          'DB 재설계 · MCP 개발',
+        ],
+      },
+      myStack: ['Product Strategy', 'Figma', 'Firebase Data Connect', 'FastAPI · MCP'],
+      architecture: {
+        title: 'Verified Data Pipeline',
+        caption: '불완전한 가맹 원천 데이터를 지점 단위로 검증해 실제 서비스와 AI가 사용할 수 있는 데이터로 전환',
+        steps: ['119,260 Raw Stores', 'Kakao Place Match', 'Category Recheck', 'Data Cleaning', 'Firebase Data Connect', 'App · MCP'],
+      },
+      problemSolving: [
+        {
+          title: '음식점 예약에서 여행 전 과정으로 제품 방향 재정의',
+          preview: '기능을 늘리는 것이 아니라 동백전이 여행자와 만나는 끊긴 경험을 다시 정의한 문제.',
+          problem: '초기 아이디어는 동백전 가맹 음식점 예약에 집중되어 있어, 결제 인프라가 숙박·관광·체험·상점까지 확장되어 있다는 강점을 활용하지 못했고 예약 이후의 이동·현장 소통·결제·기록 경험도 서비스 밖에 남아 있었음.',
+          process: 'PM으로서 문제를 “동백전의 부족함”이 아닌 “여행자가 동백전을 발견하고 사용하는 길의 단절”로 재정의. 사용자 여정을 여행 전·중·후로 나누고 탐색·예약·일정·번역·혜택·결제·리뷰를 하나의 흐름으로 재구성. 기능 우선순위와 팀원 업무를 배분하고, 마지막에 앱 없이 AI 챗으로 진입하는 발표 서사까지 직접 설계.',
+          result: '음식점 예약 서비스를 내·외국인 부산 통합 관광 플랫폼으로 확장했고, 흩어진 기능을 “여행 내내 동행한다”는 하나의 제품 가치로 정렬. 전체 UX/UI와 피치덱·발표까지 동일한 사용자 여정 구조로 일관되게 완성.',
+        },
+        {
+          title: '서비스 요구사항에 맞춰 DB 구조 전체 재설계',
+          preview: '초기 DB가 기능과 데이터의 성격을 반영하지 못해 백엔드 구현 기준이 계속 흔들리는 문제.',
+          problem: '초기 설계에서는 Firebase Auth·Firestore·Data Connect·Storage와 FastAPI의 책임이 명확하지 않았고, 사용자·가맹점·예약·웨이팅·결제 관계와 상시 매장·기간성 축제 데이터가 한 구조 안에서 뒤섞여 기능을 추가할수록 정합성과 보안 기준을 유지하기 어려웠음.',
+          process: '기존 구조를 인수해 전체 데이터 흐름을 다시 검토하고, 인증은 Firebase Auth, 관계형 정본은 Data Connect, 파일은 Storage, 외부 연동·AI·MCP·서버 계산은 FastAPI로 역할을 구분. Store·Menu·StoreHour·Festival 등 도메인을 분리하고 결제성 데이터와 서버 Mutation의 접근 경계를 설정. 기존 AI·FAQ·FCM 테이블은 삭제하지 않는 호환성 중심 마이그레이션을 선택.',
+          result: '팀이 공통으로 사용할 수 있는 단일 데이터 기준을 마련하고, 앱·FastAPI·MCP가 같은 가맹점 정본을 조회하는 구조를 확보. 상시 매장과 기간성 이벤트의 생명주기를 분리하면서 기존 데이터도 보호하는 확장 가능한 스키마로 전환.',
+        },
+        {
+          title: '119,260건 원천 데이터를 서비스용 장소 데이터로 전환',
+          preview: '상호·업종 코드·동 단위 주소만으로는 지도와 예약 화면에서 신뢰할 수 있는 매장을 제공할 수 없는 문제.',
+          problem: '원천 데이터에는 정확한 좌표·전체 주소·실제 업종·메뉴·영업시간이 없었고, 프랜차이즈와 동명이점이 많아 상호명만으로 외부 장소와 연결하면 다른 지점이 매칭될 위험이 있었음. 원천 업종 코드와 실제 영업 형태가 다른 사례도 존재했음.',
+          process: '필요 데이터와 제거할 데이터를 직접 정의하고, 카카오 장소 검색 API에서 “상호명 + 동”으로 후보를 수집한 뒤 상호·동·실제 장소 카테고리를 함께 검증. 원천 코드와 카카오 업종이 다르면 실제 장소 기준으로 재분류하고, 검증되지 않은 메뉴·영업시간은 임의로 채우지 않음. 원천 ID·외부 장소 ID·출처 URL을 보존하고 UUID v5 결정적 식별자와 batch upsert 적재 구조를 설계.',
+          result: '음식점 20건과 카페·쇼핑·생활·뷰티·병원·약국 등 카테고리별 표본을 포함한 검증 가맹점 100건, 메뉴·서비스 21건, 영업시간 196건, 축제 40건을 Data Connect에 적재. 매핑 파일·커버리지 리포트·CSV·JSON payload를 함께 남겨 출처와 재현 가능성을 확보.',
+        },
+      ],
+      stack: {
+        Product: ['Product Strategy', 'Service Planning', 'Feature Prioritization', 'Team Coordination', 'Pitch Deck'],
+        UXUI: ['Figma', 'User Journey', 'Wireframe', 'Mobile UI', 'Live Nudge UX'],
+        Data: ['Python', 'Kakao Local API', 'CSV · JSON', 'Firebase Data Connect', 'Cloud SQL for PostgreSQL'],
+        Backend: ['FastAPI', 'FastMCP', 'Firebase Admin SDK', 'GraphQL', 'Pydantic'],
+        Infra: ['Railway', 'Docker', 'GitHub'],
+      },
+      highlights: [
+        {
+          title: 'PM · 제품 전 과정 총괄',
+          desc: '문제 정의와 제품 방향 설정부터 기능 우선순위, 팀원 업무 분배, 전체 UX/UI, 피치덱과 최종 발표까지 프로젝트 전 과정을 리드.',
+        },
+        {
+          title: '전체 UX/UI 디자인',
+          desc: '내·외국인 사용자 유형별 홈부터 탐색·예약·일정·결제·리워드·통역·마이페이지까지 전체 앱 화면과 여행 전·중·후 사용자 흐름을 Figma로 설계.',
+        },
+        {
+          title: '검증 가능한 데이터 파이프라인',
+          desc: '119,260건 원천 데이터에서 서비스에 필요한 필드를 정의하고, 지점 검증·업종 재분류·결측 처리·출처 보존을 거쳐 100개의 신뢰 가능한 가맹점 데이터셋 구축.',
+        },
+        {
+          title: '실제 데이터 기반 MCP 백엔드',
+          desc: '사용자 21개·사장님 13개 도구를 역할별 MCP로 분리하고, FastAPI와 Firebase Data Connect를 연결해 LLM이 검증된 동백전 가맹점만 조회하도록 구현·배포.',
+        },
+      ],
+      coreFeatures: [
+        { title: '여행 전 — 탐색과 예약', desc: '내·외국인 사용자 유형에 맞는 카테고리와 실제 동백전 가맹점 정보를 제공하고, 다국어 문의·예약과 예약 기반 여행 일정 생성을 연결.' },
+        { title: '여행 중 — 라이브 넛지와 통역', desc: '다음 일정, 예약 매장 도착, 주변 가맹점 혜택을 잠금화면에서 먼저 안내하고 도착 순간 AI 통역으로 바로 진입하는 UX 설계.' },
+        { title: '여행 후 — 리뷰와 기록', desc: 'AI 리뷰 초안과 다국어 번역으로 작성 부담을 낮추고, 방문·결제·스탬프 정보를 개인 여행 기록으로 축적하는 흐름 설계.' },
+        { title: 'AI 챗 — 앱 밖의 여행 실행', desc: '사용자·사장님 MCP를 통해 검색·일정·예약·웨이팅·매장 운영을 자연어 대화에서 실행하도록 확장한 AI 진입 경험.' },
+      ],
+    },
+  },
 ];
 
 const links = [
