@@ -12,7 +12,7 @@
 
 .sectionNum {
   font-family: var(--font-serif);
-  font-size:calc(13px + var(--font-size-increase));
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.2em;
   color: var(--text-muted);
@@ -20,7 +20,7 @@
 
 .sectionTitle {
   font-family: var(--font-serif);
-  font-size:calc(clamp(36px, 5vw, 52px) + var(--font-size-increase));
+  font-size: clamp(36px, 5vw, 52px);
   font-weight: 300;
   letter-spacing: 0.04em;
   color: var(--text-primary);
@@ -49,7 +49,7 @@
 
 .tagline {
   font-family: var(--font-serif);
-  font-size:calc(clamp(20px, 1.6vw, 22px) + var(--font-size-increase));
+  font-size: clamp(20px, 1.6vw, 22px);
   font-weight: 400;
   font-style: italic;
   line-height: 1.8;
@@ -60,7 +60,7 @@
 
 .blockTitle {
   font-family: var(--font-serif);
-  font-size:calc(24px + var(--font-size-increase));
+  font-size: 24px;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: var(--text-primary);
@@ -79,7 +79,7 @@
   gap: 24px;
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
-  font-size:calc(15.5px + var(--font-size-increase));
+  font-size: 15.5px;
   line-height: 1.6;
 }
 
@@ -99,7 +99,7 @@
   gap: 20px;
   padding: 15px 0;
   border-bottom: 1px solid var(--border);
-  font-size:calc(15.5px + var(--font-size-increase));
+  font-size: 15.5px;
   transition: color 0.25s;
 }
 
@@ -109,7 +109,7 @@
 
 .linkLabel {
   font-family: var(--font-serif);
-  font-size:calc(18px + var(--font-size-increase));
+  font-size: 18px;
   font-weight: 500;
   color: var(--text-primary);
   min-width: 70px;
@@ -117,7 +117,7 @@
 
 .linkUrl {
   color: var(--text-secondary);
-  font-size:calc(14px + var(--font-size-increase));
+  font-size: 14px;
   letter-spacing: 0.04em;
 }
 
@@ -154,7 +154,7 @@
 }
 
 .skillCategory {
-  font-size:calc(12px + var(--font-size-increase));
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -168,7 +168,7 @@
 }
 
 .skillTag {
-  font-size:calc(14px + var(--font-size-increase));
+  font-size: 14px;
   color: var(--text-secondary);
   padding: 5px 13px;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -203,11 +203,11 @@
   }
 
   .tagline {
-    font-size:calc(18px + var(--font-size-increase));
+    font-size: 18px;
   }
 
   .infoRow {
-    font-size:calc(14px + var(--font-size-increase));
+    font-size: 14px;
   }
 
   .skillGrid {

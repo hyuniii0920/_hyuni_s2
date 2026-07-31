@@ -41,7 +41,7 @@ function MediaCarousel({ project, videoUrl }) {
   const move = (direction) => setActiveIndex((index) => (index + direction + media.length) % media.length);
 
   const controlStyle = {
-    position: 'absolute', top: '50%', zIndex: 1, width: '38px', height: '38px', border: '1px solid rgba(255,255,255,.25)', borderRadius: '50%', background: 'rgba(7,9,26,.72)', color: 'var(--text-primary)', fontSize: 'calc(20px + var(--font-size-increase))', lineHeight: 1, cursor: 'pointer', transform: 'translateY(-50%)',
+    position: 'absolute', top: '50%', zIndex: 1, width: '38px', height: '38px', border: '1px solid rgba(255,255,255,.25)', borderRadius: '50%', background: 'rgba(7,9,26,.72)', color: 'var(--text-primary)', fontSize: '20px', lineHeight: 1, cursor: 'pointer', transform: 'translateY(-50%)',
   };
 
   return <div className={styles.heroInline}>
@@ -52,7 +52,7 @@ function MediaCarousel({ project, videoUrl }) {
       {media.length > 1 && <>
         <button type="button" style={{ ...controlStyle, left: '16px' }} onClick={() => move(-1)} aria-label="이전 미디어">←</button>
         <button type="button" style={{ ...controlStyle, right: '16px' }} onClick={() => move(1)} aria-label="다음 미디어">→</button>
-        <span style={{ position: 'absolute', right: '16px', bottom: '14px', padding: '5px 8px', borderRadius: '999px', background: 'rgba(7,9,26,.72)', fontSize: 'calc(10px + var(--font-size-increase))', letterSpacing: '.1em', color: 'var(--text-primary)' }}>{activeIndex + 1} / {media.length}</span>
+        <span style={{ position: 'absolute', right: '16px', bottom: '14px', padding: '5px 8px', borderRadius: '999px', background: 'rgba(7,9,26,.72)', fontSize: '10px', letterSpacing: '.1em', color: 'var(--text-primary)' }}>{activeIndex + 1} / {media.length}</span>
       </>}
     </div>
   </div>;
@@ -67,7 +67,7 @@ function StructuredDetail({ detail, project }) {
     </Section>}
 
     {detail.architecture && <Section eyebrow="System" title={detail.architecture.title}>
-      <div className={styles.architecture} aria-label={detail.architecture.caption}>{detail.architecture.steps.map((title, index) => <div className={styles.architectureItem} key={title}><div className={styles.architectureNode} style={{ minHeight: '92px', padding: '8px 4px', border: 'none', borderRadius: 0, background: 'transparent', justifyContent: 'center', gap: '8px' }}><span>{String(index + 1).padStart(2, '0')}</span><strong style={{ color: 'var(--text-secondary)', fontSize: 'calc(15px + var(--font-size-increase))', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.25 }}>{title}</strong></div>{index < detail.architecture.steps.length - 1 && <span className={styles.architectureArrow} aria-hidden="true">→</span>}</div>)}</div>
+      <div className={styles.architecture} aria-label={detail.architecture.caption}>{detail.architecture.steps.map((title, index) => <div className={styles.architectureItem} key={title}><div className={styles.architectureNode} style={{ minHeight: '92px', padding: '8px 4px', border: 'none', borderRadius: 0, background: 'transparent', justifyContent: 'center', gap: '8px' }}><span>{String(index + 1).padStart(2, '0')}</span><strong style={{ color: 'var(--text-secondary)', fontSize: '15px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.25 }}>{title}</strong></div>{index < detail.architecture.steps.length - 1 && <span className={styles.architectureArrow} aria-hidden="true">→</span>}</div>)}</div>
       <p className={styles.architectureCaption}>{detail.architecture.caption}</p>
     </Section>}
 
@@ -92,9 +92,9 @@ export default function ProjectDetail({ project, onClose }) {
   return <div className={styles.overlay} onClick={onClose}><div className={styles.page} onClick={(event) => event.stopPropagation()}>
     <header className={styles.header}><button className={styles.back} onClick={onClose}>← All projects</button><button className={styles.close} onClick={onClose} aria-label="상세 페이지 닫기">×</button></header>
     <main className={styles.content}>
-      <section className={styles.hero}><span className={styles.category} style={{ textTransform: 'none' }}>{project.desc}</span><h1 className={styles.title}>{titleParts ? <>{titleParts[1]} <span style={{ fontSize: 'calc(.45em + var(--font-size-increase))', letterSpacing: '-.015em', color: 'var(--text-secondary)' }}>{titleParts[2]}</span></> : project.title}</h1>{detail?.summary && <p className={styles.summary}>{detail.summary}</p>}
+      <section className={styles.hero}><span className={styles.category} style={{ textTransform: 'none' }}>{project.desc}</span><h1 className={styles.title}>{titleParts ? <>{titleParts[1]} <span style={{ fontSize: '.45em', letterSpacing: '-.015em', color: 'var(--text-secondary)' }}>{titleParts[2]}</span></> : project.title}</h1>{detail?.summary && <p className={styles.summary}>{detail.summary}</p>}
         {heroResults.length > 0 && <div className={styles.heroResults}>{heroResults.map((item) => <span key={item}>✦ {item}</span>)}</div>}
-        <div className={styles.heroMeta}>{detail?.period && <div><span>Period</span><p>{detail.period}</p></div>}{detail?.role && <div><span>Role</span>{typeof detail.role === 'object' ? <><p style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{detail.role.title}</p><ul style={{ display: 'grid', gap: '5px', margin: '8px 0 0', padding: 0, color: 'var(--text-secondary)', fontSize: 'calc(14px + var(--font-size-increase))', lineHeight: 1.6, listStyle: 'none' }}>{detail.role.items.map((item) => <li key={item} style={{ display: 'flex', alignItems: 'baseline', gap: '9px' }}><i aria-hidden="true" style={{ width: '4px', height: '4px', flex: '0 0 4px', borderRadius: '50%', background: 'var(--text-muted)' }} />{item}</li>)}</ul></> : <p>{detail.role}</p>}</div>}</div>
+        <div className={styles.heroMeta}>{detail?.period && <div><span>Period</span><p>{detail.period}</p></div>}{detail?.role && <div><span>Role</span>{typeof detail.role === 'object' ? <><p style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{detail.role.title}</p><ul style={{ display: 'grid', gap: '5px', margin: '8px 0 0', padding: 0, color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6, listStyle: 'none' }}>{detail.role.items.map((item) => <li key={item} style={{ display: 'flex', alignItems: 'baseline', gap: '9px' }}><i aria-hidden="true" style={{ width: '4px', height: '4px', flex: '0 0 4px', borderRadius: '50%', background: 'var(--text-muted)' }} />{item}</li>)}</ul></> : <p>{detail.role}</p>}</div>}</div>
       </section>
       <MediaCarousel project={project} videoUrl={detail?.videoUrl} />
       {detail ? <StructuredDetail detail={detail} project={project} /> : project.detail ? <div className={styles.body}>{project.detail}</div> : null}

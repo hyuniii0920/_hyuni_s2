@@ -89,7 +89,7 @@
 }
 
 .label {
-  font-size:calc(12px + var(--font-size-increase));
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -98,7 +98,7 @@
 }
 
 .greeting {
-  font-size:calc(17px + var(--font-size-increase));
+  font-size: 17px;
   font-weight: 400;
   line-height: 1.9;
   color: rgba(255, 255, 255, 0.92);
@@ -154,7 +154,7 @@
 
 .title {
   font-family: var(--font-serif);
-  font-size:calc(clamp(44px, 11vw, 148px) + var(--font-size-increase));
+  font-size: clamp(44px, 11vw, 148px);
   font-weight: 300;
   letter-spacing: 0.06em;
   line-height: 1;
@@ -169,7 +169,7 @@
 
 /* 양쪽 장식 별 */
 .sparkleAccent {
-  font-size:calc(0.3em + var(--font-size-increase));
+  font-size: 0.3em;
   line-height: 1;
   display: inline-block;
   animation: sparkle 4s ease-in-out infinite, spin 8s linear infinite;
@@ -197,7 +197,7 @@
   top: 52%;
   left: 50%;
   translate: -50% -50%;
-  font-size:calc(0.32em + var(--font-size-increase));
+  font-size: 0.32em;
   color: rgba(255, 255, 255, 0.9);
   -webkit-text-stroke: 0;
   display: inline-block;
@@ -230,7 +230,7 @@
 }
 
 .scrollHint span {
-  font-size:calc(9px + var(--font-size-increase));
+  font-size: 9px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.4);
@@ -274,12 +274,12 @@
   }
 
   .label {
-    font-size:calc(10px + var(--font-size-increase));
+    font-size: 10px;
     letter-spacing: 0.25em;
   }
 
   .greeting {
-    font-size:calc(14px + var(--font-size-increase));
+    font-size: 14px;
     line-height: 1.8;
   }
 

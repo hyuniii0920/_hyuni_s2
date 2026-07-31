@@ -12,7 +12,7 @@
 
 .sectionNum {
   font-family: var(--font-serif);
-  font-size:calc(13px + var(--font-size-increase));
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.2em;
   color: var(--text-muted);
@@ -20,7 +20,7 @@
 
 .sectionTitle {
   font-family: var(--font-serif);
-  font-size:calc(clamp(36px, 5vw, 52px) + var(--font-size-increase));
+  font-size: clamp(36px, 5vw, 52px);
   font-weight: 300;
   letter-spacing: 0.04em;
   color: var(--text-primary);
@@ -41,7 +41,7 @@
 
 .colTitle {
   font-family: var(--font-serif);
-  font-size:calc(24px + var(--font-size-increase));
+  font-size: 24px;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: var(--text-primary);
@@ -91,7 +91,7 @@
 }
 
 .date {
-  font-size:calc(13px + var(--font-size-increase));
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--text-muted);
@@ -100,7 +100,7 @@
 }
 
 .itemTitle {
-  font-size:calc(16.5px + var(--font-size-increase));
+  font-size: 16.5px;
   font-weight: 400;
   color: var(--text-primary);
   margin-bottom: 6px;
@@ -119,7 +119,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size:calc(10px + var(--font-size-increase));
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -128,7 +128,7 @@
 }
 
 .detailLink b {
-  font-size:calc(15px + var(--font-size-increase));
+  font-size: 15px;
   font-weight: 400;
   line-height: 1;
   transition: transform 0.2s ease;
@@ -143,7 +143,7 @@
 }
 
 .itemSub {
-  font-size:calc(14.5px + var(--font-size-increase));
+  font-size: 14.5px;
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -183,7 +183,7 @@
 }
 
 .activityYear {
-  font-size:calc(13px + var(--font-size-increase));
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--text-muted);
@@ -192,7 +192,7 @@
 }
 
 .activityText {
-  font-size:calc(16.5px + var(--font-size-increase));
+  font-size: 16.5px;
   color: var(--text-primary);
   line-height: 1.6;
 }
@@ -228,7 +228,7 @@
   }
 
   .itemTitle {
-    font-size:calc(14px + var(--font-size-increase));
+    font-size: 14px;
   }
 
   .itemTitleRow {
@@ -245,7 +245,7 @@
   }
 
   .activityText {
-    font-size:calc(14px + var(--font-size-increase));
+    font-size: 14px;
   }
 }
 
