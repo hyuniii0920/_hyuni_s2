@@ -99,8 +99,8 @@
 
   .wordHyuni {
     max-width: 100%;
-    font-size: clamp(64px, 24vw, 108px);
-    letter-spacing: -.08em;
+    font-size: clamp(58px, 20vw, 86px);
+    letter-spacing: -.075em;
   }
 
   .wordStudio {
