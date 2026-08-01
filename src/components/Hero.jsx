@@ -9,7 +9,7 @@ function SparkleO({ delay = 0 }) {
   );
 }
 
-export default function Hero({ isReady = true }) {
+export default function Hero({ isReady = true, onVideoReady }) {
   return (
     <section id="hero" className={`${styles.hero} ${isReady ? styles.ready : styles.preparing}`}>
       <video
@@ -19,6 +19,8 @@ export default function Hero({ isReady = true }) {
         muted
         loop
         playsInline
+        preload="auto"
+        onCanPlayThrough={onVideoReady}
       />
       <div className={styles.overlay} />
 

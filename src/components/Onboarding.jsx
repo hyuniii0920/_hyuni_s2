@@ -2,21 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './Onboarding.module.css';
 
 const MIN_DURATION = 3400;
-const FALLBACK_DURATION = 5200;
 
-export default function Onboarding({ onComplete, onExitStart }) {
-  const [videoReady, setVideoReady] = useState(false);
+export default function Onboarding({ onComplete, onExitStart, videoReady }) {
   const [minDurationPassed, setMinDurationPassed] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const hasCompleted = useRef(false);
 
   useEffect(() => {
     const minTimer = window.setTimeout(() => setMinDurationPassed(true), MIN_DURATION);
-    const fallbackTimer = window.setTimeout(() => setVideoReady(true), FALLBACK_DURATION);
-    return () => {
-      window.clearTimeout(minTimer);
-      window.clearTimeout(fallbackTimer);
-    };
+    return () => window.clearTimeout(minTimer);
   }, []);
 
   useEffect(() => {
@@ -30,15 +24,6 @@ export default function Onboarding({ onComplete, onExitStart }) {
 
   return (
     <section className={`${styles.onboarding} ${leaving ? styles.leaving : ''}`} aria-label="포트폴리오 준비 중">
-      <video
-        className={styles.preload}
-        src="/main_wave.mp4"
-        muted
-        playsInline
-        preload="auto"
-        onCanPlayThrough={() => setVideoReady(true)}
-        onError={() => setVideoReady(true)}
-      />
       <div className={styles.grain} />
       <div className={styles.horizonSweep} aria-hidden="true"><span /></div>
       <div className={styles.passingWords} aria-hidden="true">
@@ -52,7 +37,9 @@ export default function Onboarding({ onComplete, onExitStart }) {
           <span className={styles.wordStudio}>Hello, I'm</span>
           <span className={styles.wordHyuni}>SEOHYUN</span>
         </div>
-        <p className={styles.loading}>{videoReady ? 'MOTION READY' : 'LOADING MOTION'}<i /><i /><i /></p>
+        <p className={styles.loading} role="status" aria-live="polite">
+          {videoReady ? 'MOTION READY' : 'LOADING MAIN MOTION'}<i /><i /><i />
+        </p>
       </div>
       <div className={styles.bottomline}>
         <span>DEVELOPMENT</span>

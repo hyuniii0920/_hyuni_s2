@@ -12,10 +12,12 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isOnboardingDone, setIsOnboardingDone] = useState(false);
   const [isHeroRevealing, setIsHeroRevealing] = useState(false);
+  const [isHeroVideoReady, setIsHeroVideoReady] = useState(false);
   const captureId = Number(new URLSearchParams(window.location.search).get('capture'));
   const captureProject = featured.find((p) => p.id === captureId);
   const handleOnboardingExitStart = useCallback(() => setIsHeroRevealing(true), []);
   const handleOnboardingComplete = useCallback(() => setIsOnboardingDone(true), []);
+  const handleHeroVideoReady = useCallback(() => setIsHeroVideoReady(true), []);
 
   useEffect(() => {
     document.body.style.overflow = selectedProject || !isOnboardingDone ? 'hidden' : '';
@@ -42,10 +44,11 @@ export default function App() {
         <Onboarding
           onExitStart={handleOnboardingExitStart}
           onComplete={handleOnboardingComplete}
+          videoReady={isHeroVideoReady}
         />
       )}
       <Nav />
-      <Hero isReady={isHeroRevealing} />
+      <Hero isReady={isHeroRevealing} onVideoReady={handleHeroVideoReady} />
       <About />
       <Career onSelectProject={setSelectedProject} />
       <Projects onSelectProject={setSelectedProject} />

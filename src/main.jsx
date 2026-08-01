@@ -15,6 +15,7 @@ function mountApp() {
 
 async function prepareFonts() {
   if (!document.fonts) return true
+  if (!navigator.onLine) return false
 
   const fontLoads = Promise.all([
     document.fonts.load('300 16px Inter'),
