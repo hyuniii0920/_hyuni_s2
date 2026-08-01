@@ -15,12 +15,14 @@ export default function Hero({ isReady = true, onVideoReady }) {
       <video
         className={styles.video}
         src="/main_wave.mp4"
+        poster="/main_wave_poster.jpg"
         autoPlay
         muted
         loop
         playsInline
         preload="auto"
         onCanPlayThrough={onVideoReady}
+        onError={onVideoReady}
       />
       <div className={styles.overlay} />
 

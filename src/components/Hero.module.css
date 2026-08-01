@@ -4,6 +4,7 @@
   height: 100vh;
   min-height: 560px;
   overflow: hidden;
+  background: #07101d url('/main_wave_poster.jpg') center / cover no-repeat;
 }
 
 .video {
