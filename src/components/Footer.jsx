@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer id="contact" className={styles.footer}>
       <div className={styles.left}>
-        <span className={styles.name}>CHO SEO HYUN</span>
+        <span className={styles.name}>SEO HYUN CHO</span>
         <span className={styles.role}>Developer</span>
       </div>
       <div className={styles.center}>
