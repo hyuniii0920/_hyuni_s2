@@ -80,7 +80,7 @@ const education = [
   {
     date: '2022 — 2026',
     title: '경성대학교 컴퓨터공학과',
-    sub: '26.08 졸업예정',
+    sub: '27.02 졸업예정',
   },
   {
     date: '2019 — 2021',
@@ -90,7 +90,7 @@ const education = [
 ];
 
 const awards = [
-  { date: '2026.06', title: '경성대학교 글로컬 아이디어 공모전', sub: '★ 대상 (총장상) ★' },
+  { date: '2026.06', title: '경성대학교 Glocal Innovation 공모전', sub: '★ 대상 (총장상) ★' },
   { date: '2026.07 — 현재', title: 'DIVE 2026 - DX Challenge 해커톤', sub: '본선 진출 (진행 중) · BNK부산은행 동백전 결제 데이터 활용팀' },
   { date: '2023', title: 'IT 연합동아리 PROJECT 100일 프로젝트', sub: '디자인 & 아이디어 부문 수상' },
 ];

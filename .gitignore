@@ -25,3 +25,21 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.vercel
+
+# Local AI/tool working files
+.claude/
+.codex-pet-runs/
+tmp/
+work/
+outputs/
+
+# Private portfolio and application artifacts
+portfolio-captures/
+project_photo/
+/*_draft.md
+/github-profile-README.md
+/*.pdf
+/*.xlsx
+/*.xlsx.inspect.ndjson
+/pavicon.jpeg
